@@ -20,7 +20,7 @@
     "main": "staging/abase/component/ArraySorted.s"
   },
   "scripts": {
-    "test": "x",
+    "test": "node staging/abase/z.test/ArraySorted.test.s",
     "make_doc": "x"
   },
   "repository": {
