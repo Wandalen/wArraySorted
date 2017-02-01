@@ -1,19 +1,26 @@
-//#! /usr/bin/env NODE
-( function _wTools_s_() {
+( function _ArraySorted_s_() {
 
 'use strict';
+
+if( typeof module !== 'undefined' )
+{
+
+  if( typeof wBase === 'undefined' )
+  try
+  {
+    require( '../wTools.s' );
+  }
+  catch( err )
+  {
+    require( 'wTools' );
+  }
+
+}
 
 //
 
 var Self = wTools;
 var _ = wTools;
-
-// var _ArraySlice = Array.prototype.slice;
-// var _FunctionBind = Function.prototype.bind;
-// var _ObjectToString = Object.prototype.toString;
-// var _ObjectHasOwnProperty = Object.hasOwnProperty;
-// var _ceil = Math.ceil;
-// var _floor = Math.floor;
 
 // --
 // array sorted
@@ -205,13 +212,13 @@ var arraySortedLookUpInterval = function arraySortedLookUpInterval( arr,interval
   _.assert( _.arrayLike( arr ) );
 
   var comparator = _._comparatorFromTransformer( comparator );
-  var l = arr.length;
-  var b = _._arraySortedLeftMostIndex( arr,interval[ 0 ],comparator,0,l );
+  var length = arr.length;
+  var b = _._arraySortedLeftMostIndex( arr,interval[ 0 ],comparator,0,length );
 
-  if( b === l || comparator( arr[ b ],interval[ 1 ] ) > 0 )
+  if( b === length || comparator( arr[ b ],interval[ 1 ] ) > 0 )
   return [ b,b ];
 
-  var e = _._arraySortedRightMostIndex( arr,interval[ 1 ],comparator,b+1,l );
+  var e = _._arraySortedRightMostIndex( arr,interval[ 1 ],comparator,b+1,length );
 
   if( comparator( arr[ e ],interval[ 1 ] ) <= 0 )
   e += 1;
@@ -219,13 +226,13 @@ var arraySortedLookUpInterval = function arraySortedLookUpInterval( arr,interval
   if( Config.debug )
   {
 
-    if( b < l )
+    if( b < length )
     _.assert( arr[ b ] >= interval[ 0 ] );
 
     if( b > 0 )
     _.assert( arr[ b-1 ] < interval[ 0 ] );
 
-    if( e < l )
+    if( e < length )
     _.assert( arr[ e ] > interval[ 1 ] );
 
     if( e > 0 )
@@ -240,17 +247,24 @@ var arraySortedLookUpInterval = function arraySortedLookUpInterval( arr,interval
 
 var arraySortedLookUpIntervalNarrowest = function arraySortedLookUpIntervalNarrowest( arr,interval,comparator )
 {
+
   _.assert( arguments.length === 2 || arguments.length === 3 );
   _.assert( _.arrayLike( arr ) );
 
   var comparator = _._comparatorFromTransformer( comparator );
-  var l = arr.length;
-  var b = _._arraySortedRightMostIndex( arr,interval[ 0 ],comparator,0,l );
+  var length = arr.length;
+  var b = _._arraySortedRightMostIndex( arr,interval[ 0 ],comparator,0,length );
 
-  if( b === l || comparator( arr[ b ],interval[ 1 ] ) > 0 )
+  // if( comparator( arr[ b ],interval[ 1 ] ) > 0 )
+  // debugger;
+
+  // if( b === length || comparator( arr[ b ],interval[ 1 ] ) > 0 )
+
+  if( b === length || b === 0 )
+  if( comparator( arr[ b ],interval[ 1 ] ) > 0 )
   return [ b,b ];
 
-  var e = _._arraySortedLeftMostIndex( arr,interval[ 1 ],comparator,b+1,l );
+  var e = _._arraySortedLeftMostIndex( arr,interval[ 1 ],comparator,b+1,length );
 
   if( comparator( arr[ e ],interval[ 1 ] ) <= 0 )
   e += 1;
@@ -258,17 +272,74 @@ var arraySortedLookUpIntervalNarrowest = function arraySortedLookUpIntervalNarro
   if( Config.debug )
   {
 
-    if( b < l )
+    if( b < length )
     _.assert( arr[ b ] >= interval[ 0 ] );
 
     if( b > 0 )
     _.assert( arr[ b-1 ] <= interval[ 0 ] );
 
-    if( e < l )
+    if( e < length )
     _.assert( arr[ e ] >= interval[ 1 ] );
 
     if( e > 0 )
     _.assert( arr[ e-1 ] <= interval[ 1 ] );
+
+  }
+
+  return [ b,e ]
+}
+
+//
+
+var arraySortedLookUpEmbrace = function arraySortedLookUpEmbrace( arr,interval,comparator )
+{
+  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( _.arrayLike( arr ) );
+
+  var comparator = _._comparatorFromTransformer( comparator );
+  var length = arr.length;
+  var b = _._arraySortedRightMostIndex( arr,interval[ 0 ],comparator,0,length );
+
+  if( length === 0 )
+  debugger;
+
+  if( 0 < b && b < length )
+  if( comparator( arr[ b ],interval[ 0 ] ) > 0 )
+  b -= 1;
+
+  if( b === length || comparator( arr[ b ],interval[ 1 ] ) > 0 )
+  return [ b,b ];
+
+  var e = _._arraySortedLeftMostIndex( arr,interval[ 1 ],comparator,b+1,length );
+
+  // if( comparator( arr[ e ],interval[ 1 ] ) <= 0 )
+  if( e > 0 )
+  {
+    if( e < length )
+    if( comparator( arr[ e-1 ],interval[ 1 ] ) < 0 )
+    e += 1;
+  }
+  else
+  {
+    _.assert( length > 0 );
+    if( comparator( arr[ e ],interval[ 1 ] ) <= 0 )
+    e += 1;
+  }
+
+  if( Config.debug )
+  {
+
+    // if( b < length )
+    // _.assert( arr[ b ] >= interval[ 0 ] );
+
+    if( b > 0 )
+    _.assert( arr[ b-1 ] <= interval[ 0 ] );
+
+    if( e < length )
+    _.assert( arr[ e ] >= interval[ 1 ] );
+
+    // if( e > 0 )
+    // _.assert( arr[ e-1 ] <= interval[ 1 ] );
 
   }
 
@@ -700,7 +771,7 @@ var Proto =
 
   // array sorted
 
-  _comparatorFromTransformer : _comparatorFromTransformer,
+  // _comparatorFromTransformer : _comparatorFromTransformer,
 
   _arraySortedLookUpAct : _arraySortedLookUpAct,
 
@@ -710,6 +781,7 @@ var Proto =
 
   arraySortedLookUpInterval : arraySortedLookUpInterval,
   arraySortedLookUpIntervalNarrowest : arraySortedLookUpIntervalNarrowest,
+  arraySortedLookUpEmbrace : arraySortedLookUpEmbrace,
 
   _arraySortedLeftMostIndex : _arraySortedLeftMostIndex,
   arraySortedLeftMostIndex : arraySortedLeftMostIndex,
