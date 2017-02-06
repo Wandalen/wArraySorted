@@ -135,6 +135,12 @@ var arraySortedLookUpIndex = function arraySortedLookUpIndex( arr,ins,comparator
   var comparator = _._comparatorFromTransformer( comparator );
   var index = _arraySortedLookUpAct( arr,ins,comparator,0,arr.length );
 
+  if( index === arr.length )
+  return -1;
+
+  if( comparator( ins,arr[ index ] ) !== 0 )
+  return -1;
+
   return index;
 }
 
@@ -142,16 +148,7 @@ var arraySortedLookUpIndex = function arraySortedLookUpIndex( arr,ins,comparator
 
 var arraySortedLookUpValue = function arraySortedLookUpValue( arr,ins,comparator )
 {
-
-  _.assert( arguments.length === 2 || arguments.length === 3 );
-  _.assert( comparator.length === 1 || comparator.length === 2 );
-  _.assert( _.arrayLike( arr ) );
-
-  debugger;
-
-  var comparator = _._comparatorFromTransformer( comparator );
-  var index = _arraySortedLookUpAct( arr,ins,comparator,0,arr.length );
-
+  var index = arraySortedLookUpIndex( arr,ins,comparator );
   return arr[ index ];
 }
 
@@ -186,21 +183,37 @@ var arraySortedLookUpValue = function arraySortedLookUpValue( arr,ins,comparator
 
 var arraySortedLookUp = function arraySortedLookUp( arr,ins,comparator )
 {
+  var index = arraySortedLookUpIndex( arr,ins,comparator );
+  return { value : arr[ index ], index : index };
+}
+
+//
+
+var arraySortedLookUpClosestIndex = function arraySortedLookUpClosestIndex( arr,ins,comparator )
+{
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
   _.assert( _.arrayLike( arr ) );
 
   var comparator = _._comparatorFromTransformer( comparator );
+  var index = _arraySortedLookUpAct( arr,ins,comparator,0,arr.length );
 
-  var l = arr.length;
-  var index = _._arraySortedLookUpAct( arr,ins,comparator,0,l );
+  return index;
+}
 
-  if( index === l )
-  return;
+//
 
-  if( comparator( ins,arr[ index ] ) !== 0 )
-  return;
+var arraySortedLookUpClosestValue = function arraySortedLookUpClosestValue( arr,ins,comparator )
+{
+  var index = arraySortedLookUpClosestIndex( arr,ins,comparator );
+  return arr[ index ];
+}
 
+//
+
+var arraySortedLookUpClosest = function arraySortedLookUpClosest( arr,ins,comparator )
+{
+  var index = arraySortedLookUpClosestIndex( arr,ins,comparator );
   return { value : arr[ index ], index : index };
 }
 
@@ -778,6 +791,10 @@ var Proto =
   arraySortedLookUpIndex : arraySortedLookUpIndex,
   arraySortedLookUpValue : arraySortedLookUpValue,
   arraySortedLookUp : arraySortedLookUp,
+
+  arraySortedLookUpClosestIndex : arraySortedLookUpClosestIndex,
+  arraySortedLookUpClosestValue : arraySortedLookUpClosestValue,
+  arraySortedLookUpClosest : arraySortedLookUpClosest,
 
   arraySortedLookUpInterval : arraySortedLookUpInterval,
   arraySortedLookUpIntervalNarrowest : arraySortedLookUpIntervalNarrowest,
