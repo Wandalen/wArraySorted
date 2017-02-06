@@ -10,7 +10,7 @@ var _ = wTools;
 var arr = [ 1.5, 2.6, 5.7, 9.8 ];
 
 //transformer - function that makes some calculations on passed values before they will be compared
-//default comparation in that case looks like : transformer( a ) - transformer( b )
+//default comparison in that case looks like : transformer( a ) - transformer( b )
 var transformer = function( value )
 {
   var result =  Math.floor( value );
@@ -28,7 +28,7 @@ console.log( 'arraySortedLookUp(',e,') :',i );
 
 var arr = [ 1, 2, 5, 9 ];
 
-//comparator - function that makes comparation between two values
+//comparator - function that makes comparison between two values
 var comparator = function( a, b )
 {
   return a - b;

@@ -5,6 +5,23 @@ Collection of routines for sorted arrays handling
 #### Binary search
 Binary search algorithm is used for finding an item from an ordered list of elements. Its based on dividing in half the part of list that can contain the element, until the count of the possible locations is decreased to just one. [More about binary search.]( https://en.wikipedia.org/wiki/Binary_search_algorithm )
 
+#### Comparator vs Transformer
+* Comparator - function that makes comparison between two values of two elements.
+
+Default comparator looks like:
+```javascript
+var comparator = function( a, b )
+{
+  return a - b;
+}
+```
+* Transformer - function that makes some operations on passed values before they will be compared
+default comparison in that case looks like :
+`transformer( a ) - transformer( b )`
+
+Both can be combined together to perform some custom features.
+[See examples.]( https://github.com/Wandalen/wArraySorted/blob/master/sample/ComparatorTransformer.js )
+
 
 ## Methods
 
