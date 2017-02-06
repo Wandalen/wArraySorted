@@ -71,3 +71,4 @@ var rightMost = _.arraySortedRightMostIndex( arr, 0 );
 console.log( 'leftMostIndex: ',leftMost,' rightMostIndex: ',rightMost );
 // leftMostIndex:  4  rightMostIndex:  3
 ```
+
