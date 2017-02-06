@@ -1,0 +1,6 @@
+1. very basic sample of bin search
+2. sample explaining difference between comparator and  transformer
+3. sample explaining difference between Index Value and no-sufix versions
+4. sample of adding into sorted array
+5. arraySortedLookUpInterval arraySortedLookUpEmbrace difference
+6. maybe one more sample of some aspect of package
