@@ -1,6 +1,6 @@
 {
   "name": "warraysorted",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Collection of routines for sorted arrays handling",
   "author": "Kostiantyn Wandalen <wtory.net@domainsbyproxy.com>",
   "contributors": [
