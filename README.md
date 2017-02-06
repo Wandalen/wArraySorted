@@ -20,7 +20,16 @@ default comparison in that case looks like :
 `transformer( a ) - transformer( b )`
 
 Both can be combined together to perform some custom features.
-[See examples.]( https://github.com/Wandalen/wArraySorted/blob/master/sample/ComparatorTransformer.js )
+[<b>See examples.</b>]( https://github.com/Wandalen/wArraySorted/blob/master/sample/ComparatorTransformer.js )
+
+#### Difference between Index,Value and no-sufix versions
+* Index  methods returns index of element as result or -1 if nothing founded.
+* Value methods returns element value as result or undefined if nothing founded.
+* Non sufix methods returns object with properties: value, index if element exists.
+Otherwise returns object with undefined as value and -1 as index.
+
+  [<b>Examples.</b>]( https://github.com/Wandalen/wArraySorted/blob/master/sample/IndexValueDifference.js )
+
 
 
 ## Methods
