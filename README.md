@@ -48,6 +48,8 @@ Otherwise returns object with undefined as value and -1 as index.
 
 * arraySortedRightMostIndex - returns index of last element that is equal or bigger with smallest difference to passed value.
 
+* arraySortedAdd - method adds the passed value to the array, no matter whether it has there or hasn't, and returns the new added or the updated index.
+
 #### Example #1
 ```javascript
 var _ = wTools;
@@ -114,4 +116,14 @@ var e = 0;
 var rightMost = _.arraySortedRightMostIndex( arr, 0 );
 console.log( 'arraySortedRightMostIndex(',e,') :',rightMost );
 // arraySortedRightMostIndex( 0 ) : 3
+```
+#### Example #6
+```javascript
+var _ = wTools;
+var arr = [ 1,2,5,9 ];
+
+var e = 0;
+var i = _.arraySortedAdd( arr,e );
+console.log( 'arraySortedAdd(',e,') inserted to index :',i, "array: ", arr );
+// arraySortedAdd( 0 ) inserted to index : 0 array:  [ 0, 1, 2, 5, 9 ]
 ```
