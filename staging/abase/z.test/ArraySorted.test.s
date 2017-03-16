@@ -5,34 +5,33 @@
 if( typeof module !== 'undefined' )
 {
 
+  //if( typeof wBase === 'undefined' )
   try
   {
-    require( '../../abase/xTesting/Testing.debug.s' );
+    require( '../../abase/wTools.s' );
   }
   catch( err )
   {
-    require( 'wTesting' );
+    require( 'wTools' );
   }
 
-  try
-  {
-    require( '../../abase/component/ArraySorted.s' );
-  }
-  catch( err )
-  {
-    require( 'wArraySorted.s' );
-  }
+  var _ = wTools;
+
+  _.include( 'wTesting' );
+  _.include( 'wArraySorted' );
 
 }
 
+//
+
 var _ = wTools;
-var Self = {};
+var Parent = wTools.Testing;
 
 // --
 // test
 // --
 
-var makeArray = function makeArray( length,density )
+function makeArray( length,density )
 {
   var top = length / density;
 
@@ -49,7 +48,7 @@ var makeArray = function makeArray( length,density )
 
 //
 
-var arraySortedLookUpIndex = function arraySortedLookUpIndex( test )
+function arraySortedLookUpIndex( test )
 {
 
   test.description = 'simples';
@@ -122,7 +121,7 @@ var arraySortedLookUpIndex = function arraySortedLookUpIndex( test )
 
 //
 
-var arraySortedLookUpClosestIndex = function arraySortedLookUpClosestIndex( test )
+function arraySortedLookUpClosestIndex( test )
 {
 
   test.description = 'simples';
@@ -195,7 +194,7 @@ var arraySortedLookUpClosestIndex = function arraySortedLookUpClosestIndex( test
 
 //
 
-var arraySortedLookUpInterval = function arraySortedLookUpInterval( test )
+function arraySortedLookUpInterval( test )
 {
   var self = this;
 
@@ -290,7 +289,7 @@ var arraySortedLookUpInterval = function arraySortedLookUpInterval( test )
 
 //
 
-// var arraySortedLookUpIntervalNarrowest = function arraySortedLookUpIntervalNarrowest( test )
+// function arraySortedLookUpIntervalNarrowest( test )
 // {
 //   var self = this;
 //   debugger;
@@ -390,7 +389,7 @@ var arraySortedLookUpInterval = function arraySortedLookUpInterval( test )
 
 //
 
-var arraySortedLookUpEmbrace = function arraySortedLookUpEmbrace( test )
+function arraySortedLookUpEmbrace( test )
 {
   var self = this;
 
@@ -512,7 +511,7 @@ var arraySortedLookUpEmbrace = function arraySortedLookUpEmbrace( test )
 
 //
 
-var arraySortedAdd = function arraySortedAdd( test )
+function arraySortedAdd( test )
 {
   var self = this;
 
@@ -564,8 +563,10 @@ var arraySortedAdd = function arraySortedAdd( test )
 // proto
 // --
 
-var Proto =
+var Self =
 {
+
+  name : 'ArraySorted',
 
   tests :
   {
@@ -580,18 +581,12 @@ var Proto =
 
   },
 
-  name : 'ArraySorted',
-  verbose : 0,
-
 };
 
-_.mapExtend( Self, Proto );
+//
 
-_global_.wTests = _global_.wTests === undefined ? {} : _global_.wTests;
-wTests[ Self.name ] = Self;
-
-// debugger;
+Self = wTestSuite( Self );
 if( typeof module !== 'undefined' && !module.parent )
-_.Testing.test( Self );
+_.Testing.test( Self.name );
 
 } )( );
