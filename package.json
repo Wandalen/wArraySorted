@@ -1,6 +1,7 @@
 {
   "name": "warraysorted",
   "version": "0.3.6",
+  "engine" : "node >= 5.0.0",
   "description": "Collection of routines for sorted arrays handling",
   "author": "Kostiantyn Wandalen <wtory.net@domainsbyproxy.com>",
   "contributors": [
@@ -20,7 +21,7 @@
     "main": "staging/abase/component/ArraySorted.s"
   },
   "scripts": {
-    "test": "node staging/abase/z.test/ArraySorted.test.s",
+    "test": "wtest staging",
     "make_doc": "x"
   },
   "repository": {
@@ -34,7 +35,8 @@
     "wTools": ""
   },
   "devDependencies": {
-    "wTesting": ""
+    "wTesting": "",
+    "warraysorted"
   },
   "keywords": [
     "sorted array",
