@@ -5,7 +5,6 @@
 if( typeof module !== 'undefined' )
 {
 
-  if( typeof wBase === 'undefined' )
   try
   {
     require( '../wTools.s' );
@@ -55,7 +54,7 @@ var _ = wTools;
  * @memberof wTools
  */
 
-var _arraySortedLookUpAct = function _arraySortedLookUpAct( arr,ins,comparator,left,right )
+function _arraySortedLookUpAct( arr,ins,comparator,left,right )
 {
 
   _.assert( right >= 0 );
@@ -126,7 +125,7 @@ var _arraySortedLookUpAct = function _arraySortedLookUpAct( arr,ins,comparator,l
 
 //
 
-var arraySortedLookUpIndex = function arraySortedLookUpIndex( arr,ins,comparator )
+function arraySortedLookUpIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -146,7 +145,7 @@ var arraySortedLookUpIndex = function arraySortedLookUpIndex( arr,ins,comparator
 
 //
 
-var arraySortedLookUpValue = function arraySortedLookUpValue( arr,ins,comparator )
+function arraySortedLookUpValue( arr,ins,comparator )
 {
   var index = arraySortedLookUpIndex( arr,ins,comparator );
   return arr[ index ];
@@ -181,7 +180,7 @@ var arraySortedLookUpValue = function arraySortedLookUpValue( arr,ins,comparator
  * @memberof wTools
  */
 
-var arraySortedLookUp = function arraySortedLookUp( arr,ins,comparator )
+function arraySortedLookUp( arr,ins,comparator )
 {
   var index = arraySortedLookUpIndex( arr,ins,comparator );
   return { value : arr[ index ], index : index };
@@ -189,7 +188,7 @@ var arraySortedLookUp = function arraySortedLookUp( arr,ins,comparator )
 
 //
 
-var arraySortedLookUpClosestIndex = function arraySortedLookUpClosestIndex( arr,ins,comparator )
+function arraySortedLookUpClosestIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -203,7 +202,7 @@ var arraySortedLookUpClosestIndex = function arraySortedLookUpClosestIndex( arr,
 
 //
 
-var arraySortedLookUpClosestValue = function arraySortedLookUpClosestValue( arr,ins,comparator )
+function arraySortedLookUpClosestValue( arr,ins,comparator )
 {
   var index = arraySortedLookUpClosestIndex( arr,ins,comparator );
   return arr[ index ];
@@ -211,7 +210,7 @@ var arraySortedLookUpClosestValue = function arraySortedLookUpClosestValue( arr,
 
 //
 
-var arraySortedLookUpClosest = function arraySortedLookUpClosest( arr,ins,comparator )
+function arraySortedLookUpClosest( arr,ins,comparator )
 {
   var index = arraySortedLookUpClosestIndex( arr,ins,comparator );
   return { value : arr[ index ], index : index };
@@ -219,7 +218,7 @@ var arraySortedLookUpClosest = function arraySortedLookUpClosest( arr,ins,compar
 
 //
 
-var arraySortedLookUpInterval = function arraySortedLookUpInterval( arr,interval,comparator )
+function arraySortedLookUpInterval( arr,interval,comparator )
 {
   _.assert( arguments.length === 2 || arguments.length === 3 );
   _.assert( _.arrayLike( arr ) );
@@ -258,7 +257,7 @@ var arraySortedLookUpInterval = function arraySortedLookUpInterval( arr,interval
 
 //
 
-var arraySortedLookUpIntervalNarrowest = function arraySortedLookUpIntervalNarrowest( arr,interval,comparator )
+function arraySortedLookUpIntervalNarrowest( arr,interval,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -304,7 +303,7 @@ var arraySortedLookUpIntervalNarrowest = function arraySortedLookUpIntervalNarro
 
 //
 
-var arraySortedLookUpEmbrace = function arraySortedLookUpEmbrace( arr,interval,comparator )
+function arraySortedLookUpEmbrace( arr,interval,comparator )
 {
   _.assert( arguments.length === 2 || arguments.length === 3 );
   _.assert( _.arrayLike( arr ) );
@@ -361,7 +360,7 @@ var arraySortedLookUpEmbrace = function arraySortedLookUpEmbrace( arr,interval,c
 
 //
 
-var _arraySortedLeftMostIndex = function _arraySortedLeftMostIndex( arr,ins,comparator,left,right )
+function _arraySortedLeftMostIndex( arr,ins,comparator,left,right )
 {
 
   _.assert( arguments.length === 5 );
@@ -393,7 +392,7 @@ var _arraySortedLeftMostIndex = function _arraySortedLeftMostIndex( arr,ins,comp
 
 //
 
-var arraySortedLeftMostIndex = function arraySortedLeftMostIndex( arr,ins,comparator )
+function arraySortedLeftMostIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -411,7 +410,7 @@ var arraySortedLeftMostIndex = function arraySortedLeftMostIndex( arr,ins,compar
 
 //
 
-var arraySortedLeftMostValue = function arraySortedLeftMostValue( arr,ins,comparator )
+function arraySortedLeftMostValue( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -424,7 +423,7 @@ var arraySortedLeftMostValue = function arraySortedLeftMostValue( arr,ins,compar
 
 //
 
-var arraySortedLeftMost = function arraySortedLeftMost( arr,ins,comparator )
+function arraySortedLeftMost( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -437,7 +436,7 @@ var arraySortedLeftMost = function arraySortedLeftMost( arr,ins,comparator )
 
 //
 
-var _arraySortedRightMostIndex = function _arraySortedRightMostIndex( arr,ins,comparator,left,right )
+function _arraySortedRightMostIndex( arr,ins,comparator,left,right )
 {
 
   _.assert( arguments.length === 5 );
@@ -469,7 +468,7 @@ var _arraySortedRightMostIndex = function _arraySortedRightMostIndex( arr,ins,co
 
 //
 
-var arraySortedRightMostIndex = function arraySortedRightMostIndex( arr,ins,comparator )
+function arraySortedRightMostIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -487,7 +486,7 @@ var arraySortedRightMostIndex = function arraySortedRightMostIndex( arr,ins,comp
 
 //
 
-var arraySortedRightMostValue = function arraySortedRightMostValue( arr,ins,comparator )
+function arraySortedRightMostValue( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -500,7 +499,7 @@ var arraySortedRightMostValue = function arraySortedRightMostValue( arr,ins,comp
 
 //
 
-var arraySortedRightMost = function arraySortedRightMost( arr,ins,comparator )
+function arraySortedRightMost( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -513,7 +512,7 @@ var arraySortedRightMost = function arraySortedRightMost( arr,ins,comparator )
 
 // //
 //
-// var arraySortedClosestIndex = function arraySortedClosestIndex( arr,ins,comparator )
+// function arraySortedClosestIndex( arr,ins,comparator )
 // {
 //
 //   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -559,7 +558,7 @@ var arraySortedRightMost = function arraySortedRightMost( arr,ins,comparator )
 //
 // //
 //
-// var arraySortedClosestValue = function arraySortedClosestValue( arr,ins,comparator )
+// function arraySortedClosestValue( arr,ins,comparator )
 // {
 //
 //   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -572,7 +571,7 @@ var arraySortedRightMost = function arraySortedRightMost( arr,ins,comparator )
 //
 // //
 //
-// var arraySortedClosest = function arraySortedClosest( arr,ins,comparator )
+// function arraySortedClosest( arr,ins,comparator )
 // {
 //
 //   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -611,7 +610,7 @@ var arraySortedRightMost = function arraySortedRightMost( arr,ins,comparator )
  * @memberof wTools
  */
 
-var arraySortedRemove = function( arr,ins,comparator )
+function arraySortedRemove( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -663,7 +662,7 @@ var arraySortedRemove = function( arr,ins,comparator )
  * @memberof wTools
  */
 
-var arraySortedAddOnce = function( arr,ins,comparator )
+function arraySortedAddOnce( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -713,7 +712,7 @@ var arraySortedAddOnce = function( arr,ins,comparator )
  * @memberof wTools
  */
 
-var arraySortedAdd = function arraySortedAdd( arr,ins,comparator )
+function arraySortedAdd( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
@@ -758,7 +757,7 @@ var arraySortedAdd = function arraySortedAdd( arr,ins,comparator )
  * @memberof wTools
  */
 
-var arraySortedAddArray = function arraySortedAddArray( dst,src,comparator )
+function arraySortedAddArray( dst,src,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3 );
