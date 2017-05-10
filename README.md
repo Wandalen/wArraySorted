@@ -1,5 +1,5 @@
 
-# wArraySorted
+# wArraySorted [![Build Status](https://travis-ci.org/Wandalen/wArraySorted.svg?branch=master)](https://travis-ci.org/Wandalen/wArraySorted)
 
 Collection of routines for sorted arrays handling
 #### Binary search
