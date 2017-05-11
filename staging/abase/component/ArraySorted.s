@@ -28,7 +28,7 @@ var _ = wTools;
 /**
  * Bin search of element ( ins ) in array ( arr ). Find element with closest value.
  * If array does not have such element then return index of smallest possible greater element.
- * If array does not have such element then element previous to returned is samller.
+ * If array does not have such element then element previous to returned is smaller.
  * Could return index of the next ( non-existent ) after the last one element.
  * Zero is the least possible returned index.
  * Could return index of any element if there are several elements with such value.
@@ -272,11 +272,18 @@ function arraySortedLookUpIntervalNarrowest( arr,interval,comparator )
 
   // if( b === length || comparator( arr[ b ],interval[ 1 ] ) > 0 )
 
-  if( b === length || b === 0 )
+  if( b === length )
+  if( comparator( arr[ b - 1 ],interval[ 0 ] ) < 0 )
+  return [ b,b ];
+
+  if( b === 0 )
   if( comparator( arr[ b ],interval[ 1 ] ) > 0 )
   return [ b,b ];
 
   var e = _._arraySortedLeftMostIndex( arr,interval[ 1 ],comparator,b+1,length );
+
+  if( comparator( arr[ e - 1 ],interval[ 1 ] ) > 0)
+  e -= 1;
 
   if( comparator( arr[ e ],interval[ 1 ] ) <= 0 )
   e += 1;
