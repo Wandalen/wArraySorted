@@ -509,103 +509,121 @@ function arraySortedLookUpInterval( test )
 
 //
 
-// function arraySortedLookUpIntervalNarrowest( test )
-// {
-//   var self = this;
-//   debugger;
-//
-//   /* */
-//
-//   var arr = [ 0, 0, 0, 0, 1, 1, 1, 1 ];
-//
-//   var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 1, 1 ] );
-//   test.identical( range, [ 7, 8 ] );
-//
-//   var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 1, 2 ] );
-//   test.identical( range, [ 7, 8 ] );
-//
-//   var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 0, 0 ] );
-//   test.identical( range, [ 3, 4 ] );
-//
-//   var range = _.arraySortedLookUpIntervalNarrowest( arr, [ -1, 0 ] );
-//   test.identical( range, [ 0, 1 ] );
-//
-//   var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 0, 1 ] );
-//   test.identical( range, [ 3, 5 ] );
-//
-//   var range = _.arraySortedLookUpIntervalNarrowest( arr, [ -1, 3 ] );
-//   test.identical( range, [ 0, 8 ] );
-//
-//   var range = _.arraySortedLookUpIntervalNarrowest( arr, [ -2, -1 ] );
-//   test.identical( range, [ 0, 0 ] );
-//
-//   var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 2, 3 ] );
-//   test.identical( range, [ 8, 8 ] );
-//
-//   /* */
-//
-//   var arr = [ 2, 2, 4, 18, 25, 25, 25, 26, 33, 36 ];
-//
-//   var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 7, 28 ] );
-//   test.identical( range, [ 3, 8 ] );
-//
-//   /* */
-//
-//   function testArray( arr, top )
-//   {
-//
-//     for( var val = 0 ; val < top ; val++ )
-//     {
-//       var interval = [ Math.round( Math.random()*( top+2 )-1 ) ];
-//       interval[ 1 ] = interval[ 0 ] + Math.round( Math.random()*( top+2 - interval[ 0 ] ) );
-//
-//       // debugger;
-//       var range = _.arraySortedLookUpIntervalNarrowest( arr, interval );
-//
-//       if( range[ 0 ] < arr.length )
-//       test.shouldBe( arr[ range[ 0 ] ] >= interval[ 0 ] );
-//
-//       test.shouldBe( range[ 0 ] >= 0 );
-//       test.shouldBe( range[ 1 ] <= arr.length );
-//
-//       if( range[ 0 ] < range[ 1 ] )
-//       {
-//         test.shouldBe( arr[ range[ 0 ] ] >= interval[ 0 ] );
-//         test.shouldBe( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
-//
-//         if( range[ 0 ] > 0 )
-//         test.shouldBe( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
-//
-//         if( range[ 1 ] < arr.length )
-//         test.shouldBe( arr[ range[ 1 ] ] >= interval[ 1 ] );
-//
-//       }
-//
-//     }
-//
-//   }
-//
-//   /* */
-//
-//   debugger;
-//
-//   for( var c = 10 ; c <= 100 ; c *= 10 )
-//   {
-//     var arr = makeArray( c, 5 );
-//     testArray( arr, c/5 );
-//   }
-//
-//   for( var c = 10 ; c <= 100 ; c *= 10 )
-//   {
-//     var arr = makeArray( c, 0.2 );
-//     testArray( arr, c/0.2 );
-//   }
-//
-//   /* */
-//
-//   test.identical( true, true );
-//   debugger;
-// }
+function arraySortedLookUpIntervalNarrowest( test )
+{
+  var self = this;
+  debugger;
+
+  /* */
+
+  var arr = [ 0, 0, 0, 0, 1, 1, 1, 1 ];
+
+  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 1, 1 ] );
+  test.identical( range, [ 7, 8 ] );
+
+  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 1, 2 ] );
+  test.identical( range, [ 7, 8 ] );
+
+  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 0, 0 ] );
+  test.identical( range, [ 3, 4 ] );
+
+  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ -1, 0 ] );
+  test.identical( range, [ 0, 1 ] );
+
+  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 0, 1 ] );
+  test.identical( range, [ 3, 5 ] );
+
+  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ -1, 3 ] );
+  test.identical( range, [ 0, 8 ] );
+
+  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ -2, -1 ] );
+  test.identical( range, [ 0, 0 ] );
+
+  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 2, 3 ] );
+  test.identical( range, [ 8, 8 ] );
+
+  var arr = [ 0, 1, 2 ];
+  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 3, 3 ] );
+  test.identical( range, [ 3, 3 ] );
+
+  /* */
+
+  var arr = [ 2, 2, 4, 18, 25, 25, 25, 26, 33, 36 ];
+
+  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 7, 28 ] );
+  test.identical( range, [ 3, 8 ] );
+
+  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 1, 0 ] );
+  test.identical( range, [ 0, 0 ] );
+
+  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 25, 25 ] );
+  test.identical( range, [ 6, 7 ] );
+
+  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 36, 37 ] );
+  test.identical( range, [ 9, 10 ] );
+
+  test.shouldThrowErrorSync( function()
+  {
+    _.arraySortedLookUpIntervalNarrowest( arr, [ 2, 0 ] );
+  })
+
+  /* */
+
+  function testArray( arr, top )
+  {
+
+    for( var val = 0 ; val < top ; val++ )
+    {
+      var interval = [ Math.round( Math.random()*( top+2 )-1 ) ];
+      interval[ 1 ] = interval[ 0 ] + Math.round( Math.random()*( top+2 - interval[ 0 ] ) );
+
+      // debugger;
+      var range = _.arraySortedLookUpIntervalNarrowest( arr, interval );
+
+      if( range[ 0 ] < arr.length )
+      test.shouldBe( arr[ range[ 0 ] ] >= interval[ 0 ] );
+
+      test.shouldBe( range[ 0 ] >= 0 );
+      test.shouldBe( range[ 1 ] <= arr.length );
+
+      if( range[ 0 ] < range[ 1 ] )
+      {
+        test.shouldBe( arr[ range[ 0 ] ] >= interval[ 0 ] );
+        test.shouldBe( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
+
+        if( range[ 0 ] > 0 )
+        test.shouldBe( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
+
+        if( range[ 1 ] < arr.length )
+        test.shouldBe( arr[ range[ 1 ] ] >= interval[ 1 ] );
+
+      }
+
+    }
+
+  }
+
+  /* */
+
+  debugger;
+
+  for( var c = 10 ; c <= 100 ; c *= 10 )
+  {
+    var arr = makeArray( c, 5 );
+    testArray( arr, c/5 );
+  }
+
+  for( var c = 10 ; c <= 100 ; c *= 10 )
+  {
+    var arr = makeArray( c, 0.2 );
+    testArray( arr, c/0.2 );
+  }
+
+  /* */
+
+  test.identical( true, true );
+  debugger;
+}
 
 //
 
@@ -811,6 +829,238 @@ function arraySortedAdd( test )
 
 }
 
+//
+
+function arraySortedAddOnce( test )
+{
+  test.description = 'arraySortedAddOnce test';
+
+  var arr = [];
+  _.arraySortedAddOnce( arr, 1 );
+  test.identical( arr, [ 1 ] );
+
+  var arr = [ 1 ];
+  _.arraySortedAddOnce( arr, 1 );
+  test.identical( arr, [ 1 ] );
+
+  var arr = [ 1, 3 ];
+  _.arraySortedAddOnce( arr, 2 );
+  test.identical( arr, [ 1, 2, 3 ] );
+
+  var arr = [ 1, 3 ];
+  _.arraySortedAddOnce( arr, 0 );
+  test.identical( arr, [ 0, 1, 3 ] );
+
+  var arr = [ 1, 3 ];
+  _.arraySortedAddOnce( arr, 4 );
+  test.identical( arr, [ 1, 3, 4 ] );
+
+  var arr = [ 1 ];
+  function comparator( a, b ){ return ( a - b ) + 1  }
+  _.arraySortedAddOnce( arr, 2, comparator );
+  test.identical( arr, [ 2, 1 ] );
+
+  if( Config.debug )
+  {
+    test.shouldThrowErrorSync( function()
+    {
+      _.arraySortedAddOnce();
+    })
+
+    test.shouldThrowErrorSync( function()
+    {
+      _.arraySortedAddOnce( 0, 0 );
+    })
+  }
+}
+
+//
+
+function arraySortedAddArray( test )
+{
+  test.description = 'arraySortedAddOnce test';
+
+  var arr = [];
+  _.arraySortedAddArray( arr, [ 1 ] );
+  test.identical( arr, [ 1 ] );
+
+  var arr = [ 1 ];
+  _.arraySortedAddArray( arr, [ 1 ] );
+  test.identical( arr, [ 1, 1 ] );
+
+  var arr = [ 1, 3 ];
+  _.arraySortedAddArray( arr, [ 2, 2, 2 ] );
+  test.identical( arr, [ 1, 2, 2, 2, 3 ] );
+
+  var arr = [ 1, 3 ];
+  _.arraySortedAddArray( arr, [ 0, 1 ] );
+  test.identical( arr, [ 0, 1, 1, 3 ] );
+
+  var arr = [ 1, 3 ];
+  _.arraySortedAddArray( arr, [ 1, 4 ]  );
+  test.identical( arr, [ 1, 1, 3, 4 ] );
+
+  var arr = [ 1 ];
+  function comparator( a, b ){ return ( a - b ) + 1  }
+  _.arraySortedAddArray( arr, [ 1, 2 ], comparator );
+  test.identical( arr, [ 1, 2, 1 ] );
+
+  if( Config.debug )
+  {
+    test.shouldThrowErrorSync( function()
+    {
+      _.arraySortedAddArray();
+    })
+
+    test.shouldThrowErrorSync( function()
+    {
+      _.arraySortedAddArray( 0, 0 );
+    })
+  }
+}
+
+//
+
+function arraySortedRemove( test )
+{
+  test.description = 'arraySortedAddOnce test';
+
+  var arr = [];
+  _.arraySortedRemove( arr, [ 1 ] );
+  test.identical( arr, [ ] );
+
+  var arr = [ 1 ];
+  _.arraySortedRemove( arr, [ 1 ] );
+  test.identical( arr, [ ] );
+
+  var arr = [ 1, 3 ];
+  _.arraySortedRemove( arr, 2 );
+  test.identical( arr, [ 1, 3 ] );
+
+  var arr = [ 1, 3 ];
+  _.arraySortedRemove( arr, 3 );
+  test.identical( arr, [ 1 ] );
+
+  var arr = [ 1, 1, 1 ];
+  _.arraySortedRemove( arr, 1 );
+  test.identical( arr, [ 1, 1 ] );
+
+  var arr = [ 1, 3 ];
+  _.arraySortedRemove( arr, -1  );
+  test.identical( arr, [ 1, 3 ] );
+
+  if( Config.debug )
+  {
+    test.shouldThrowErrorSync( function()
+    {
+      _.arraySortedRemove();
+    })
+
+    test.shouldThrowErrorSync( function()
+    {
+      _.arraySortedRemove( 0, 0 );
+    })
+  }
+}
+
+//
+
+function arraySortedLeftMost( test )
+{
+  var arr = [ 0, 0, 0, 0, 1, 1, 1, 1 ];
+
+  var got = _.arraySortedLeftMost( arr, 0 );
+  var expected = { index : 0, value : 0 }
+  test.identical( got, expected );
+
+  var got = _.arraySortedLeftMost( arr, 1 );
+  var expected = { index : 4, value : 1 }
+  test.identical( got, expected );
+
+  var got = _.arraySortedLeftMost( arr, -1 );
+  var expected = { index : 0, value : 0 }
+  test.identical( got, expected );
+
+  var got = _.arraySortedLeftMost( arr, 2 );
+  var expected = { index : 8, value : undefined }
+  test.identical( got, expected );
+
+  var got = _.arraySortedLeftMost( [], 2 );
+  var expected = { index : 0, value : undefined }
+  test.identical( got, expected );
+
+  function comparator( a, b )
+  {
+    return ( a + 1 ) - b;
+  }
+  var got = _.arraySortedLeftMost( arr, 2, comparator  );
+  var expected = { index : 4, value : 1 }
+  test.identical( got, expected );
+
+  if( Config.debug )
+  {
+    test.shouldThrowErrorSync( function()
+    {
+      _.arraySortedLeftMost();
+    })
+
+    test.shouldThrowErrorSync( function()
+    {
+      _.arraySortedLeftMost( 0, 0 );
+    })
+  }
+
+
+}
+
+//
+
+function arraySortedRightMost( test )
+{
+  var arr = [ 0, 0, 0, 0, 1, 1, 1, 1 ];
+
+  var got = _.arraySortedRightMost( arr, 0 );
+  var expected = { index : 3, value : 0 }
+  test.identical( got, expected );
+
+  var got = _.arraySortedRightMost( arr, 1 );
+  var expected = { index : 7, value : 1 }
+  test.identical( got, expected );
+
+  var got = _.arraySortedRightMost( arr, -1 );
+  var expected = { index : 0, value : 0 }
+  test.identical( got, expected );
+
+  var got = _.arraySortedRightMost( arr, 2 );
+  var expected = { index : 8, value : undefined }
+  test.identical( got, expected );
+
+  var got = _.arraySortedRightMost( [], 2 );
+  var expected = { index : 0, value : undefined }
+  test.identical( got, expected );
+
+  function comparator( a, b )
+  {
+    return ( a + 1 ) - b;
+  }
+  var got = _.arraySortedRightMost( arr, 2, comparator  );
+  var expected = { index : 7, value : 1 }
+  test.identical( got, expected );
+
+  if( Config.debug )
+  {
+    test.shouldThrowErrorSync( function()
+    {
+      _.arraySortedRightMost();
+    })
+
+    test.shouldThrowErrorSync( function()
+    {
+      _.arraySortedRightMost( 0, 0 );
+    })
+  }
+}
+
 // --
 // proto
 // --
@@ -827,9 +1077,16 @@ var Self =
     arraySortedLookUpClosestIndex : arraySortedLookUpClosestIndex,
 
     arraySortedLookUpInterval : arraySortedLookUpInterval,
+    arraySortedLookUpIntervalNarrowest : arraySortedLookUpIntervalNarrowest,
     arraySortedLookUpEmbrace : arraySortedLookUpEmbrace,
 
     arraySortedAdd : arraySortedAdd,
+    arraySortedRemove : arraySortedRemove,
+    arraySortedAddOnce : arraySortedAddOnce,
+    arraySortedAddArray : arraySortedAddArray,
+
+    arraySortedLeftMost : arraySortedLeftMost,
+    arraySortedRightMost : arraySortedRightMost,
 
   },
 
