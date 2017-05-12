@@ -181,6 +181,8 @@ function arraySortedLookUpIndex( test )
   test.identical( true, true );
 }
 
+arraySortedLookUpIndex.timeOut = 60000;
+
 //
 
 function arraySortedLookUpClosestIndex( test )
@@ -340,6 +342,8 @@ function arraySortedLookUpClosestIndex( test )
 
   test.identical( true, true );
 }
+
+arraySortedLookUpClosestIndex.timeOut = 60000;
 
 //
 
@@ -507,6 +511,8 @@ function arraySortedLookUpInterval( test )
   test.identical( true, true );
 }
 
+arraySortedLookUpInterval.timeOut = 60000;
+
 //
 
 function arraySortedLookUpIntervalNarrowest( test )
@@ -624,6 +630,8 @@ function arraySortedLookUpIntervalNarrowest( test )
   test.identical( true, true );
   debugger;
 }
+
+arraySortedLookUpIntervalNarrowest.timeOut = 60000;
 
 //
 
@@ -779,6 +787,7 @@ function arraySortedLookUpEmbrace( test )
   debugger;
 }
 
+arraySortedLookUpEmbrace.timeOut = 60000;
 //
 
 function arraySortedAdd( test )
