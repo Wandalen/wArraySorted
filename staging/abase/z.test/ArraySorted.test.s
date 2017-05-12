@@ -1070,6 +1070,24 @@ function arraySortedRightMost( test )
   }
 }
 
+//
+
+function arraySortedLookUpIntervalNarrowestExperiment( test )
+{
+  var arr = [ 3, 8, 16, 17, 30, 35, 35, 36, 37, 47 ];
+
+  //
+
+  var got = _.arraySortedLookUpIntervalNarrowest( arr, [ 42, 44 ] );
+  test.identical( got, [ 9, 9 ] );
+
+  //
+
+  var got = _.arraySortedLookUpIntervalNarrowest( arr, [ 48, 49 ] );
+  test.identical( got, [ 10, 10 ] );
+
+}
+
 // --
 // proto
 // --
@@ -1096,6 +1114,8 @@ var Self =
 
     arraySortedLeftMost : arraySortedLeftMost,
     arraySortedRightMost : arraySortedRightMost,
+
+    arraySortedLookUpIntervalNarrowestExperiment : arraySortedLookUpIntervalNarrowestExperiment
 
   },
 
