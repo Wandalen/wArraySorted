@@ -803,7 +803,7 @@ var Proto =
   arraySortedLookUpClosest : arraySortedLookUpClosest,
 
   arraySortedLookUpInterval : arraySortedLookUpInterval,
-  arraySortedLookUpIntervalNarrowest : arraySortedLookUpIntervalNarrowest,
+  arraySortedLookUpIntervalNarrowest : arraySortedLookUpIntervalNarrowest, /* experimental */
   arraySortedLookUpEmbrace : arraySortedLookUpEmbrace,
 
   _arraySortedLeftMostIndex : _arraySortedLeftMostIndex,
