@@ -182,7 +182,7 @@ function arraySortedLookUpValue( arr,ins,comparator )
 
 function arraySortedLookUp( arr,ins,comparator )
 {
-  var index = arraySortedLookUpIndex( arr,ins,comparator );
+  var index = arraySortedLookUpIndex.apply( this, arguments );
   return { value : arr[ index ], index : index };
 }
 
