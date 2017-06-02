@@ -49,6 +49,89 @@ function makeArray( length, density )
 
 //
 
+function _arraySortedLookUpAct( test )
+{
+
+  test.description = 'first argument is empty, so it returns the index from which it ended search at';
+  var got = _._arraySortedLookUpAct( [  ], 55, function( a, b ){ return a - b }, 0, 5 );
+  var expected = 2;
+  test.identical( got, expected );
+
+  test.description = 'returns the last index of the first argument';
+  var got = _._arraySortedLookUpAct( [ 1, 2, 3, 4, 5 ], 5, function( a, b ){ return a - b }, 0, 5 );
+  var expected = 4;
+  test.identical( got, expected );
+
+  test.description = 'second argument was not found, so it returns the length of the first argument';
+  var got = _._arraySortedLookUpAct( [ 1, 2, 3, 4, 5 ], 55, function( a, b ){ return a - b }, 0, 5 );
+  var expected = 5;
+  test.identical( got, expected );
+
+  /**/
+
+  if( !Config.debug )
+  return;
+
+  test.description = 'no arguments';
+  test.shouldThrowError( function()
+  {
+    _._arraySortedLookUpAct();
+  });
+
+};
+
+//
+
+function arraySortedLookUp( test )
+{
+
+  test.description = 'returns an object that containing the found value';
+  var got = _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } );
+  var expected = { value : 5, index : 4 };
+  test.identical( got, expected );
+
+  test.description = 'returns undefined';
+  var got = _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } );
+  var expected = { value : undefined, index : -1 };
+  test.identical( got, expected );
+
+  test.description = 'call without a callback function';
+  var got = _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 3 );
+  var expected = { value : 3, index : 2 };
+  test.identical( got, expected );
+
+
+  if( !Config.debug )
+  return;
+
+  test.description = 'no arguments';
+  test.shouldThrowError( function()
+  {
+    _.arraySortedLookUp();
+  });
+
+  test.description = 'first argument is wrong';
+  test.shouldThrowError( function()
+  {
+    _.arraySortedLookUp( 'wrong argument', 5, function( a, b ) { return a - b } );
+  });
+
+  test.description = 'not enough arguments';
+  test.shouldThrowError( function()
+  {
+    _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ] );
+  });
+
+  test.description = 'extra argument';
+  test.shouldThrowError( function()
+  {
+    _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
+  });
+
+};
+
+//
+
 function arraySortedLookUpIndex( test )
 {
 
@@ -869,18 +952,30 @@ function arraySortedAddOnce( test )
   _.arraySortedAddOnce( arr, 2, comparator );
   test.identical( arr, [ 2, 1 ] );
 
-  if( Config.debug )
-  {
-    test.shouldThrowErrorSync( function()
-    {
-      _.arraySortedAddOnce();
-    })
+  if( !Config.debug )
+  return;
 
-    test.shouldThrowErrorSync( function()
-    {
-      _.arraySortedAddOnce( 0, 0 );
-    })
-  }
+  test.shouldThrowErrorSync( function()
+  {
+    _.arraySortedAddOnce();
+  })
+
+  test.shouldThrowErrorSync( function()
+  {
+    _.arraySortedAddOnce( 0, 0 );
+  })
+
+  test.description = 'not enough arguments';
+  test.shouldThrowError( function()
+  {
+    _.arraySortedAddOnce( [ 1, 2, 3, 4, 5 ] );
+  });
+
+  test.description = 'extra argument';
+  test.shouldThrowError( function()
+  {
+    _.arraySortedAddOnce( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
+  });
 }
 
 //
@@ -958,18 +1053,46 @@ function arraySortedRemove( test )
   _.arraySortedRemove( arr, -1  );
   test.identical( arr, [ 1, 3 ] );
 
-  if( Config.debug )
-  {
-    test.shouldThrowErrorSync( function()
-    {
-      _.arraySortedRemove();
-    })
+  test.description = 'nothing to remove';
+  var got = _.arraySortedRemove( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } );
+  var expected = false;
+  test.identical( got, expected );
 
-    test.shouldThrowErrorSync( function()
-    {
-      _.arraySortedRemove( 0, 0 );
-    })
-  }
+  test.description = 'remove last index from first argument';
+  var got = _.arraySortedRemove( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } );
+  var expected = true;
+  test.identical( got, expected );
+
+  if( !Config.debug )
+  return;
+
+  test.shouldThrowErrorSync( function()
+  {
+    _.arraySortedRemove();
+  })
+
+  test.shouldThrowErrorSync( function()
+  {
+    _.arraySortedRemove( 0, 0 );
+  })
+
+  test.description = 'first argument is wrong';
+  test.shouldThrowError( function()
+  {
+    _.arraySortedRemove( 'wrong argument', 5, function( a, b ) { return a - b } );
+  });
+
+  test.description = 'not enough arguments';
+  test.shouldThrowError( function()
+  {
+    _.arraySortedRemove( [ 1, 2, 3, 4, 5 ] );
+  });
+
+  test.description = 'extra argument';
+  test.shouldThrowError( function()
+  {
+    _.arraySortedRemove( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
+  });
 }
 
 //
@@ -1099,6 +1222,8 @@ var Self =
 
   tests :
   {
+    _arraySortedLookUpAct : _arraySortedLookUpAct,
+    arraySortedLookUp : arraySortedLookUp,
 
     arraySortedLookUpIndex : arraySortedLookUpIndex,
     arraySortedLookUpClosestIndex : arraySortedLookUpClosestIndex,

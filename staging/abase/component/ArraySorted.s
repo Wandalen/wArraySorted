@@ -132,7 +132,7 @@ function arraySortedLookUpIndex( arr,ins,comparator )
   _.assert( _.arrayLike( arr ) );
 
   var comparator = _._comparatorFromTransformer( comparator );
-  var index = _arraySortedLookUpAct( arr,ins,comparator,0,arr.length );
+  var index = _arraySortedLookUpAct.apply( this, [ arr,ins,comparator,0,arr.length ] );
 
   if( index === arr.length )
   return -1;
@@ -147,7 +147,7 @@ function arraySortedLookUpIndex( arr,ins,comparator )
 
 function arraySortedLookUpValue( arr,ins,comparator )
 {
-  var index = arraySortedLookUpIndex( arr,ins,comparator );
+  var index = arraySortedLookUpIndex.apply( this, arguments );
   return arr[ index ];
 }
 
@@ -182,7 +182,7 @@ function arraySortedLookUpValue( arr,ins,comparator )
 
 function arraySortedLookUp( arr,ins,comparator )
 {
-  var index = arraySortedLookUpIndex( arr,ins,comparator );
+  var index = arraySortedLookUpIndex.apply( this, arguments );
   return { value : arr[ index ], index : index };
 }
 
@@ -195,7 +195,7 @@ function arraySortedLookUpClosestIndex( arr,ins,comparator )
   _.assert( _.arrayLike( arr ) );
 
   var comparator = _._comparatorFromTransformer( comparator );
-  var index = _arraySortedLookUpAct( arr,ins,comparator,0,arr.length );
+  var index = _arraySortedLookUpAct.apply( this, [ arr,ins,comparator,0,arr.length ] );
 
   return index;
 }
@@ -204,7 +204,7 @@ function arraySortedLookUpClosestIndex( arr,ins,comparator )
 
 function arraySortedLookUpClosestValue( arr,ins,comparator )
 {
-  var index = arraySortedLookUpClosestIndex( arr,ins,comparator );
+  var index = arraySortedLookUpClosestIndex.apply( this, arguments );
   return arr[ index ];
 }
 
@@ -212,7 +212,7 @@ function arraySortedLookUpClosestValue( arr,ins,comparator )
 
 function arraySortedLookUpClosest( arr,ins,comparator )
 {
-  var index = arraySortedLookUpClosestIndex( arr,ins,comparator );
+  var index = arraySortedLookUpClosestIndex.apply( this, arguments );
   return { value : arr[ index ], index : index };
 }
 
@@ -776,7 +776,7 @@ function arraySortedAddArray( dst,src,comparator )
   var comparator = _._comparatorFromTransformer( comparator );
 
   for( var s = 0 ; s < src.length ; s++ )
-  result += arraySortedAdd( dst,src[ s ],comparator );
+  result += _.arraySortedAdd( dst,src[ s ],comparator );
 
   return result;
 }
