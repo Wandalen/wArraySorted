@@ -26,10 +26,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Wandalen/wSortedArray.git"
+    "url": "https://github.com/Wandalen/wArraySorted.git"
   },
   "bugs": {
-    "url": "https://github.com/Wandalen/wSortedArray/issues"
+    "url": "https://github.com/Wandalen/wArraySorted/issues"
   },
   "dependencies": {
     "wTools": ""
