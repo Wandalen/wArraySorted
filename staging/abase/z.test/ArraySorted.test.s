@@ -1219,6 +1219,7 @@ var Self =
 {
 
   name : 'ArraySorted',
+  silencing : 1,
 
   tests :
   {
