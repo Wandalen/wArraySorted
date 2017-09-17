@@ -1,8 +1,6 @@
 
 if( typeof module !== 'undefined' )
-{
-  require( 'wArraySorted' );
-}
+require( 'warraysorted' );
 
 var _ = wTools;
 var arr = [ 1,2,5,9 ];

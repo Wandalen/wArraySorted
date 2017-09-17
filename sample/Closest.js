@@ -1,7 +1,6 @@
+
 if( typeof module !== 'undefined' )
-{
-  require( '../staging/dwtools/abase/layer3/ArraySorted.s' );
-}
+require( 'warraysorted' );
 
 var _ = wTools;
 var arr = [ 1,2,5,9 ];
