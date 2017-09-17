@@ -1,7 +1,7 @@
 
 if( typeof module !== 'undefined' )
 {
-  require( '../staging/abase/component/ArraySorted.s' );
+  require( '../staging/dwtools/abase/component/ArraySorted.s' );
 }
 
 var _ = wTools;

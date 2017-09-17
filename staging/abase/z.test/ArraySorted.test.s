@@ -8,7 +8,7 @@ if( typeof module !== 'undefined' )
   //if( typeof wBase === 'undefined' )
   try
   {
-    require( '../../abase/wTools.s' );
+    require( '../../Base.s' );
   }
   catch( err )
   {
@@ -19,7 +19,7 @@ if( typeof module !== 'undefined' )
 
   _.include( 'wTesting' );
 
-  require( '../component/ArraySorted.s' );
+  require( '../layer3/ArraySorted.s' );
 
 }
 

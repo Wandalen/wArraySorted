@@ -7,7 +7,7 @@ if( typeof module !== 'undefined' )
 
   try
   {
-    require( '../wTools.s' );
+    require( '../../Base.s' );
   }
   catch( err )
   {
@@ -643,7 +643,7 @@ function arraySortedRemove( arr,ins,comparator )
  * It calls the method (_._arraySortedLookUpAct( arr, ins, comparator, 0, arr.length - 1 )),
  * that returns the index of the value (ins) in the array (arr).
  * [wTools._arraySortedLookUpAct() ]{@link wTools._arraySortedLookUpAct}.
- * If (index) is equal to the one, and call callback function (comparator( ins, arr[ index ])
+ * If (index) is equal to the one, and call callback function(comparator( ins, arr[ index ])
  * returns a value that is not equal to the zero (i.e the array (arr) doesn't contain the value (ins)), it adds the value (ins) to the array (arr), and returns true.
  * Otherwise, it returns false.
  *
@@ -740,7 +740,7 @@ function arraySortedAdd( arr,ins,comparator )
  * The arraySortedAddArray() method returns the sum of the added indexes from an array (src) to an array (dst).
  *
  * It creates variable (result = 0), iterates over an array (src),
- * adds to the (result +=) each call the function (arraySortedAdd( dst, src[ s ], comparator ))
+ * adds to the (result +=) each call the function(arraySortedAdd( dst, src[ s ], comparator ))
  * that returns the new added or the updated index.
  *
  * @see {@link wTools_.arraySortedAdd} - See for more information.

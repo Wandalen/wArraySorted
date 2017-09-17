@@ -11,14 +11,14 @@
     }
   ],
   "license": "MIT",
-  "main": "staging/abase/component/ArraySorted.s",
+  "main": "staging/dwtools/abase/component/ArraySorted.s",
   "files": [
-    "staging/abase",
+    "staging/dwtools/abase",
     "production"
   ],
   "directories": {
     "doc": "doc",
-    "main": "staging/abase/component/ArraySorted.s"
+    "main": "staging/dwtools/abase/component/ArraySorted.s"
   },
   "scripts": {
     "test": "wtest staging",
