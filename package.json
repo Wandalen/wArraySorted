@@ -35,8 +35,7 @@
     "wTools": ""
   },
   "devDependencies": {
-    "wTesting": "",
-    "warraysorted": ""
+    "wTesting": ""
   },
   "keywords": [
     "sorted array",
