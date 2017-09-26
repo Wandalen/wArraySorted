@@ -13,7 +13,7 @@
   "license": "MIT",
   "main": "staging/dwtools/abase/layer3/ArraySorted.s",
   "files": [
-    "staging/dwtools/abase",
+    "staging/dwtools/abase/layer3",
     "production"
   ],
   "directories": {
