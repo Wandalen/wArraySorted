@@ -5,21 +5,29 @@
 if( typeof module !== 'undefined' )
 {
 
-  try
+  if( typeof _global_ === 'undefined' || !_global_.wBase )
   {
-    require( '../../Base.s' );
-  }
-  catch( err )
-  {
-    require( 'wTools' );
+    let toolsPath = '../../../dwtools/Base.s';
+    let toolsExternal = 0;
+    try
+    {
+      require.resolve( toolsPath )/*hhh*/;
+    }
+    catch( err )
+    {
+      toolsExternal = 1;
+      require( 'wTools' );
+    }
+    if( !toolsExternal )
+    require( toolsPath )/*hhh*/;
   }
 
 }
 
 //
 
-var Self = wTools;
-var _ = wTools;
+var Self = _global_.wTools;
+var _ = _global_.wTools;
 
 // --
 // array sorted
@@ -157,7 +165,7 @@ function arraySortedLookUpValue( arr,ins,comparator )
  * The arraySortedLookUp() method returns a new object containing the properties, (value, index),
  * corresponding to the found value (ins) from array (arr).
  *
- * @see {@link wTools._arraySortedLookUpAct} - See for more information.
+ * @see {@link wToolsxxx._arraySortedLookUpAct} - See for more information.
  *
  * @param { arrayLike } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
@@ -595,7 +603,7 @@ function arraySortedRightMost( arr,ins,comparator )
  * The arraySortedRemove() method returns true, if a value (ins) was removed from an array (arr).
  * Otherwise, it returns false.
  *
- * @see {@link wTools._arraySortedLookUpAct} - See for more information.
+ * @see {@link wToolsxxx._arraySortedLookUpAct} - See for more information.
  *
  * @param { arrayLike } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
@@ -642,12 +650,12 @@ function arraySortedRemove( arr,ins,comparator )
  *
  * It calls the method (_._arraySortedLookUpAct( arr, ins, comparator, 0, arr.length - 1 )),
  * that returns the index of the value (ins) in the array (arr).
- * [wTools._arraySortedLookUpAct() ]{@link wTools._arraySortedLookUpAct}.
+ * [wToolsxxx._arraySortedLookUpAct() ]{@link wToolsxxx._arraySortedLookUpAct}.
  * If (index) is equal to the one, and call callback function(comparator( ins, arr[ index ])
  * returns a value that is not equal to the zero (i.e the array (arr) doesn't contain the value (ins)), it adds the value (ins) to the array (arr), and returns true.
  * Otherwise, it returns false.
  *
- * @see {@link wTools._arraySortedLookUpAct} - See for more information.
+ * @see {@link wToolsxxx._arraySortedLookUpAct} - See for more information.
  *
  * @param { arrayLike } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
@@ -694,11 +702,11 @@ function arraySortedAddOnce( arr,ins,comparator )
  *
  * It calls the method (_._arraySortedLookUpAct( arr, ins, comparator, 0, arr.length - 1 )),
  * that returns the index of the value (ins) in the array (arr).
- * [wTools._arraySortedLookUpAct() ]{@link wTools._arraySortedLookUpAct}.
+ * [wToolsxxx._arraySortedLookUpAct() ]{@link wToolsxxx._arraySortedLookUpAct}.
  * If value (ins) has in the array (arr), it adds (ins) to that found index and offsets the old values in the (arr).
  * Otherwise, it adds the new index.
  *
- * @see {@link wTools._arraySortedLookUpAct} - See for more information.
+ * @see {@link wToolsxxx._arraySortedLookUpAct} - See for more information.
  *
  * @param { arrayLike } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
@@ -829,5 +837,16 @@ var Proto =
 }
 
 _.mapExtend( Self, Proto );
+
+// --
+// export
+// --
+
+if( typeof module !== 'undefined' )
+if( _global_._UsingWtoolsPrivately_ )
+delete require.cache[ module.id ];
+
+if( typeof module !== 'undefined' && module !== null )
+module[ 'exports' ] = Self;
 
 })();

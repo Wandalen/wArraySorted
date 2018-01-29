@@ -5,17 +5,24 @@
 if( typeof module !== 'undefined' )
 {
 
-  //if( typeof wBase === 'undefined' )
-  try
+  if( typeof _global_ === 'undefined' || !_global_.wBase )
   {
-    require( '../../Base.s' );
-  }
-  catch( err )
-  {
-    require( 'wTools' );
+    let toolsPath = '../../../dwtools/Base.s';
+    let toolsExternal = 0;
+    try
+    {
+      require.resolve( toolsPath )/*hhh*/;
+    }
+    catch( err )
+    {
+      toolsExternal = 1;
+      require( 'wTools' );
+    }
+    if( !toolsExternal )
+    require( toolsPath )/*hhh*/;
   }
 
-  var _ = wTools;
+  var _ = _global_.wTools;
 
   _.include( 'wTesting' );
 
@@ -25,8 +32,8 @@ if( typeof module !== 'undefined' )
 
 //
 
-var _ = wTools;
-var Parent = wTools.Tester;
+var _ = _global_.wTools;
+var Parent = _.Tester;
 
 // --
 // test
