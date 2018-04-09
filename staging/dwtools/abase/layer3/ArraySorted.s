@@ -165,7 +165,7 @@ function arraySortedLookUpValue( arr,ins,comparator )
  * The arraySortedLookUp() method returns a new object containing the properties, (value, index),
  * corresponding to the found value (ins) from array (arr).
  *
- * @see {@link wToolsxxx._arraySortedLookUpAct} - See for more information.
+ * @see {@link wTools._arraySortedLookUpAct} - See for more information.
  *
  * @param { arrayLike } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
@@ -603,7 +603,7 @@ function arraySortedRightMost( arr,ins,comparator )
  * The arraySortedRemove() method returns true, if a value (ins) was removed from an array (arr).
  * Otherwise, it returns false.
  *
- * @see {@link wToolsxxx._arraySortedLookUpAct} - See for more information.
+ * @see {@link wTools._arraySortedLookUpAct} - See for more information.
  *
  * @param { arrayLike } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
@@ -650,12 +650,12 @@ function arraySortedRemove( arr,ins,comparator )
  *
  * It calls the method (_._arraySortedLookUpAct( arr, ins, comparator, 0, arr.length - 1 )),
  * that returns the index of the value (ins) in the array (arr).
- * [wToolsxxx._arraySortedLookUpAct() ]{@link wToolsxxx._arraySortedLookUpAct}.
+ * [wTools._arraySortedLookUpAct() ]{@link wTools._arraySortedLookUpAct}.
  * If (index) is equal to the one, and call callback function(comparator( ins, arr[ index ])
  * returns a value that is not equal to the zero (i.e the array (arr) doesn't contain the value (ins)), it adds the value (ins) to the array (arr), and returns true.
  * Otherwise, it returns false.
  *
- * @see {@link wToolsxxx._arraySortedLookUpAct} - See for more information.
+ * @see {@link wTools._arraySortedLookUpAct} - See for more information.
  *
  * @param { arrayLike } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
@@ -702,11 +702,11 @@ function arraySortedAddOnce( arr,ins,comparator )
  *
  * It calls the method (_._arraySortedLookUpAct( arr, ins, comparator, 0, arr.length - 1 )),
  * that returns the index of the value (ins) in the array (arr).
- * [wToolsxxx._arraySortedLookUpAct() ]{@link wToolsxxx._arraySortedLookUpAct}.
+ * [wTools._arraySortedLookUpAct() ]{@link wTools._arraySortedLookUpAct}.
  * If value (ins) has in the array (arr), it adds (ins) to that found index and offsets the old values in the (arr).
  * Otherwise, it adds the new index.
  *
- * @see {@link wToolsxxx._arraySortedLookUpAct} - See for more information.
+ * @see {@link wTools._arraySortedLookUpAct} - See for more information.
  *
  * @param { arrayLike } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
