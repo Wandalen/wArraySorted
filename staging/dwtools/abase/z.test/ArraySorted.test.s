@@ -26,7 +26,7 @@ if( typeof module !== 'undefined' )
 
   _.include( 'wTesting' );
 
-  require( '../layer3/ArraySorted.s' );
+  require( '../layer4/ArraySorted.s' );
 
 }
 
