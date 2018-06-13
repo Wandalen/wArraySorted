@@ -790,7 +790,7 @@ function arraySortedAddArray( dst,src,comparator )
 }
 
 // --
-// prototype
+// define class
 // --
 
 var Proto =
