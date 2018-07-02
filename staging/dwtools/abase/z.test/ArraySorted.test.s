@@ -236,19 +236,19 @@ function arraySortedLookUpIndex( test )
       var index = _.arraySortedLookUpIndex( array, ins );
 
       if( 1 <= index && index <= array.length-1 )
-      test.shouldBe( array[ index-1 ] <= array[ index ] );
+      test.is( array[ index-1 ] <= array[ index ] );
 
       if( 0 <= index && index <= array.length-2 )
-      test.shouldBe( array[ index ] <= array[ index+1 ] );
+      test.is( array[ index ] <= array[ index+1 ] );
 
       if( ins !== array[ index ] )
       {
 
         if( 0 <= index && index <= array.length-1 )
-        test.shouldBe( ins < array[ index ] );
+        test.is( ins < array[ index ] );
 
         if( 1 <= index && index <= array.length-1 )
-        test.shouldBe( array[ index-1 ] < ins );
+        test.is( array[ index-1 ] < ins );
 
       }
 
@@ -398,19 +398,19 @@ function arraySortedLookUpClosestIndex( test )
       var index = _.arraySortedLookUpClosestIndex( array, ins );
 
       if( 1 <= index && index <= array.length-1 )
-      test.shouldBe( array[ index-1 ] <= array[ index ] );
+      test.is( array[ index-1 ] <= array[ index ] );
 
       if( 0 <= index && index <= array.length-2 )
-      test.shouldBe( array[ index ] <= array[ index+1 ] );
+      test.is( array[ index ] <= array[ index+1 ] );
 
       if( ins !== array[ index ] )
       {
 
         if( 0 <= index && index <= array.length-1 )
-        test.shouldBe( ins < array[ index ] );
+        test.is( ins < array[ index ] );
 
         if( 1 <= index && index <= array.length-1 )
-        test.shouldBe( array[ index-1 ] < ins );
+        test.is( array[ index-1 ] < ins );
 
       }
 
@@ -560,21 +560,21 @@ function arraySortedLookUpInterval( test )
       var range = _.arraySortedLookUpInterval( arr, interval );
 
       if( range[ 0 ] < arr.length )
-      test.shouldBe( arr[ range[ 0 ] ] >= interval[ 0 ] );
+      test.is( arr[ range[ 0 ] ] >= interval[ 0 ] );
 
-      test.shouldBe( range[ 0 ] >= 0 );
-      test.shouldBe( range[ 1 ] <= arr.length );
+      test.is( range[ 0 ] >= 0 );
+      test.is( range[ 1 ] <= arr.length );
 
       if( range[ 0 ] < range[ 1 ] )
       {
-        test.shouldBe( arr[ range[ 0 ] ] >= interval[ 0 ] );
-        test.shouldBe( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
+        test.is( arr[ range[ 0 ] ] >= interval[ 0 ] );
+        test.is( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
 
         if( range[ 0 ] > 0 )
-        test.shouldBe( arr[ range[ 0 ]-1 ] < interval[ 0 ] );
+        test.is( arr[ range[ 0 ]-1 ] < interval[ 0 ] );
 
         if( range[ 1 ] < arr.length )
-        test.shouldBe( arr[ range[ 1 ] ] > interval[ 1 ] );
+        test.is( arr[ range[ 1 ] ] > interval[ 1 ] );
 
       }
 
@@ -677,21 +677,21 @@ function arraySortedLookUpIntervalNarrowest( test )
       var range = _.arraySortedLookUpIntervalNarrowest( arr, interval );
 
       if( range[ 0 ] < arr.length )
-      test.shouldBe( arr[ range[ 0 ] ] >= interval[ 0 ] );
+      test.is( arr[ range[ 0 ] ] >= interval[ 0 ] );
 
-      test.shouldBe( range[ 0 ] >= 0 );
-      test.shouldBe( range[ 1 ] <= arr.length );
+      test.is( range[ 0 ] >= 0 );
+      test.is( range[ 1 ] <= arr.length );
 
       if( range[ 0 ] < range[ 1 ] )
       {
-        test.shouldBe( arr[ range[ 0 ] ] >= interval[ 0 ] );
-        test.shouldBe( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
+        test.is( arr[ range[ 0 ] ] >= interval[ 0 ] );
+        test.is( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
 
         if( range[ 0 ] > 0 )
-        test.shouldBe( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
+        test.is( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
 
         if( range[ 1 ] < arr.length )
-        test.shouldBe( arr[ range[ 1 ] ] >= interval[ 1 ] );
+        test.is( arr[ range[ 1 ] ] >= interval[ 1 ] );
 
       }
 
@@ -834,21 +834,21 @@ function arraySortedLookUpEmbrace( test )
       var range = _.arraySortedLookUpEmbrace( arr, interval );
 
       if( range[ 0 ] > 0 )
-      test.shouldBe( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
+      test.is( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
 
-      test.shouldBe( range[ 0 ] >= 0 );
-      test.shouldBe( range[ 1 ] <= arr.length );
+      test.is( range[ 0 ] >= 0 );
+      test.is( range[ 1 ] <= arr.length );
 
       if( range[ 0 ] < range[ 1 ] )
       {
-        // test.shouldBe( arr[ range[ 0 ] ] >= interval[ 0 ] );
-        // test.shouldBe( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
+        // test.is( arr[ range[ 0 ] ] >= interval[ 0 ] );
+        // test.is( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
 
         if( range[ 0 ] > 0 )
-        test.shouldBe( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
+        test.is( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
 
         if( range[ 1 ] < arr.length )
-        test.shouldBe( arr[ range[ 1 ] ] >= interval[ 1 ] );
+        test.is( arr[ range[ 1 ] ] >= interval[ 1 ] );
       }
 
     }
@@ -1225,7 +1225,7 @@ function arraySortedLookUpIntervalNarrowestExperiment( test )
 var Self =
 {
 
-  name : 'ArraySorted',
+  name : 'Tools/base/layer4/ArraySorted',
   silencing : 1,
 
   tests :
