@@ -136,7 +136,7 @@ function _arraySortedLookUpAct( arr,ins,comparator,left,right )
 function arraySortedLookUpIndex( arr,ins,comparator )
 {
 
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.arrayLike( arr ) );
 
   var comparator = _._comparatorFromMapper( comparator );
@@ -199,7 +199,7 @@ function arraySortedLookUp( arr,ins,comparator )
 function arraySortedLookUpClosestIndex( arr,ins,comparator )
 {
 
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.arrayLike( arr ) );
 
   var comparator = _._comparatorFromMapper( comparator );
@@ -228,7 +228,7 @@ function arraySortedLookUpClosest( arr,ins,comparator )
 
 function arraySortedLookUpInterval( arr,interval,comparator )
 {
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.arrayLike( arr ) );
 
   var comparator = _._comparatorFromMapper( comparator );
@@ -268,7 +268,7 @@ function arraySortedLookUpInterval( arr,interval,comparator )
 function arraySortedLookUpIntervalNarrowest( arr,interval,comparator )
 {
 
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.arrayLike( arr ) );
 
   var comparator = _._comparatorFromMapper( comparator );
@@ -320,7 +320,7 @@ function arraySortedLookUpIntervalNarrowest( arr,interval,comparator )
 
 function arraySortedLookUpEmbrace( arr,interval,comparator )
 {
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.arrayLike( arr ) );
 
   var comparator = _._comparatorFromMapper( comparator );
@@ -410,7 +410,7 @@ function _arraySortedLeftMostIndex( arr,ins,comparator,left,right )
 function arraySortedLeftMostIndex( arr,ins,comparator )
 {
 
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.arrayLike( arr ) );
 
   if( !arr.length )
@@ -428,7 +428,7 @@ function arraySortedLeftMostIndex( arr,ins,comparator )
 function arraySortedLeftMostValue( arr,ins,comparator )
 {
 
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
   var index = _.arraySortedLeftMostIndex( arr,ins,comparator );
   var result = arr[ index ];
@@ -441,7 +441,7 @@ function arraySortedLeftMostValue( arr,ins,comparator )
 function arraySortedLeftMost( arr,ins,comparator )
 {
 
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
   var index = _.arraySortedLeftMostIndex( arr,ins,comparator );
   var result = { index : index, value : arr[ index ] };
@@ -486,7 +486,7 @@ function _arraySortedRightMostIndex( arr,ins,comparator,left,right )
 function arraySortedRightMostIndex( arr,ins,comparator )
 {
 
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.arrayLike( arr ) );
 
   if( !arr.length )
@@ -504,7 +504,7 @@ function arraySortedRightMostIndex( arr,ins,comparator )
 function arraySortedRightMostValue( arr,ins,comparator )
 {
 
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
   var index = _.arraySortedRightMostIndex( arr,ins,comparator );
   var result = arr[ index ];
@@ -517,7 +517,7 @@ function arraySortedRightMostValue( arr,ins,comparator )
 function arraySortedRightMost( arr,ins,comparator )
 {
 
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
   var index = _.arraySortedRightMostIndex( arr,ins,comparator );
   var result = { index : index, value : arr[ index ] };
@@ -530,7 +530,7 @@ function arraySortedRightMost( arr,ins,comparator )
 // function arraySortedClosestIndex( arr,ins,comparator )
 // {
 //
-//   _.assert( arguments.length === 2 || arguments.length === 3 );
+//   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 //   _.assert( _.arrayLike( arr ) );
 //
 //   if( !arr.length )
@@ -576,7 +576,7 @@ function arraySortedRightMost( arr,ins,comparator )
 // function arraySortedClosestValue( arr,ins,comparator )
 // {
 //
-//   _.assert( arguments.length === 2 || arguments.length === 3 );
+//   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 //
 //   var index = _.arraySortedClosestIndex( arr,ins,comparator );
 //   var result = arr[ index ];
@@ -589,7 +589,7 @@ function arraySortedRightMost( arr,ins,comparator )
 // function arraySortedClosest( arr,ins,comparator )
 // {
 //
-//   _.assert( arguments.length === 2 || arguments.length === 3 );
+//   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 //
 //   var index = _.arraySortedClosestIndex( arr,ins,comparator );
 //   var result = { index : index, value : arr[ index ] };
@@ -628,7 +628,7 @@ function arraySortedRightMost( arr,ins,comparator )
 function arraySortedRemove( arr,ins,comparator )
 {
 
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.arrayLike( arr ) );
 
   var comparator = _._comparatorFromMapper( comparator );
@@ -680,7 +680,7 @@ function arraySortedRemove( arr,ins,comparator )
 function arraySortedAddOnce( arr,ins,comparator )
 {
 
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.arrayLike( arr ) );
 
   var comparator = _._comparatorFromMapper( comparator );
@@ -730,7 +730,7 @@ function arraySortedAddOnce( arr,ins,comparator )
 function arraySortedAdd( arr,ins,comparator )
 {
 
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.arrayLike( arr ) );
 
   var comparator = _._comparatorFromMapper( comparator );
@@ -775,7 +775,7 @@ function arraySortedAdd( arr,ins,comparator )
 function arraySortedAddArray( dst,src,comparator )
 {
 
-  _.assert( arguments.length === 2 || arguments.length === 3 );
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.arrayLike( dst ) && _.arrayLike( src ) );
 
   debugger;
