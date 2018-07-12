@@ -59,17 +59,17 @@ function makeArray( length, density )
 function _arraySortedLookUpAct( test )
 {
 
-  test.description = 'first argument is empty, so it returns the index from which it ended search at';
+  test.case = 'first argument is empty, so it returns the index from which it ended search at';
   var got = _._arraySortedLookUpAct( [  ], 55, function( a, b ){ return a - b }, 0, 5 );
   var expected = 2;
   test.identical( got, expected );
 
-  test.description = 'returns the last index of the first argument';
+  test.case = 'returns the last index of the first argument';
   var got = _._arraySortedLookUpAct( [ 1, 2, 3, 4, 5 ], 5, function( a, b ){ return a - b }, 0, 5 );
   var expected = 4;
   test.identical( got, expected );
 
-  test.description = 'second argument was not found, so it returns the length of the first argument';
+  test.case = 'second argument was not found, so it returns the length of the first argument';
   var got = _._arraySortedLookUpAct( [ 1, 2, 3, 4, 5 ], 55, function( a, b ){ return a - b }, 0, 5 );
   var expected = 5;
   test.identical( got, expected );
@@ -79,7 +79,7 @@ function _arraySortedLookUpAct( test )
   if( !Config.debug )
   return;
 
-  test.description = 'no arguments';
+  test.case = 'no arguments';
   test.shouldThrowError( function()
   {
     _._arraySortedLookUpAct();
@@ -92,17 +92,17 @@ function _arraySortedLookUpAct( test )
 function arraySortedLookUp( test )
 {
 
-  test.description = 'returns an object that containing the found value';
+  test.case = 'returns an object that containing the found value';
   var got = _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } );
   var expected = { value : 5, index : 4 };
   test.identical( got, expected );
 
-  test.description = 'returns undefined';
+  test.case = 'returns undefined';
   var got = _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } );
   var expected = { value : undefined, index : -1 };
   test.identical( got, expected );
 
-  test.description = 'call without a callback function';
+  test.case = 'call without a callback function';
   var got = _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 3 );
   var expected = { value : 3, index : 2 };
   test.identical( got, expected );
@@ -111,25 +111,25 @@ function arraySortedLookUp( test )
   if( !Config.debug )
   return;
 
-  test.description = 'no arguments';
+  test.case = 'no arguments';
   test.shouldThrowError( function()
   {
     _.arraySortedLookUp();
   });
 
-  test.description = 'first argument is wrong';
+  test.case = 'first argument is wrong';
   test.shouldThrowError( function()
   {
     _.arraySortedLookUp( 'wrong argument', 5, function( a, b ) { return a - b } );
   });
 
-  test.description = 'not enough arguments';
+  test.case = 'not enough arguments';
   test.shouldThrowError( function()
   {
     _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ] );
   });
 
-  test.description = 'extra argument';
+  test.case = 'extra argument';
   test.shouldThrowError( function()
   {
     _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
@@ -142,7 +142,7 @@ function arraySortedLookUp( test )
 function arraySortedLookUpIndex( test )
 {
 
-  test.description = 'simples';
+  test.case = 'simples';
 
   // [16, 17, 34, 34, 37, 42, 44, 44, 5, 9]
   // [ 1, 2, 3 ]
@@ -278,7 +278,7 @@ arraySortedLookUpIndex.timeOut = 60000;
 function arraySortedLookUpClosestIndex( test )
 {
 
-  test.description = 'simples';
+  test.case = 'simples';
 
   // [16, 17, 34, 34, 37, 42, 44, 44, 5, 9]
   // [ 1, 2, 3 ]
@@ -932,7 +932,7 @@ function arraySortedAdd( test )
 
 function arraySortedAddOnce( test )
 {
-  test.description = 'arraySortedAddOnce test';
+  test.case = 'arraySortedAddOnce test';
 
   var arr = [];
   _.arraySortedAddOnce( arr, 1 );
@@ -972,13 +972,13 @@ function arraySortedAddOnce( test )
     _.arraySortedAddOnce( 0, 0 );
   })
 
-  test.description = 'not enough arguments';
+  test.case = 'not enough arguments';
   test.shouldThrowError( function()
   {
     _.arraySortedAddOnce( [ 1, 2, 3, 4, 5 ] );
   });
 
-  test.description = 'extra argument';
+  test.case = 'extra argument';
   test.shouldThrowError( function()
   {
     _.arraySortedAddOnce( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
@@ -989,7 +989,7 @@ function arraySortedAddOnce( test )
 
 function arraySortedAddArray( test )
 {
-  test.description = 'arraySortedAddOnce test';
+  test.case = 'arraySortedAddOnce test';
 
   var arr = [];
   _.arraySortedAddArray( arr, [ 1 ] );
@@ -1034,7 +1034,7 @@ function arraySortedAddArray( test )
 
 function arraySortedRemove( test )
 {
-  test.description = 'arraySortedAddOnce test';
+  test.case = 'arraySortedAddOnce test';
 
   var arr = [];
   _.arraySortedRemove( arr, [ 1 ] );
@@ -1060,12 +1060,12 @@ function arraySortedRemove( test )
   _.arraySortedRemove( arr, -1  );
   test.identical( arr, [ 1, 3 ] );
 
-  test.description = 'nothing to remove';
+  test.case = 'nothing to remove';
   var got = _.arraySortedRemove( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } );
   var expected = false;
   test.identical( got, expected );
 
-  test.description = 'remove last index from first argument';
+  test.case = 'remove last index from first argument';
   var got = _.arraySortedRemove( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } );
   var expected = true;
   test.identical( got, expected );
@@ -1083,19 +1083,19 @@ function arraySortedRemove( test )
     _.arraySortedRemove( 0, 0 );
   })
 
-  test.description = 'first argument is wrong';
+  test.case = 'first argument is wrong';
   test.shouldThrowError( function()
   {
     _.arraySortedRemove( 'wrong argument', 5, function( a, b ) { return a - b } );
   });
 
-  test.description = 'not enough arguments';
+  test.case = 'not enough arguments';
   test.shouldThrowError( function()
   {
     _.arraySortedRemove( [ 1, 2, 3, 4, 5 ] );
   });
 
-  test.description = 'extra argument';
+  test.case = 'extra argument';
   test.shouldThrowError( function()
   {
     _.arraySortedRemove( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
