@@ -1,6 +1,6 @@
 {
   "name": "warraysorted",
-  "version": "0.3.32",
+  "version": "0.3.33",
   "engine": "node >= 6.0.0",
   "description": "Collection of routines for sorted arrays handling",
   "author": "Kostiantyn Wandalen <wanalen@willbe.so>",
