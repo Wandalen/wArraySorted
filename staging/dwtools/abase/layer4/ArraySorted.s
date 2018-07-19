@@ -41,7 +41,7 @@ var _global = _global_; var _ = _global_.wTools;
  * Zero is the least possible returned index.
  * Could return index of any element if there are several elements with such value.
  *
- * @param { arrayLike } arr - Entity to check.
+ * @param { longIs } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
  * @param { Function } comparator - A callback function.
  * @param { Number } left - The index to start the search at.
@@ -137,7 +137,7 @@ function arraySortedLookUpIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-  _.assert( _.arrayLike( arr ) );
+  _.assert( _.longIs( arr ) );
 
   var comparator = _._comparatorFromEvaluator( comparator );
   var index = this._arraySortedLookUpAct( arr,ins,comparator,0,arr.length );
@@ -167,7 +167,7 @@ function arraySortedLookUpValue( arr,ins,comparator )
  *
  * @see {@link wTools._arraySortedLookUpAct} - See for more information.
  *
- * @param { arrayLike } arr - Entity to check.
+ * @param { longIs } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
  * @param { wTools~compareCallback } [comparator=function( a, b ) { return a - b }] comparator - A callback function.
  *
@@ -200,7 +200,7 @@ function arraySortedLookUpClosestIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-  _.assert( _.arrayLike( arr ) );
+  _.assert( _.longIs( arr ) );
 
   var comparator = _._comparatorFromEvaluator( comparator );
   var index = this._arraySortedLookUpAct( arr,ins,comparator,0,arr.length );
@@ -229,7 +229,7 @@ function arraySortedLookUpClosest( arr,ins,comparator )
 function arraySortedLookUpInterval( arr,interval,comparator )
 {
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-  _.assert( _.arrayLike( arr ) );
+  _.assert( _.longIs( arr ) );
 
   var comparator = _._comparatorFromEvaluator( comparator );
   var length = arr.length;
@@ -269,7 +269,7 @@ function arraySortedLookUpIntervalNarrowest( arr,interval,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-  _.assert( _.arrayLike( arr ) );
+  _.assert( _.longIs( arr ) );
 
   var comparator = _._comparatorFromEvaluator( comparator );
   var length = arr.length;
@@ -321,7 +321,7 @@ function arraySortedLookUpIntervalNarrowest( arr,interval,comparator )
 function arraySortedLookUpEmbrace( arr,interval,comparator )
 {
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-  _.assert( _.arrayLike( arr ) );
+  _.assert( _.longIs( arr ) );
 
   var comparator = _._comparatorFromEvaluator( comparator );
   var length = arr.length;
@@ -411,7 +411,7 @@ function arraySortedLeftMostIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-  _.assert( _.arrayLike( arr ) );
+  _.assert( _.longIs( arr ) );
 
   if( !arr.length )
   return 0;
@@ -487,7 +487,7 @@ function arraySortedRightMostIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-  _.assert( _.arrayLike( arr ) );
+  _.assert( _.longIs( arr ) );
 
   if( !arr.length )
   return 0;
@@ -531,7 +531,7 @@ function arraySortedRightMost( arr,ins,comparator )
 // {
 //
 //   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-//   _.assert( _.arrayLike( arr ) );
+//   _.assert( _.longIs( arr ) );
 //
 //   if( !arr.length )
 //   return 0;
@@ -605,7 +605,7 @@ function arraySortedRightMost( arr,ins,comparator )
  *
  * @see {@link wTools._arraySortedLookUpAct} - See for more information.
  *
- * @param { arrayLike } arr - Entity to check.
+ * @param { longIs } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
  * @param { wTools~compareCallback } [ comparator = function( a, b ) { return a - b } ] comparator - A callback function.
  *
@@ -629,7 +629,7 @@ function arraySortedRemove( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-  _.assert( _.arrayLike( arr ) );
+  _.assert( _.longIs( arr ) );
 
   var comparator = _._comparatorFromEvaluator( comparator );
   var l = arr.length;
@@ -657,7 +657,7 @@ function arraySortedRemove( arr,ins,comparator )
  *
  * @see {@link wTools._arraySortedLookUpAct} - See for more information.
  *
- * @param { arrayLike } arr - Entity to check.
+ * @param { longIs } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
  * @param { wTools~compareCallback } [ comparator = function( a, b ) { return a - b } ] comparator - A callback function.
  *
@@ -681,7 +681,7 @@ function arraySortedAddOnce( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-  _.assert( _.arrayLike( arr ) );
+  _.assert( _.longIs( arr ) );
 
   var comparator = _._comparatorFromEvaluator( comparator );
   var l = arr.length;
@@ -709,7 +709,7 @@ function arraySortedAddOnce( arr,ins,comparator )
  *
  * @see {@link wTools._arraySortedLookUpAct} - See for more information.
  *
- * @param { arrayLike } arr - Entity to check.
+ * @param { longIs } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
  * @param { wTools~compareCallback } [ comparator = function( a, b ) { return a - b } ] comparator - A callback function.
  *
@@ -732,7 +732,7 @@ function arraySortedAdd( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-  _.assert( _.arrayLike( arr ) );
+  _.assert( _.longIs( arr ) );
 
   var comparator = _._comparatorFromEvaluator( comparator );
   var l = arr.length;
@@ -754,8 +754,8 @@ function arraySortedAdd( arr,ins,comparator )
  *
  * @see {@link wTools_.arraySortedAdd} - See for more information.
  *
- * @param { arrayLike } dst - Entity to check.
- * @param { arrayLike } src - Entity to check.
+ * @param { longIs } dst - Entity to check.
+ * @param { longIs } src - Entity to check.
  * @param { wTools~compareCallback } [ comparator = function( a, b ) { return a - b } ] comparator - A callback function.
  *
  * @example
@@ -777,7 +777,7 @@ function arraySortedAddArray( dst,src,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-  _.assert( _.arrayLike( dst ) && _.arrayLike( src ) );
+  _.assert( _.longIs( dst ) && _.longIs( src ) );
 
   debugger;
 
