@@ -134,3 +134,4 @@ let i = _.arraySortedAdd( arr,e );
 console.log( 'arraySortedAdd(',e,') inserted to index :',i, "array: ", arr );
 // arraySortedAdd( 0 ) inserted to index : 0 array:  [ 0, 1, 2, 5, 9 ]
 ```
+
