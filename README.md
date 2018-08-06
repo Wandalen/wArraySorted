@@ -1,23 +1,30 @@
 
 # wArraySorted [![Build Status](https://travis-ci.org/Wandalen/wArraySorted.svg?branch=master)](https://travis-ci.org/Wandalen/wArraySorted)
 
-Collection of routines for sorted arrays handling
+Collection of routines to operate effectively sorted arrays. For that ArraySorted provides customizable quicksort algorithm and a dozen functions to optimally find/add/remove single/multiple elements into a sorted array, add/remove sorted array to/from another sorted array. Use it to increase the performance of your algorithms.
+
+### Try out
+```
+npm install
+node sample/Sample.s
+```
+
 #### Binary search
 Binary search algorithm is used for finding an item from an ordered list of elements. Its based on dividing in half the part of list that can contain the element, until the count of the possible locations is decreased to just one. [More about binary search.]( https://en.wikipedia.org/wiki/Binary_search_algorithm )
 
-#### Comparator vs Transformer
+#### Comparator vs Evaluator
 * Comparator - function that makes comparison between two values of two elements.
 
 Default comparator looks like:
 ```javascript
-var comparator = function( a, b )
+function comparator( a, b )
 {
   return a - b;
 }
 ```
-* Transformer - function that makes some operations on passed values before they will be compared
+* Evaluator - function that makes some operations on passed values before they will be compared
 default comparison in that case looks like :
-`transformer( a ) - transformer( b )`
+`evaluator( a ) - evaluator( b )`
 
 Both can be combined together to perform some custom features.
 [<b>See examples.</b>]( https://github.com/Wandalen/wArraySorted/blob/master/sample/ComparatorTransformer.js )
@@ -52,50 +59,50 @@ Otherwise returns object with undefined as value and -1 as index.
 
 #### Example #1
 ```javascript
-var _ = wTools;
+let _ = wTools;
 
-var arr = [ 3,5,6,7,9 ];
-var e = 5
-var i = _.arraySortedLookUp( arr,e );
+let arr = [ 3,5,6,7,9 ];
+let e = 5
+let i = _.arraySortedLookUp( arr,e );
 console.log( 'arraySortedLookUp(',e,') :',i );
 // arraySortedLookUp( 5 ) : { value: 5, index: 1 }
 ```
 
 #### Example #2
 ```javascript
-var _ = wTools;
+let _ = wTools;
 
-var arr = [ 3,5,6,7,9 ];
-var e = 4
-var i = _.arraySortedLookUpIndex( arr,e );
+let arr = [ 3,5,6,7,9 ];
+let e = 4
+let i = _.arraySortedLookUpIndex( arr,e );
 console.log( 'arraySortedLookUpIndex(',e,') :',i );
 // arraySortedLookUpIndex( 4 ) : -1
 ```
 
 #### Example #3
 ```javascript
-var _ = wTools;
+let _ = wTools;
 
-var arr = [ 1,2,5,9 ];
-var e = 4
-var i = _.arraySortedLookUpClosest( arr,e );
+let arr = [ 1,2,5,9 ];
+let e = 4
+let i = _.arraySortedLookUpClosest( arr,e );
 console.log( 'arraySortedLookUpClosest(',e,') :',i );
 // arraySortedLookUpClosest( 4 ) : { value: 5, index: 2 }
 ```
 
 #### Example #4
 ```javascript
-var _ = wTools;
+let _ = wTools;
 
-var arr = [ 0,1,4,5 ];
+let arr = [ 0,1,4,5 ];
 
-var interval = [ 2, 5 ];
+let interval = [ 2, 5 ];
 
-var range = _.arraySortedLookUpInterval( arr,interval );
+let range = _.arraySortedLookUpInterval( arr,interval );
 console.log( 'arraySortedLookUpInterval(',interval,') :',range );
 // arraySortedLookUpInterval( [ 2, 5 ] ) : [ 2, 4 ]
 
-var range = _.arraySortedLookUpEmbrace( arr,interval );
+let range = _.arraySortedLookUpEmbrace( arr,interval );
 console.log( 'arraySortedLookUpEmbrace(',interval,') :',range );
  // arraySortedLookUpEmbrace( [ 2, 5 ] ) : [ 1, 4 ]
 ```
@@ -103,62 +110,27 @@ For more examples see: [samples/Interval.js](https://github.com/Wandalen/wArrayS
 
 #### Example #5
 ```javascript
-var _ = wTools;
+let _ = wTools;
 
-var arr = [ 0,0,0,0,1,1,1,1 ];
+let arr = [ 0,0,0,0,1,1,1,1 ];
 
-var e = 1;
-var leftMost = _.arraySortedLeftMostIndex( arr, e );
+let e = 1;
+let leftMost = _.arraySortedLeftMostIndex( arr, e );
 console.log( 'arraySortedLeftMostIndex(',e,') :',leftMost );
 // arraySortedLeftMostIndex( 1 ) : 4
 
-var e = 0;
-var rightMost = _.arraySortedRightMostIndex( arr, 0 );
+let e = 0;
+let rightMost = _.arraySortedRightMostIndex( arr, 0 );
 console.log( 'arraySortedRightMostIndex(',e,') :',rightMost );
 // arraySortedRightMostIndex( 0 ) : 3
 ```
 #### Example #6
 ```javascript
-var _ = wTools;
-var arr = [ 1,2,5,9 ];
+let _ = wTools;
+let arr = [ 1,2,5,9 ];
 
-var e = 0;
-var i = _.arraySortedAdd( arr,e );
+let e = 0;
+let i = _.arraySortedAdd( arr,e );
 console.log( 'arraySortedAdd(',e,') inserted to index :',i, "array: ", arr );
 // arraySortedAdd( 0 ) inserted to index : 0 array:  [ 0, 1, 2, 5, 9 ]
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
