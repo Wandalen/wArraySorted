@@ -281,6 +281,57 @@ function arraySortedLookUpIntervalNarrowest( arr, range, comparator )
   _.assert( _.longIs( arr ) );
 
   comparator = _._comparatorFromEvaluator( comparator );
+
+  let length = arr.length;
+  let b = _._arraySortedRightMostAtLeastIndex( arr,range[ 0 ],comparator,0,length );
+
+  // if( b === length )
+  // if( comparator( arr[ b - 1 ],range[ 0 ] ) < 0 )
+  // return [ b,b ];
+  //
+  // if( b === 0 )
+  // if( comparator( arr[ b ],range[ 1 ] ) > 0 )
+  // return [ b,b ];
+
+  let e = _._arraySortedLeftMostAtMostIndex( arr,range[ 1 ],comparator,b,length );
+
+  e += 1;
+
+  // if( comparator( arr[ e - 1 ],range[ 1 ] ) > 0 )
+  // e -= 1;
+  //
+  // if( comparator( arr[ e ],range[ 1 ] ) <= 0 )
+  // e += 1;
+
+  if( Config.debug )
+  {
+
+    if( b < length )
+    _.assert( comparator( arr[ b ], range[ 0 ] ) >= 0 );
+
+    if( b > 0 )
+    _.assert( comparator( arr[ b-1 ], range[ 0 ] ) <= 0 );
+
+    if( e < length )
+    _.assert( comparator( arr[ e ], range[ 1 ] ) >= 0 );
+
+    if( e > 0 )
+    _.assert( comparator( arr[ e-1 ], range[ 1 ] ) <= 0 );
+
+  }
+
+  return [ b,e ]
+}
+
+//
+
+function arraySortedLookUpIntervalNarrowestOld( arr, range, comparator )
+{
+
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
+  _.assert( _.longIs( arr ) );
+
+  comparator = _._comparatorFromEvaluator( comparator );
   let length = arr.length;
   let b = _._arraySortedRightMostAtLeastIndex( arr,range[ 0 ],comparator,0,length );
 
@@ -965,9 +1016,10 @@ let Proto =
 
   arraySortedLookUpInterval : arraySortedLookUpInterval,
   arraySortedLookUpIntervalNarrowest : arraySortedLookUpIntervalNarrowest, /* experimental */
+  arraySortedLookUpIntervalNarrowestOld : arraySortedLookUpIntervalNarrowestOld, /* experimental */
   arraySortedLookUpIntervalHaving : arraySortedLookUpIntervalHaving,
-  arraySortedLookUpIntervalEmbracingAtLeast : arraySortedLookUpIntervalEmbracingAtLeast,
-  arraySortedLookUpIntervalEmbracingAtLeastOld : arraySortedLookUpIntervalEmbracingAtLeastOld,
+  arraySortedLookUpIntervalEmbracingAtLeast : arraySortedLookUpIntervalEmbracingAtLeast, /* experimental */
+  arraySortedLookUpIntervalEmbracingAtLeastOld : arraySortedLookUpIntervalEmbracingAtLeastOld, /* experimental */
 
   _arraySortedLeftMostAtLeastIndex : _arraySortedLeftMostAtLeastIndex,
   arraySortedLeftMostAtLeastIndex : arraySortedLeftMostAtLeastIndex,

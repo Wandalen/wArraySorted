@@ -821,7 +821,6 @@ arraySortedLookUpInterval.timeOut = 60000;
 function arraySortedLookUpIntervalNarrowest( test )
 {
   var self = this;
-  debugger;
 
   /* */
 
@@ -873,8 +872,10 @@ function arraySortedLookUpIntervalNarrowest( test )
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLookUpIntervalNarrowest( arr, [ 2, 0 ] );
+    _.arraySortedLookUpIntervalNarrowest( arr );
   })
+
+  return;
 
   /* */
 
