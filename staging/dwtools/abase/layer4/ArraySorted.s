@@ -34,9 +34,9 @@ if( typeof module !== 'undefined' )
 
 //
 
-var Self = _global_.wTools;
-var _global = _global_;
-var _ = _global_.wTools;
+let Self = _global_.wTools;
+let _global = _global_;
+let _ = _global_.wTools;
 
 // --
 // array sorted
@@ -77,18 +77,18 @@ function _arraySortedLookUpAct( arr,ins,comparator,left,right )
   _.assert( right >= 0 );
   _.assert( left <= arr.length );
 
-  var oleft = left;
-  var oright = right;
+  let oleft = left;
+  let oright = right;
 
-  var d = 0;
-  var current = ( left + right ) >> 1;
+  let d = 0;
+  let current = ( left + right ) >> 1;
 
   /* */
 
   while( left < right )
   {
 
-    var d = comparator( arr[ current ],ins );
+    let d = comparator( arr[ current ],ins );
 
     if( d < 0 )
     {
@@ -108,7 +108,7 @@ function _arraySortedLookUpAct( arr,ins,comparator,left,right )
 
   if( current < arr.length )
   {
-    var d = comparator( arr[ current ],ins );
+    let d = comparator( arr[ current ],ins );
     if( d === 0 )
     return current;
     if( d < 0 )
@@ -148,8 +148,8 @@ function arraySortedLookUpIndex( arr,ins,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( arr ) );
 
-  var comparator = _._comparatorFromEvaluator( comparator );
-  var index = this._arraySortedLookUpAct( arr,ins,comparator,0,arr.length );
+  comparator = _._comparatorFromEvaluator( comparator );
+  let index = this._arraySortedLookUpAct( arr,ins,comparator,0,arr.length );
 
   if( index === arr.length )
   return -1;
@@ -164,7 +164,7 @@ function arraySortedLookUpIndex( arr,ins,comparator )
 
 function arraySortedLookUpValue( arr,ins,comparator )
 {
-  var index = arraySortedLookUpIndex.apply( this, arguments );
+  let index = arraySortedLookUpIndex.apply( this, arguments );
   return arr[ index ];
 }
 
@@ -199,7 +199,7 @@ function arraySortedLookUpValue( arr,ins,comparator )
 
 function arraySortedLookUp( arr,ins,comparator )
 {
-  var index = arraySortedLookUpIndex.apply( this, arguments );
+  let index = arraySortedLookUpIndex.apply( this, arguments );
   return { value : arr[ index ], index : index };
 }
 
@@ -211,8 +211,8 @@ function arraySortedLookUpClosestIndex( arr,ins,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( arr ) );
 
-  var comparator = _._comparatorFromEvaluator( comparator );
-  var index = this._arraySortedLookUpAct( arr,ins,comparator,0,arr.length );
+  comparator = _._comparatorFromEvaluator( comparator );
+  let index = this._arraySortedLookUpAct( arr,ins,comparator,0,arr.length );
 
   return index;
 }
@@ -221,7 +221,7 @@ function arraySortedLookUpClosestIndex( arr,ins,comparator )
 
 function arraySortedLookUpClosestValue( arr,ins,comparator )
 {
-  var index = arraySortedLookUpClosestIndex.apply( this, arguments );
+  let index = arraySortedLookUpClosestIndex.apply( this, arguments );
   return arr[ index ];
 }
 
@@ -229,43 +229,43 @@ function arraySortedLookUpClosestValue( arr,ins,comparator )
 
 function arraySortedLookUpClosest( arr,ins,comparator )
 {
-  var index = arraySortedLookUpClosestIndex.apply( this, arguments );
+  let index = arraySortedLookUpClosestIndex.apply( this, arguments );
   return { value : arr[ index ], index : index };
 }
 
 //
 
-function arraySortedLookUpInterval( arr,interval,comparator )
+function arraySortedLookUpInterval( arr,range,comparator )
 {
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( arr ) );
 
-  var comparator = _._comparatorFromEvaluator( comparator );
-  var length = arr.length;
-  var b = _._arraySortedLeftMostIndex( arr,interval[ 0 ],comparator,0,length );
+  comparator = _._comparatorFromEvaluator( comparator );
+  let length = arr.length;
+  let b = _._arraySortedLeftMostAtLeastIndex( arr,range[ 0 ],comparator,0,length );
 
-  if( b === length || comparator( arr[ b ],interval[ 1 ] ) > 0 )
+  if( b === length || comparator( arr[ b ],range[ 1 ] ) > 0 )
   return [ b,b ];
 
-  var e = _._arraySortedRightMostIndex( arr,interval[ 1 ],comparator,b+1,length );
+  let e = _._arraySortedRightMostAtLeastIndex( arr,range[ 1 ],comparator,b+1,length );
 
-  if( comparator( arr[ e ],interval[ 1 ] ) <= 0 )
+  if( comparator( arr[ e ],range[ 1 ] ) <= 0 )
   e += 1;
 
   if( Config.debug )
   {
 
     if( b < length )
-    _.assert( arr[ b ] >= interval[ 0 ] );
+    _.assert( arr[ b ] >= range[ 0 ] );
 
     if( b > 0 )
-    _.assert( arr[ b-1 ] < interval[ 0 ] );
+    _.assert( arr[ b-1 ] < range[ 0 ] );
 
     if( e < length )
-    _.assert( arr[ e ] > interval[ 1 ] );
+    _.assert( arr[ e ] > range[ 1 ] );
 
     if( e > 0 )
-    _.assert( arr[ e-1 ] <= interval[ 1 ] );
+    _.assert( arr[ e-1 ] <= range[ 1 ] );
 
   }
 
@@ -274,51 +274,46 @@ function arraySortedLookUpInterval( arr,interval,comparator )
 
 //
 
-function arraySortedLookUpIntervalNarrowest( arr,interval,comparator )
+function arraySortedLookUpIntervalNarrowest( arr, range, comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( arr ) );
 
-  var comparator = _._comparatorFromEvaluator( comparator );
-  var length = arr.length;
-  var b = _._arraySortedRightMostIndex( arr,interval[ 0 ],comparator,0,length );
-
-  // if( comparator( arr[ b ],interval[ 1 ] ) > 0 )
-  // debugger;
-
-  // if( b === length || comparator( arr[ b ],interval[ 1 ] ) > 0 )
+  comparator = _._comparatorFromEvaluator( comparator );
+  let length = arr.length;
+  let b = _._arraySortedRightMostAtLeastIndex( arr,range[ 0 ],comparator,0,length );
 
   if( b === length )
-  if( comparator( arr[ b - 1 ],interval[ 0 ] ) < 0 )
+  if( comparator( arr[ b - 1 ],range[ 0 ] ) < 0 )
   return [ b,b ];
 
   if( b === 0 )
-  if( comparator( arr[ b ],interval[ 1 ] ) > 0 )
+  if( comparator( arr[ b ],range[ 1 ] ) > 0 )
   return [ b,b ];
 
-  var e = _._arraySortedLeftMostIndex( arr,interval[ 1 ],comparator,b+1,length );
+  let e = _._arraySortedLeftMostAtLeastIndex( arr,range[ 1 ],comparator,b+1,length );
 
-  if( comparator( arr[ e - 1 ],interval[ 1 ] ) > 0)
+  if( comparator( arr[ e - 1 ],range[ 1 ] ) > 0 )
   e -= 1;
 
-  if( comparator( arr[ e ],interval[ 1 ] ) <= 0 )
+  if( comparator( arr[ e ],range[ 1 ] ) <= 0 )
   e += 1;
 
   if( Config.debug )
   {
 
     if( b < length )
-    _.assert( arr[ b ] >= interval[ 0 ] );
+    _.assert( arr[ b ] >= range[ 0 ] );
 
     if( b > 0 )
-    _.assert( arr[ b-1 ] <= interval[ 0 ] );
+    _.assert( arr[ b-1 ] <= range[ 0 ] );
 
     if( e < length )
-    _.assert( arr[ e ] >= interval[ 1 ] );
+    _.assert( arr[ e ] >= range[ 1 ] );
 
     if( e > 0 )
-    _.assert( arr[ e-1 ] <= interval[ 1 ] );
+    _.assert( arr[ e-1 ] <= range[ 1 ] );
 
   }
 
@@ -327,38 +322,52 @@ function arraySortedLookUpIntervalNarrowest( arr,interval,comparator )
 
 //
 
-function arraySortedLookUpEmbrace( arr,interval,comparator )
+function arraySortedLookUpIntervalHaving( arr, range, comparator )
+{
+  comparator = _._comparatorFromEvaluator( comparator );
+
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
+  _.assert( _.longIs( arr ) );
+
+  let length = arr.length;
+  let b = _._arraySortedLeftMostAtMostIndex( arr, range[ 0 ], comparator, 0, length );
+  let e = _._arraySortedRightMostAtMostIndex( arr, range[ 1 ]-1, comparator, Math.max( 0,b ), length )+1;
+
+  if( e === 0 && b === -1 )
+  e -= 1;
+
+  if( Config.debug )
+  {
+    _.assert( b === -1 || b === length || comparator( arr[ b ], range[ 0 ] ) <= 0 );
+    _.assert( e === -1 || e === length || comparator( arr[ e ], range[ 1 ] ) >= 0 );
+    _.assert( e <= length )
+  }
+
+  return [ b,e ]
+}
+
+//
+
+function arraySortedLookUpIntervalEmbracingAtLeast( arr, range, comparator )
 {
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( arr ) );
 
-  var comparator = _._comparatorFromEvaluator( comparator );
-  var length = arr.length;
-  var b = _._arraySortedRightMostIndex( arr,interval[ 0 ],comparator,0,length );
+  comparator = _._comparatorFromEvaluator( comparator );
 
-  if( length === 0 )
-  debugger;
+  let length = arr.length;
+  let b = _._arraySortedRightMostAtMostIndex( arr,range[ 0 ],comparator,0,length );
+  if( b < 0 )
+  b = 0
 
-  if( 0 < b && b < length )
-  if( comparator( arr[ b ],interval[ 0 ] ) > 0 )
-  b -= 1;
-
-  if( b === length || comparator( arr[ b ],interval[ 1 ] ) > 0 )
-  return [ b,b ];
-
-  var e = _._arraySortedLeftMostIndex( arr,interval[ 1 ],comparator,b+1,length );
-
-  // if( comparator( arr[ e ],interval[ 1 ] ) <= 0 )
-  if( e > 0 )
+  let e0 = length;
+  if( b+1 <= length )
+  e0 = _._arraySortedRightMostAtLeastIndex( arr,range[ 1 ],comparator,b+1,length );
+  let e = e0;
+  while( e < arr.length-1 )
   {
-    if( e < length )
-    if( comparator( arr[ e-1 ],interval[ 1 ] ) < 0 )
-    e += 1;
-  }
-  else
-  {
-    _.assert( length > 0 );
-    if( comparator( arr[ e ],interval[ 1 ] ) <= 0 )
+    if( comparator( arr[ e0 ], arr[ e+1 ] ) !== 0 )
+    break;
     e += 1;
   }
 
@@ -366,16 +375,16 @@ function arraySortedLookUpEmbrace( arr,interval,comparator )
   {
 
     // if( b < length )
-    // _.assert( arr[ b ] >= interval[ 0 ] );
+    // _.assert( arr[ b ] >= range[ 0 ] );
 
     if( b > 0 )
-    _.assert( arr[ b-1 ] <= interval[ 0 ] );
+    _.assert( arr[ b-1 ] <= range[ 0 ] );
 
     if( e < length )
-    _.assert( arr[ e ] >= interval[ 1 ] );
+    _.assert( arr[ e ] >= range[ 1 ] );
 
     // if( e > 0 )
-    // _.assert( arr[ e-1 ] <= interval[ 1 ] );
+    // _.assert( arr[ e-1 ] <= range[ 1 ] );
 
   }
 
@@ -384,27 +393,79 @@ function arraySortedLookUpEmbrace( arr,interval,comparator )
 
 //
 
-function _arraySortedLeftMostIndex( arr,ins,comparator,left,right )
+function arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range, comparator )
 {
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
+  _.assert( _.longIs( arr ) );
+
+  comparator = _._comparatorFromEvaluator( comparator );
+  let length = arr.length;
+  let b = _._arraySortedRightMostAtLeastIndex( arr,range[ 0 ],comparator,0,length );
+
+  if( 0 < b && b < length )
+  if( comparator( arr[ b ],range[ 0 ] ) > 0 )
+  b -= 1;
+
+  if( b === length || comparator( arr[ b ],range[ 1 ] ) > 0 )
+  return [ b,b ];
+
+  let e = _._arraySortedLeftMostAtLeastIndex( arr,range[ 1 ],comparator,b+1,length );
+
+  if( e > 0 )
+  {
+    if( e < length )
+    if( comparator( arr[ e-1 ],range[ 1 ] ) < 0 )
+    e += 1;
+  }
+  else
+  {
+    _.assert( length > 0 );
+    if( comparator( arr[ e ],range[ 1 ] ) <= 0 )
+    e += 1;
+  }
+
+  if( Config.debug )
+  {
+
+    // if( b < length )
+    // _.assert( arr[ b ] >= range[ 0 ] );
+
+    if( b > 0 )
+    _.assert( arr[ b-1 ] <= range[ 0 ] );
+
+    if( e < length )
+    _.assert( arr[ e ] >= range[ 1 ] );
+
+    // if( e > 0 )
+    // _.assert( arr[ e-1 ] <= range[ 1 ] );
+
+  }
+
+  return [ b,e ]
+}
+
+// --
+// left-most at-least
+// --
+
+function _arraySortedLeftMostAtLeastIndex( arr,ins,comparator,left,right )
+{
+  let index = _._arraySortedLookUpAct( arr,ins,comparator,left,right );
 
   _.assert( arguments.length === 5 );
-
-  var comparator = _._comparatorFromEvaluator( comparator );
-  var index = _._arraySortedLookUpAct( arr,ins,comparator,left,right );
 
   if( index === right )
   return right;
 
-  var val = arr[ index ];
-  var c = comparator( val,ins );
+  let c = comparator( arr[ index ], ins );
 
   if( c !== 0 )
   return index;
 
-  var i = index-1;
-  while( i > -1 )
+  let i = index-1;
+  while( i >= left )
   {
-    if( arr[ i ] !== val )
+    if( comparator( arr[ i ], ins ) < 0 )
     break;
     i -= 1;
   }
@@ -416,7 +477,7 @@ function _arraySortedLeftMostIndex( arr,ins,comparator,left,right )
 
 //
 
-function arraySortedLeftMostIndex( arr,ins,comparator )
+function arraySortedLeftMostAtLeastIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
@@ -425,74 +486,152 @@ function arraySortedLeftMostIndex( arr,ins,comparator )
   if( !arr.length )
   return 0;
 
-  var l = arr.length;
-  var comparator = _._comparatorFromEvaluator( comparator );
-  var index = _._arraySortedLeftMostIndex( arr,ins,comparator,0,l );
+  let l = arr.length;
+  comparator = _._comparatorFromEvaluator( comparator );
+  let index = _._arraySortedLeftMostAtLeastIndex( arr,ins,comparator,0,l );
 
   return index;
 }
 
 //
 
-function arraySortedLeftMostValue( arr,ins,comparator )
+function arraySortedLeftMostAtLeastValue( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
-  var index = _.arraySortedLeftMostIndex( arr,ins,comparator );
-  var result = arr[ index ];
+  let index = _.arraySortedLeftMostAtLeastIndex( arr,ins,comparator );
+  let result = arr[ index ];
 
   return result;
 }
 
 //
 
-function arraySortedLeftMost( arr,ins,comparator )
+function arraySortedLeftMostAtLeast( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
-  var index = _.arraySortedLeftMostIndex( arr,ins,comparator );
-  var result = { index : index, value : arr[ index ] };
+  let index = _.arraySortedLeftMostAtLeastIndex( arr,ins,comparator );
+  let result = { value : arr[ index ], index : index };
 
   return result;
 }
 
-//
+// --
+// left-most at-most
+// --
 
-function _arraySortedRightMostIndex( arr,ins,comparator,left,right )
+function _arraySortedLeftMostAtMostIndex( arr,ins,comparator,left,right )
 {
+  let index = _._arraySortedLookUpAct( arr,ins,comparator,left,right );
 
   _.assert( arguments.length === 5 );
+  _.assert( index >= 0, 'expectation' );
 
-  var comparator = _._comparatorFromEvaluator( comparator );
-  var index = _._arraySortedLookUpAct( arr,ins,comparator,left,right );
+  if( index === right )
+  return right-1;
+
+  let i = index;
+  index = -1;
+  while( i >= left )
+  {
+    let c = comparator( arr[ i ],ins );
+    if( c < 0 )
+    {
+      if( index === -1 )
+      index = i;
+      else
+      index = i + 1;
+      return index;
+    }
+    else if( c === 0 )
+    {
+      index = i;
+    }
+    i -= 1;
+  }
+
+  return index;
+}
+
+//
+
+function arraySortedLeftMostAtMostIndex( arr,ins,comparator )
+{
+
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
+  _.assert( _.longIs( arr ) );
+
+  if( !arr.length )
+  return 0;
+
+  let l = arr.length;
+  comparator = _._comparatorFromEvaluator( comparator );
+  let index = _._arraySortedLeftMostAtMostIndex( arr,ins,comparator,0,l );
+
+  return index;
+}
+
+//
+
+function arraySortedLeftMostAtMostValue( arr,ins,comparator )
+{
+
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
+
+  let index = _.arraySortedLeftMostAtMostIndex( arr,ins,comparator );
+  let result = arr[ index ];
+
+  return result;
+}
+
+//
+
+function arraySortedLeftMostAtMost( arr,ins,comparator )
+{
+
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
+
+  let index = _.arraySortedLeftMostAtMostIndex( arr,ins,comparator );
+  let result = { value : arr[ index ], index : index };
+
+  return result;
+}
+
+// --
+// right-most at-least
+// --
+
+function _arraySortedRightMostAtLeastIndex( arr,ins,comparator,left,right )
+{
+  let index = _._arraySortedLookUpAct( arr,ins,comparator,left,right );
+
+  _.assert( arguments.length === 5 );
 
   if( index === right )
   return right;
 
-  var val = arr[ index ];
-  var c = comparator( val,ins );
-
+  let c = comparator( arr[ index ],ins );
   if( c !== 0 )
   return index;
 
-  var i = index+1;
+  let i = index+1;
   while( i < right )
   {
-    if( arr[ i ] !== val )
+    if( comparator( arr[ i ], ins ) > 0 )
     break;
     i += 1;
   }
 
   index = i - 1;
-
   return index;
 }
 
 //
 
-function arraySortedRightMostIndex( arr,ins,comparator )
+function arraySortedRightMostAtLeastIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
@@ -501,112 +640,118 @@ function arraySortedRightMostIndex( arr,ins,comparator )
   if( !arr.length )
   return 0;
 
-  var l = arr.length;
-  var comparator = _._comparatorFromEvaluator( comparator );
-  var index = _._arraySortedRightMostIndex( arr,ins,comparator,0,l );
+  let l = arr.length;
+  comparator = _._comparatorFromEvaluator( comparator );
+  let index = _._arraySortedRightMostAtLeastIndex( arr,ins,comparator,0,l );
 
   return index;
 }
 
 //
 
-function arraySortedRightMostValue( arr,ins,comparator )
+function arraySortedRightMostAtLeastValue( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
-  var index = _.arraySortedRightMostIndex( arr,ins,comparator );
-  var result = arr[ index ];
+  let index = _.arraySortedRightMostAtLeastIndex( arr,ins,comparator );
+  let result = arr[ index ];
 
   return result;
 }
 
 //
 
-function arraySortedRightMost( arr,ins,comparator )
+function arraySortedRightMostAtLeast( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
-  var index = _.arraySortedRightMostIndex( arr,ins,comparator );
-  var result = { index : index, value : arr[ index ] };
+  let index = _.arraySortedRightMostAtLeastIndex( arr,ins,comparator );
+  let result = { value : arr[ index ], index : index };
 
   return result;
 }
 
-// //
-//
-// function arraySortedClosestIndex( arr,ins,comparator )
-// {
-//
-//   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-//   _.assert( _.longIs( arr ) );
-//
-//   if( !arr.length )
-//   return 0;
-//
-//   var l = arr.length;
-//   var comparator = _._comparatorFromEvaluator( comparator );
-//   var index = _._arraySortedLookUpAct( arr,ins,comparator,0,l );
-//
-//   if( index === l )
-//   return l-1;
-//
-//   var c = comparator( arr[ index ],ins );
-//
-//   if( c  === 0 )
-//   return index;
-//
-//   if( c < 0 )
-//   {
-//     throw _.err( 'redundant branch?' );
-//     if( ( arr.length-1 ) === index )
-//     return index;
-//     else if( Math.abs( comparator( arr[ index + 1 ],ins ) ) < Math.abs( c ) )
-//     return index+1;
-//     else
-//     return index;
-//   }
-//
-//   if( c > 0 )
-//   {
-//     if( 0 === index )
-//     return index;
-//     else if( Math.abs( comparator( arr[ index - 1 ],ins ) ) < Math.abs( c ) )
-//     return index-1;
-//     else
-//     return index;
-//   }
-//
-// }
-//
-// //
-//
-// function arraySortedClosestValue( arr,ins,comparator )
-// {
-//
-//   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-//
-//   var index = _.arraySortedClosestIndex( arr,ins,comparator );
-//   var result = arr[ index ];
-//
-//   return result;
-// }
-//
-// //
-//
-// function arraySortedClosest( arr,ins,comparator )
-// {
-//
-//   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
-//
-//   var index = _.arraySortedClosestIndex( arr,ins,comparator );
-//   var result = { index : index, value : arr[ index ] };
-//
-//   return result;
-// }
+// --
+// right-most at-most
+// --
+
+function _arraySortedRightMostAtMostIndex( arr,ins,comparator,left,right )
+{
+  let index = _._arraySortedLookUpAct( arr,ins,comparator,left,right );
+
+  _.assert( arguments.length === 5 );
+
+  if( index === right )
+  return right-1;
+
+  let i = index;
+  while( i < right )
+  {
+    let c = comparator( arr[ i ],ins );
+    if( c > 0 )
+    {
+      index = i - 1;
+      return index;
+    }
+    else if( c === 0 )
+    {
+      index = i;
+    }
+    i += 1;
+  }
+
+  return index;
+}
 
 //
+
+function arraySortedRightMostAtMostIndex( arr,ins,comparator )
+{
+
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
+  _.assert( _.longIs( arr ) );
+
+  if( !arr.length )
+  return 0;
+
+  let l = arr.length;
+  comparator = _._comparatorFromEvaluator( comparator );
+  let index = _._arraySortedRightMostAtMostIndex( arr,ins,comparator,0,l );
+
+  return index;
+}
+
+//
+
+function arraySortedRightMostAtMostValue( arr,ins,comparator )
+{
+
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
+
+  let index = _.arraySortedRightMostAtMostIndex( arr,ins,comparator );
+  let result = arr[ index ];
+
+  return result;
+}
+
+//
+
+function arraySortedRightMostAtMost( arr,ins,comparator )
+{
+
+  _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
+
+  let index = _.arraySortedRightMostAtMostIndex( arr,ins,comparator );
+  let result = { value : arr[ index ], index : index };
+
+  return result;
+}
+
+// --
+//
+// --
 
 /**
  * The arraySortedRemove() method returns true, if a value (ins) was removed from an array (arr).
@@ -640,11 +785,11 @@ function arraySortedRemove( arr,ins,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( arr ) );
 
-  var comparator = _._comparatorFromEvaluator( comparator );
-  var l = arr.length;
-  var index = _._arraySortedLookUpAct( arr,ins,comparator,0,l );
+  comparator = _._comparatorFromEvaluator( comparator );
+  let l = arr.length;
+  let index = _._arraySortedLookUpAct( arr,ins,comparator,0,l );
 
-  var remove = index !== l && comparator( ins,arr[ index ] ) === 0;
+  let remove = index !== l && comparator( ins,arr[ index ] ) === 0;
 
   if( remove ) arr.splice( index,1 );
 
@@ -692,11 +837,11 @@ function arraySortedAddOnce( arr,ins,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( arr ) );
 
-  var comparator = _._comparatorFromEvaluator( comparator );
-  var l = arr.length;
-  var index = _._arraySortedLookUpAct( arr,ins,comparator,0,l );
+  comparator = _._comparatorFromEvaluator( comparator );
+  let l = arr.length;
+  let index = _._arraySortedLookUpAct( arr,ins,comparator,0,l );
 
-  var add = index === l || comparator( ins,arr[ index ] ) !== 0;
+  let add = index === l || comparator( ins,arr[ index ] ) !== 0;
 
   if( add )
   arr.splice( index,0,ins );
@@ -743,9 +888,9 @@ function arraySortedAdd( arr,ins,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( arr ) );
 
-  var comparator = _._comparatorFromEvaluator( comparator );
-  var l = arr.length;
-  var index = _._arraySortedLookUpAct( arr,ins,comparator,0,l );
+  comparator = _._comparatorFromEvaluator( comparator );
+  let l = arr.length;
+  let index = _._arraySortedLookUpAct( arr,ins,comparator,0,l );
 
   arr.splice( index,0,ins );
 
@@ -788,12 +933,10 @@ function arraySortedAddArray( dst,src,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( dst ) && _.longIs( src ) );
 
-  debugger;
+  let result = 0;
+  comparator = _._comparatorFromEvaluator( comparator );
 
-  var result = 0;
-  var comparator = _._comparatorFromEvaluator( comparator );
-
-  for( var s = 0 ; s < src.length ; s++ )
+  for( let s = 0 ; s < src.length ; s++ )
   result += _.arraySortedAdd( dst,src[ s ],comparator );
 
   return result;
@@ -803,7 +946,7 @@ function arraySortedAddArray( dst,src,comparator )
 // define class
 // --
 
-var Proto =
+let Proto =
 {
 
   // array sorted
@@ -822,17 +965,29 @@ var Proto =
 
   arraySortedLookUpInterval : arraySortedLookUpInterval,
   arraySortedLookUpIntervalNarrowest : arraySortedLookUpIntervalNarrowest, /* experimental */
-  arraySortedLookUpEmbrace : arraySortedLookUpEmbrace,
+  arraySortedLookUpIntervalHaving : arraySortedLookUpIntervalHaving,
+  arraySortedLookUpIntervalEmbracingAtLeast : arraySortedLookUpIntervalEmbracingAtLeast,
+  arraySortedLookUpIntervalEmbracingAtLeastOld : arraySortedLookUpIntervalEmbracingAtLeastOld,
 
-  _arraySortedLeftMostIndex : _arraySortedLeftMostIndex,
-  arraySortedLeftMostIndex : arraySortedLeftMostIndex,
-  arraySortedLeftMostValue : arraySortedLeftMostValue,
-  arraySortedLeftMost : arraySortedLeftMost,
+  _arraySortedLeftMostAtLeastIndex : _arraySortedLeftMostAtLeastIndex,
+  arraySortedLeftMostAtLeastIndex : arraySortedLeftMostAtLeastIndex,
+  arraySortedLeftMostAtLeastValue : arraySortedLeftMostAtLeastValue,
+  arraySortedLeftMostAtLeast : arraySortedLeftMostAtLeast,
 
-  _arraySortedRightMostIndex : _arraySortedRightMostIndex,
-  arraySortedRightMostIndex : arraySortedRightMostIndex,
-  arraySortedRightMostValue : arraySortedRightMostValue,
-  arraySortedRightMost : arraySortedRightMost,
+  _arraySortedLeftMostAtMostIndex : _arraySortedLeftMostAtMostIndex,
+  arraySortedLeftMostAtMostIndex : arraySortedLeftMostAtMostIndex,
+  arraySortedLeftMostAtMostValue : arraySortedLeftMostAtMostValue,
+  arraySortedLeftMostAtMost : arraySortedLeftMostAtMost,
+
+  _arraySortedRightMostAtLeastIndex : _arraySortedRightMostAtLeastIndex,
+  arraySortedRightMostAtLeastIndex : arraySortedRightMostAtLeastIndex,
+  arraySortedRightMostAtLeastValue : arraySortedRightMostAtLeastValue,
+  arraySortedRightMostAtLeast : arraySortedRightMostAtLeast,
+
+  _arraySortedRightMostAtMostIndex : _arraySortedRightMostAtMostIndex,
+  arraySortedRightMostAtMostIndex : arraySortedRightMostAtMostIndex,
+  arraySortedRightMostAtMostValue : arraySortedRightMostAtMostValue,
+  arraySortedRightMostAtMost : arraySortedRightMostAtMost,
 
   // arraySortedClosestIndex : arraySortedClosestIndex,
   // arraySortedClosestValue : arraySortedClosestValue,
