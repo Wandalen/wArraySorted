@@ -994,7 +994,7 @@ function arraySortedAddArray( dst,src,comparator )
 }
 
 // --
-// define class
+// declare
 // --
 
 let Proto =

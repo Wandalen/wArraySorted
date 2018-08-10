@@ -3072,7 +3072,7 @@ function arraySortedLookUpIntervalNarrowestExperiment( test )
 }
 
 // --
-// define class
+// declare
 // --
 
 var Self =
