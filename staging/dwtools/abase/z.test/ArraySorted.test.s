@@ -59,17 +59,17 @@ function _lookUpAct( test )
 {
 
   test.case = 'first argument is empty, so it returns the index from which it ended search at';
-  var got = _._lookUpAct( [  ], 55, function( a, b ){ return a - b }, 0, 5 );
+  var got = _.sorted._lookUpAct( [  ], 55, function( a, b ){ return a - b }, 0, 5 );
   var expected = 2;
   test.identical( got, expected );
 
   test.case = 'returns the last index of the first argument';
-  var got = _._lookUpAct( [ 1, 2, 3, 4, 5 ], 5, function( a, b ){ return a - b }, 0, 5 );
+  var got = _.sorted._lookUpAct( [ 1, 2, 3, 4, 5 ], 5, function( a, b ){ return a - b }, 0, 5 );
   var expected = 4;
   test.identical( got, expected );
 
   test.case = 'second argument was not found, so it returns the length of the first argument';
-  var got = _._lookUpAct( [ 1, 2, 3, 4, 5 ], 55, function( a, b ){ return a - b }, 0, 5 );
+  var got = _.sorted._lookUpAct( [ 1, 2, 3, 4, 5 ], 55, function( a, b ){ return a - b }, 0, 5 );
   var expected = 5;
   test.identical( got, expected );
 
@@ -81,7 +81,7 @@ function _lookUpAct( test )
   test.case = 'no arguments';
   test.shouldThrowError( function()
   {
-    _._lookUpAct();
+    _.sorted._lookUpAct();
   });
 
 };

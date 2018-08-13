@@ -242,12 +242,12 @@ function lookUpInterval( arr,range,comparator )
 
   comparator = _._comparatorFromEvaluator( comparator );
   let length = arr.length;
-  let b = _._arraySortedLeftMostAtLeastIndex( arr,range[ 0 ],comparator,0,length );
+  let b = _.sorted._leftMostAtLeastIndex( arr,range[ 0 ],comparator,0,length );
 
   if( b === length || comparator( arr[ b ],range[ 1 ] ) > 0 )
   return [ b,b ];
 
-  let e = _._arraySortedRightMostAtLeastIndex( arr,range[ 1 ],comparator,b+1,length );
+  let e = _.sorted._rightMostAtLeastIndex( arr,range[ 1 ],comparator,b+1,length );
 
   if( comparator( arr[ e ],range[ 1 ] ) <= 0 )
   e += 1;
@@ -283,7 +283,7 @@ function lookUpIntervalNarrowest( arr, range, comparator )
   comparator = _._comparatorFromEvaluator( comparator );
 
   let length = arr.length;
-  let b = _._arraySortedRightMostAtLeastIndex( arr,range[ 0 ],comparator,0,length );
+  let b = _.sorted._rightMostAtLeastIndex( arr,range[ 0 ],comparator,0,length );
 
   // if( b === length )
   // if( comparator( arr[ b - 1 ],range[ 0 ] ) < 0 )
@@ -293,7 +293,7 @@ function lookUpIntervalNarrowest( arr, range, comparator )
   // if( comparator( arr[ b ],range[ 1 ] ) > 0 )
   // return [ b,b ];
 
-  let e = _._arraySortedLeftMostAtMostIndex( arr,range[ 1 ],comparator,b,length );
+  let e = _.sorted._leftMostAtMostIndex( arr,range[ 1 ],comparator,b,length );
 
   e += 1;
 
@@ -333,7 +333,7 @@ function lookUpIntervalNarrowestOld( arr, range, comparator )
 
   comparator = _._comparatorFromEvaluator( comparator );
   let length = arr.length;
-  let b = _._arraySortedRightMostAtLeastIndex( arr,range[ 0 ],comparator,0,length );
+  let b = _.sorted._rightMostAtLeastIndex( arr,range[ 0 ],comparator,0,length );
 
   if( b === length )
   if( comparator( arr[ b - 1 ],range[ 0 ] ) < 0 )
@@ -343,7 +343,7 @@ function lookUpIntervalNarrowestOld( arr, range, comparator )
   if( comparator( arr[ b ],range[ 1 ] ) > 0 )
   return [ b,b ];
 
-  let e = _._arraySortedLeftMostAtLeastIndex( arr,range[ 1 ],comparator,b+1,length );
+  let e = _.sorted._leftMostAtLeastIndex( arr,range[ 1 ],comparator,b+1,length );
 
   if( comparator( arr[ e - 1 ],range[ 1 ] ) > 0 )
   e -= 1;
@@ -381,8 +381,8 @@ function lookUpIntervalHaving( arr, range, comparator )
   _.assert( _.longIs( arr ) );
 
   let length = arr.length;
-  let b = _._arraySortedLeftMostAtMostIndex( arr, range[ 0 ], comparator, 0, length );
-  let e = _._arraySortedRightMostAtMostIndex( arr, range[ 1 ]-1, comparator, Math.max( 0,b ), length )+1;
+  let b = _.sorted._leftMostAtMostIndex( arr, range[ 0 ], comparator, 0, length );
+  let e = _.sorted._rightMostAtMostIndex( arr, range[ 1 ]-1, comparator, Math.max( 0,b ), length )+1;
 
   if( e === 0 && b === -1 )
   e -= 1;
@@ -407,13 +407,13 @@ function lookUpIntervalEmbracingAtLeast( arr, range, comparator )
   comparator = _._comparatorFromEvaluator( comparator );
 
   let length = arr.length;
-  let b = _._arraySortedRightMostAtMostIndex( arr,range[ 0 ],comparator,0,length );
+  let b = _.sorted._rightMostAtMostIndex( arr,range[ 0 ],comparator,0,length );
   if( b < 0 )
   b = 0
 
   let e0 = length;
   if( b+1 <= length )
-  e0 = _._arraySortedRightMostAtLeastIndex( arr,range[ 1 ],comparator,b+1,length );
+  e0 = _.sorted._rightMostAtLeastIndex( arr,range[ 1 ],comparator,b+1,length );
   let e = e0;
   while( e < arr.length-1 )
   {
@@ -451,7 +451,7 @@ function lookUpIntervalEmbracingAtLeastOld( arr, range, comparator )
 
   comparator = _._comparatorFromEvaluator( comparator );
   let length = arr.length;
-  let b = _._arraySortedRightMostAtLeastIndex( arr,range[ 0 ],comparator,0,length );
+  let b = _.sorted._rightMostAtLeastIndex( arr,range[ 0 ],comparator,0,length );
 
   if( 0 < b && b < length )
   if( comparator( arr[ b ],range[ 0 ] ) > 0 )
@@ -460,7 +460,7 @@ function lookUpIntervalEmbracingAtLeastOld( arr, range, comparator )
   if( b === length || comparator( arr[ b ],range[ 1 ] ) > 0 )
   return [ b,b ];
 
-  let e = _._arraySortedLeftMostAtLeastIndex( arr,range[ 1 ],comparator,b+1,length );
+  let e = _.sorted._leftMostAtLeastIndex( arr,range[ 1 ],comparator,b+1,length );
 
   if( e > 0 )
   {
@@ -499,9 +499,9 @@ function lookUpIntervalEmbracingAtLeastOld( arr, range, comparator )
 // left-most at-least
 // --
 
-function _arraySortedLeftMostAtLeastIndex( arr,ins,comparator,left,right )
+function _leftMostAtLeastIndex( arr,ins,comparator,left,right )
 {
-  let index = _._lookUpAct( arr,ins,comparator,left,right );
+  let index = _.sorted._lookUpAct( arr,ins,comparator,left,right );
 
   _.assert( arguments.length === 5 );
 
@@ -539,7 +539,7 @@ function leftMostAtLeastIndex( arr,ins,comparator )
 
   let l = arr.length;
   comparator = _._comparatorFromEvaluator( comparator );
-  let index = _._arraySortedLeftMostAtLeastIndex( arr,ins,comparator,0,l );
+  let index = _.sorted._leftMostAtLeastIndex( arr,ins,comparator,0,l );
 
   return index;
 }
@@ -574,9 +574,9 @@ function leftMostAtLeast( arr,ins,comparator )
 // left-most at-most
 // --
 
-function _arraySortedLeftMostAtMostIndex( arr,ins,comparator,left,right )
+function _leftMostAtMostIndex( arr,ins,comparator,left,right )
 {
-  let index = _._lookUpAct( arr,ins,comparator,left,right );
+  let index = _.sorted._lookUpAct( arr,ins,comparator,left,right );
 
   _.assert( arguments.length === 5 );
   _.assert( index >= 0, 'expectation' );
@@ -624,7 +624,7 @@ function leftMostAtMostIndex( arr,ins,comparator )
 
   let l = arr.length;
   comparator = _._comparatorFromEvaluator( comparator );
-  let index = _._arraySortedLeftMostAtMostIndex( arr,ins,comparator,0,l );
+  let index = _.sorted._leftMostAtMostIndex( arr,ins,comparator,0,l );
 
   return index;
 }
@@ -659,9 +659,9 @@ function leftMostAtMost( arr,ins,comparator )
 // right-most at-least
 // --
 
-function _arraySortedRightMostAtLeastIndex( arr,ins,comparator,left,right )
+function _rightMostAtLeastIndex( arr,ins,comparator,left,right )
 {
-  let index = _._lookUpAct( arr,ins,comparator,left,right );
+  let index = _.sorted._lookUpAct( arr,ins,comparator,left,right );
 
   _.assert( arguments.length === 5 );
 
@@ -697,7 +697,7 @@ function rightMostAtLeastIndex( arr,ins,comparator )
 
   let l = arr.length;
   comparator = _._comparatorFromEvaluator( comparator );
-  let index = _._arraySortedRightMostAtLeastIndex( arr,ins,comparator,0,l );
+  let index = _.sorted._rightMostAtLeastIndex( arr,ins,comparator,0,l );
 
   return index;
 }
@@ -732,9 +732,9 @@ function rightMostAtLeast( arr,ins,comparator )
 // right-most at-most
 // --
 
-function _arraySortedRightMostAtMostIndex( arr,ins,comparator,left,right )
+function _rightMostAtMostIndex( arr,ins,comparator,left,right )
 {
-  let index = _._lookUpAct( arr,ins,comparator,left,right );
+  let index = _.sorted._lookUpAct( arr,ins,comparator,left,right );
 
   _.assert( arguments.length === 5 );
 
@@ -773,7 +773,7 @@ function rightMostAtMostIndex( arr,ins,comparator )
 
   let l = arr.length;
   comparator = _._comparatorFromEvaluator( comparator );
-  let index = _._arraySortedRightMostAtMostIndex( arr,ins,comparator,0,l );
+  let index = _.sorted._rightMostAtMostIndex( arr,ins,comparator,0,l );
 
   return index;
 }
@@ -842,7 +842,7 @@ function remove( arr,ins,comparator )
 
   comparator = _._comparatorFromEvaluator( comparator );
   let l = arr.length;
-  let index = _._lookUpAct( arr,ins,comparator,0,l );
+  let index = _.sorted._lookUpAct( arr,ins,comparator,0,l );
 
   let remove = index !== l && comparator( ins,arr[ index ] ) === 0;
 
@@ -857,7 +857,7 @@ function remove( arr,ins,comparator )
  * The wTools.sorted.addOnce() method returns true, if a value (ins) was added to an array (arr).
  * Otherwise, it returns false.
  *
- * It calls the method (_._lookUpAct( arr, ins, comparator, 0, arr.length - 1 )),
+ * It calls the method (_.sorted._lookUpAct( arr, ins, comparator, 0, arr.length - 1 )),
  * that returns the index of the value (ins) in the array (arr).
  * [wTools._lookUpAct() ]{@link wTools._lookUpAct}.
  * If (index) is equal to the one, and call callback function(comparator( ins, arr[ index ])
@@ -894,7 +894,7 @@ function addOnce( arr,ins,comparator )
 
   comparator = _._comparatorFromEvaluator( comparator );
   let l = arr.length;
-  let index = _._lookUpAct( arr,ins,comparator,0,l );
+  let index = _.sorted._lookUpAct( arr,ins,comparator,0,l );
 
   let add = index === l || comparator( ins,arr[ index ] ) !== 0;
 
@@ -910,7 +910,7 @@ function addOnce( arr,ins,comparator )
  * The wTools.sorted.add() method adds the value (ins) to the array (arr), no matter whether it has there or hasn't,
  * and returns the new added or the updated index.
  *
- * It calls the method (_._lookUpAct( arr, ins, comparator, 0, arr.length - 1 )),
+ * It calls the method (_.sorted._lookUpAct( arr, ins, comparator, 0, arr.length - 1 )),
  * that returns the index of the value (ins) in the array (arr).
  * [wTools._lookUpAct() ]{@link wTools._lookUpAct}.
  * If value (ins) has in the array (arr), it adds (ins) to that found index and offsets the old values in the (arr).
@@ -945,7 +945,7 @@ function add( arr,ins,comparator )
 
   comparator = _._comparatorFromEvaluator( comparator );
   let l = arr.length;
-  let index = _._lookUpAct( arr,ins,comparator,0,l );
+  let index = _.sorted._lookUpAct( arr,ins,comparator,0,l );
 
   arr.splice( index,0,ins );
 
@@ -1025,22 +1025,22 @@ let Proto =
   lookUpIntervalEmbracingAtLeast : lookUpIntervalEmbracingAtLeast, /* experimental */
   lookUpIntervalEmbracingAtLeastOld : lookUpIntervalEmbracingAtLeastOld, /* experimental */
 
-  _arraySortedLeftMostAtLeastIndex : _arraySortedLeftMostAtLeastIndex,
+  _leftMostAtLeastIndex : _leftMostAtLeastIndex,
   leftMostAtLeastIndex : leftMostAtLeastIndex,
   leftMostAtLeastValue : leftMostAtLeastValue,
   leftMostAtLeast : leftMostAtLeast,
 
-  _arraySortedLeftMostAtMostIndex : _arraySortedLeftMostAtMostIndex,
+  _leftMostAtMostIndex : _leftMostAtMostIndex,
   leftMostAtMostIndex : leftMostAtMostIndex,
   leftMostAtMostValue : leftMostAtMostValue,
   leftMostAtMost : leftMostAtMost,
 
-  _arraySortedRightMostAtLeastIndex : _arraySortedRightMostAtLeastIndex,
+  _rightMostAtLeastIndex : _rightMostAtLeastIndex,
   rightMostAtLeastIndex : rightMostAtLeastIndex,
   rightMostAtLeastValue : rightMostAtLeastValue,
   rightMostAtLeast : rightMostAtLeast,
 
-  _arraySortedRightMostAtMostIndex : _arraySortedRightMostAtMostIndex,
+  _rightMostAtMostIndex : _rightMostAtMostIndex,
   rightMostAtMostIndex : rightMostAtMostIndex,
   rightMostAtMostValue : rightMostAtMostValue,
   rightMostAtMost : rightMostAtMost,
@@ -1056,7 +1056,7 @@ let Proto =
 
 }
 
-_.mapExtend( _, Proto );
+// _.mapExtend( _, Proto );
 _.mapExtend( Self, Proto );
 
 // --
