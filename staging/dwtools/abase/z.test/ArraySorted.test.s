@@ -55,21 +55,21 @@ function makeArray( length, density )
 
 //
 
-function _arraySortedLookUpAct( test )
+function _lookUpAct( test )
 {
 
   test.case = 'first argument is empty, so it returns the index from which it ended search at';
-  var got = _._arraySortedLookUpAct( [  ], 55, function( a, b ){ return a - b }, 0, 5 );
+  var got = _._lookUpAct( [  ], 55, function( a, b ){ return a - b }, 0, 5 );
   var expected = 2;
   test.identical( got, expected );
 
   test.case = 'returns the last index of the first argument';
-  var got = _._arraySortedLookUpAct( [ 1, 2, 3, 4, 5 ], 5, function( a, b ){ return a - b }, 0, 5 );
+  var got = _._lookUpAct( [ 1, 2, 3, 4, 5 ], 5, function( a, b ){ return a - b }, 0, 5 );
   var expected = 4;
   test.identical( got, expected );
 
   test.case = 'second argument was not found, so it returns the length of the first argument';
-  var got = _._arraySortedLookUpAct( [ 1, 2, 3, 4, 5 ], 55, function( a, b ){ return a - b }, 0, 5 );
+  var got = _._lookUpAct( [ 1, 2, 3, 4, 5 ], 55, function( a, b ){ return a - b }, 0, 5 );
   var expected = 5;
   test.identical( got, expected );
 
@@ -81,50 +81,50 @@ function _arraySortedLookUpAct( test )
   test.case = 'no arguments';
   test.shouldThrowError( function()
   {
-    _._arraySortedLookUpAct();
+    _._lookUpAct();
   });
 
 };
 
 //
 
-function arraySortedLookUp( test )
+function lookUp( test )
 {
 
   var arr = [ 0, 0, 1, 1, 2, 3, 3, 4, 4 ];
 
   test.case = '-1';
-  var got = _.arraySortedLookUp( arr, -1 );
+  var got = _.sorted.lookUp( arr, -1 );
   var expected = { value : undefined, index : -1 };
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedLookUp( arr, 0 );
+  var got = _.sorted.lookUp( arr, 0 );
   var expected = { value : 0, index : 1 };
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedLookUp( arr, 1 );
+  var got = _.sorted.lookUp( arr, 1 );
   var expected = { value : 1, index : 2 };
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedLookUp( arr, 2 );
+  var got = _.sorted.lookUp( arr, 2 );
   var expected = { value : 2, index : 4 };
   test.identical( got, expected );
 
   test.case = '3';
-  var got = _.arraySortedLookUp( arr, 3 );
+  var got = _.sorted.lookUp( arr, 3 );
   var expected = { value : 3, index : 6 };
   test.identical( got, expected );
 
   test.case = '4';
-  var got = _.arraySortedLookUp( arr, 4 );
+  var got = _.sorted.lookUp( arr, 4 );
   var expected = { value : 4, index : 7 };
   test.identical( got, expected );
 
   test.case = '5';
-  var got = _.arraySortedLookUp( arr, 5 );
+  var got = _.sorted.lookUp( arr, 5 );
   var expected = { value : undefined, index : -1 };
   test.identical( got, expected );
 
@@ -133,54 +133,54 @@ function arraySortedLookUp( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   test.case = '-1';
-  var got = _.arraySortedLookUp( arr, -1 );
+  var got = _.sorted.lookUp( arr, -1 );
   var expected = { value : undefined, index : -1 };
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedLookUp( arr, 0 );
+  var got = _.sorted.lookUp( arr, 0 );
   var expected = { value : 0, index : 1 };
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedLookUp( arr, 1 );
+  var got = _.sorted.lookUp( arr, 1 );
   var expected = { value : undefined, index : -1 };
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedLookUp( arr, 2 );
+  var got = _.sorted.lookUp( arr, 2 );
   var expected = { value : 2, index : 2 };
   test.identical( got, expected );
 
   test.case = '3';
-  var got = _.arraySortedLookUp( arr, 3 );
+  var got = _.sorted.lookUp( arr, 3 );
   var expected = { value : undefined, index : -1 };
   test.identical( got, expected );
 
   test.case = '4';
-  var got = _.arraySortedLookUp( arr, 4 );
+  var got = _.sorted.lookUp( arr, 4 );
   var expected = { value : 4, index : 4 };
   test.identical( got, expected );
 
   test.case = '5';
-  var got = _.arraySortedLookUp( arr, 5 );
+  var got = _.sorted.lookUp( arr, 5 );
   var expected = { value : undefined, index : -1 };
   test.identical( got, expected );
 
   /* - */
 
   test.case = 'returns an object that containing the found value';
-  var got = _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } );
+  var got = _.sorted.lookUp( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } );
   var expected = { value : 5, index : 4 };
   test.identical( got, expected );
 
   test.case = 'returns undefined';
-  var got = _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } );
+  var got = _.sorted.lookUp( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } );
   var expected = { value : undefined, index : -1 };
   test.identical( got, expected );
 
   test.case = 'call without a callback function';
-  var got = _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 3 );
+  var got = _.sorted.lookUp( [ 1, 2, 3, 4, 5 ], 3 );
   var expected = { value : 3, index : 2 };
   test.identical( got, expected );
 
@@ -192,68 +192,68 @@ function arraySortedLookUp( test )
   test.case = 'no arguments';
   test.shouldThrowError( function()
   {
-    _.arraySortedLookUp();
+    _.sorted.lookUp();
   });
 
   test.case = 'first argument is wrong';
   test.shouldThrowError( function()
   {
-    _.arraySortedLookUp( 'wrong argument', 5, function( a, b ) { return a - b } );
+    _.sorted.lookUp( 'wrong argument', 5, function( a, b ) { return a - b } );
   });
 
   test.case = 'not enough arguments';
   test.shouldThrowError( function()
   {
-    _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ] );
+    _.sorted.lookUp( [ 1, 2, 3, 4, 5 ] );
   });
 
   test.case = 'extra argument';
   test.shouldThrowError( function()
   {
-    _.arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
+    _.sorted.lookUp( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
   });
 
 };
 
 //
 
-function arraySortedLookUpClosest( test )
+function lookUpClosest( test )
 {
 
   var arr = [ 0, 0, 1, 1, 2, 3, 3, 4, 4 ];
 
   test.case = '-1';
-  var got = _.arraySortedLookUpClosest( arr, -1 );
+  var got = _.sorted.lookUpClosest( arr, -1 );
   var expected = { value : 0, index : 0 };
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedLookUpClosest( arr, 0 );
+  var got = _.sorted.lookUpClosest( arr, 0 );
   var expected = { value : 0, index : 1 };
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedLookUpClosest( arr, 1 );
+  var got = _.sorted.lookUpClosest( arr, 1 );
   var expected = { value : 1, index : 2 };
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedLookUpClosest( arr, 2 );
+  var got = _.sorted.lookUpClosest( arr, 2 );
   var expected = { value : 2, index : 4 };
   test.identical( got, expected );
 
   test.case = '3';
-  var got = _.arraySortedLookUpClosest( arr, 3 );
+  var got = _.sorted.lookUpClosest( arr, 3 );
   var expected = { value : 3, index : 6 };
   test.identical( got, expected );
 
   test.case = '4';
-  var got = _.arraySortedLookUpClosest( arr, 4 );
+  var got = _.sorted.lookUpClosest( arr, 4 );
   var expected = { value : 4, index : 7 };
   test.identical( got, expected );
 
   test.case = '5';
-  var got = _.arraySortedLookUpClosest( arr, 5 );
+  var got = _.sorted.lookUpClosest( arr, 5 );
   var expected = { value : undefined, index : 9 };
   test.identical( got, expected );
 
@@ -262,54 +262,54 @@ function arraySortedLookUpClosest( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   test.case = '-1';
-  var got = _.arraySortedLookUpClosest( arr, -1 );
+  var got = _.sorted.lookUpClosest( arr, -1 );
   var expected = { value : 0, index : 0 };
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedLookUpClosest( arr, 0 );
+  var got = _.sorted.lookUpClosest( arr, 0 );
   var expected = { value : 0, index : 1 };
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedLookUpClosest( arr, 1 );
+  var got = _.sorted.lookUpClosest( arr, 1 );
   var expected = { value : 2, index : 2 };
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedLookUpClosest( arr, 2 );
+  var got = _.sorted.lookUpClosest( arr, 2 );
   var expected = { value : 2, index : 2 };
   test.identical( got, expected );
 
   test.case = '3';
-  var got = _.arraySortedLookUpClosest( arr, 3 );
+  var got = _.sorted.lookUpClosest( arr, 3 );
   var expected = { value : 4, index : 3 };
   test.identical( got, expected );
 
   test.case = '4';
-  var got = _.arraySortedLookUpClosest( arr, 4 );
+  var got = _.sorted.lookUpClosest( arr, 4 );
   var expected = { value : 4, index : 4 };
   test.identical( got, expected );
 
   test.case = '5';
-  var got = _.arraySortedLookUpClosest( arr, 5 );
+  var got = _.sorted.lookUpClosest( arr, 5 );
   var expected = { value : undefined, index : 5 };
   test.identical( got, expected );
 
   /* - */
 
   test.case = 'returns an object that containing the found value';
-  var got = _.arraySortedLookUpClosest( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } );
+  var got = _.sorted.lookUpClosest( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } );
   var expected = { value : 5, index : 4 };
   test.identical( got, expected );
 
   test.case = 'returns undefined';
-  var got = _.arraySortedLookUpClosest( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } );
+  var got = _.sorted.lookUpClosest( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } );
   var expected = { value : undefined, index : 5 };
   test.identical( got, expected );
 
   test.case = 'call without a callback function';
-  var got = _.arraySortedLookUpClosest( [ 1, 2, 3, 4, 5 ], 3 );
+  var got = _.sorted.lookUpClosest( [ 1, 2, 3, 4, 5 ], 3 );
   var expected = { value : 3, index : 2 };
   test.identical( got, expected );
 
@@ -321,25 +321,25 @@ function arraySortedLookUpClosest( test )
   test.case = 'no arguments';
   test.shouldThrowError( function()
   {
-    _.arraySortedLookUpClosest();
+    _.sorted.lookUpClosest();
   });
 
   test.case = 'first argument is wrong';
   test.shouldThrowError( function()
   {
-    _.arraySortedLookUpClosest( 'wrong argument', 5, function( a, b ) { return a - b } );
+    _.sorted.lookUpClosest( 'wrong argument', 5, function( a, b ) { return a - b } );
   });
 
   test.case = 'not enough arguments';
   test.shouldThrowError( function()
   {
-    _.arraySortedLookUpClosest( [ 1, 2, 3, 4, 5 ] );
+    _.sorted.lookUpClosest( [ 1, 2, 3, 4, 5 ] );
   });
 
   test.case = 'extra argument';
   test.shouldThrowError( function()
   {
-    _.arraySortedLookUpClosest( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
+    _.sorted.lookUpClosest( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
   });
 
 };
@@ -347,7 +347,7 @@ function arraySortedLookUpClosest( test )
 
 //
 
-function arraySortedLookUpIndex( test )
+function lookUpIndex( test )
 {
 
   test.case = 'simples';
@@ -360,44 +360,44 @@ function arraySortedLookUpIndex( test )
 
   var a = [ 1, 2, 3 ];
 
-  var i = _.arraySortedLookUpIndex( a, 0 );
+  var i = _.sorted.lookUpIndex( a, 0 );
   test.identical( i, -1 );
 
-  var i = _.arraySortedLookUpIndex( a, 1 );
+  var i = _.sorted.lookUpIndex( a, 1 );
   test.identical( i, 0 );
 
-  var i = _.arraySortedLookUpIndex( a, 2 );
+  var i = _.sorted.lookUpIndex( a, 2 );
   test.identical( i, 1 );
 
-  var i = _.arraySortedLookUpIndex( a, 3 );
+  var i = _.sorted.lookUpIndex( a, 3 );
   test.identical( i, 2 );
 
-  var i = _.arraySortedLookUpIndex( a, 4 );
+  var i = _.sorted.lookUpIndex( a, 4 );
   test.identical( i, -1 );
 
   //
 
   var a = [ 1, 1, 3, 3, 5, 5 ];
 
-  var i = _.arraySortedLookUpIndex( a, 1 );
+  var i = _.sorted.lookUpIndex( a, 1 );
   test.identical( i, 1 );
 
-  var i = _.arraySortedLookUpIndex( a, 3 );
+  var i = _.sorted.lookUpIndex( a, 3 );
   test.identical( i, 3 );
 
-  var i = _.arraySortedLookUpIndex( a, 5 );
+  var i = _.sorted.lookUpIndex( a, 5 );
   test.identical( i, 5 );
 
   //
 
   var a = [ 5, 4, 3, 2, 1 ];
 
-  var i = _.arraySortedLookUpIndex( a, 5 );
+  var i = _.sorted.lookUpIndex( a, 5 );
   test.identical( i, -1 );
 
   //
 
-  var i = _.arraySortedLookUpIndex( [], 1 );
+  var i = _.sorted.lookUpIndex( [], 1 );
   test.identical( i, -1 );
 
   //
@@ -409,7 +409,7 @@ function arraySortedLookUpIndex( test )
     return Math.floor( value );
   }
 
-  var i = _.arraySortedLookUpIndex( arr, 5, transformer );
+  var i = _.sorted.lookUpIndex( arr, 5, transformer );
   test.identical( i, 2 )
 
   //
@@ -421,7 +421,7 @@ function arraySortedLookUpIndex( test )
     return a.value - b.value;
   }
 
-  var i = _.arraySortedLookUpIndex( arr, { value : 2 }, comparator );
+  var i = _.sorted.lookUpIndex( arr, { value : 2 }, comparator );
   test.identical( i, 1 )
 
   //
@@ -431,7 +431,7 @@ function arraySortedLookUpIndex( test )
 
     for( var ins = -1 ; ins < top+1 ; ins++ )
     {
-      var index = _.arraySortedLookUpIndex( array, ins );
+      var index = _.sorted.lookUpIndex( array, ins );
 
       if( 1 <= index && index <= array.length-1 )
       test.is( array[ index-1 ] <= array[ index ] );
@@ -475,16 +475,16 @@ function arraySortedLookUpIndex( test )
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLookUpIndex( a, 0, function() {} );
+    _.sorted.lookUpIndex( a, 0, function() {} );
   });
 
 }
 
-arraySortedLookUpIndex.timeOut = 60000;
+lookUpIndex.timeOut = 60000;
 
 //
 
-function arraySortedLookUpClosestIndex( test )
+function lookUpClosestIndex( test )
 {
 
   test.case = 'simples';
@@ -497,66 +497,66 @@ function arraySortedLookUpClosestIndex( test )
 
   var a = [ 1, 2, 3 ];
 
-  var i = _.arraySortedLookUpClosestIndex( a, 0 );
+  var i = _.sorted.lookUpClosestIndex( a, 0 );
   test.identical( i, 0 );
 
-  var i = _.arraySortedLookUpClosestIndex( a, 1 );
+  var i = _.sorted.lookUpClosestIndex( a, 1 );
   test.identical( i, 0 );
 
-  var i = _.arraySortedLookUpClosestIndex( a, 2 );
+  var i = _.sorted.lookUpClosestIndex( a, 2 );
   test.identical( i, 1 );
 
-  var i = _.arraySortedLookUpClosestIndex( a, 3 );
+  var i = _.sorted.lookUpClosestIndex( a, 3 );
   test.identical( i, 2 );
 
-  var i = _.arraySortedLookUpClosestIndex( a, 4 );
+  var i = _.sorted.lookUpClosestIndex( a, 4 );
   test.identical( i, 3 );
 
   //
 
   var a = [ 1, 3, 5, 7 ];
 
-  var i = _.arraySortedLookUpClosestIndex( a, 2 );
+  var i = _.sorted.lookUpClosestIndex( a, 2 );
   test.identical( i, 1 );
 
-  var i = _.arraySortedLookUpClosestIndex( a, 6 );
+  var i = _.sorted.lookUpClosestIndex( a, 6 );
   test.identical( i, 3 );
 
-  var i = _.arraySortedLookUpClosestIndex( a, -1 );
+  var i = _.sorted.lookUpClosestIndex( a, -1 );
   test.identical( i, 0 );
 
   //
 
   var a = [ 1, 1, 3, 3, 5, 5 ];
 
-  var i = _.arraySortedLookUpClosestIndex( a, 1 );
+  var i = _.sorted.lookUpClosestIndex( a, 1 );
   test.identical( i, 1 );
 
-  var i = _.arraySortedLookUpClosestIndex( a, 3 );
+  var i = _.sorted.lookUpClosestIndex( a, 3 );
   test.identical( i, 3 );
 
-  var i = _.arraySortedLookUpClosestIndex( a, 5 );
+  var i = _.sorted.lookUpClosestIndex( a, 5 );
   test.identical( i, 5 );
 
-  var i = _.arraySortedLookUpClosestIndex( a, -1 );
+  var i = _.sorted.lookUpClosestIndex( a, -1 );
   test.identical( i, 0 );
 
   //
 
-  var i = _.arraySortedLookUpClosestIndex( [], 1 );
+  var i = _.sorted.lookUpClosestIndex( [], 1 );
   test.identical( i, 0 );
 
   //
 
   var a = [ 5, 4, 3, 2, 1 ];
 
-  var i = _.arraySortedLookUpClosestIndex( a, 2 );
+  var i = _.sorted.lookUpClosestIndex( a, 2 );
   test.identical( i, 0 );
 
-  var i = _.arraySortedLookUpClosestIndex( a, 1 );
+  var i = _.sorted.lookUpClosestIndex( a, 1 );
   test.identical( i, 0 );
 
-  var i = _.arraySortedLookUpClosestIndex( a, 3 );
+  var i = _.sorted.lookUpClosestIndex( a, 3 );
   test.identical( i, 2 );
 
   //
@@ -568,7 +568,7 @@ function arraySortedLookUpClosestIndex( test )
     return Math.floor( value );
   }
 
-  var i = _.arraySortedLookUpClosestIndex( arr, 5, transformer );
+  var i = _.sorted.lookUpClosestIndex( arr, 5, transformer );
   test.identical( i, 2 )
 
   //
@@ -580,7 +580,7 @@ function arraySortedLookUpClosestIndex( test )
     return a.value - b.value;
   }
 
-  var i = _.arraySortedLookUpClosestIndex( arr, { value : 2 }, comparator );
+  var i = _.sorted.lookUpClosestIndex( arr, { value : 2 }, comparator );
   test.identical( i, 1 )
 
   /**/
@@ -590,7 +590,7 @@ function arraySortedLookUpClosestIndex( test )
 
     for( var ins = -1 ; ins < top+1 ; ins++ )
     {
-      var index = _.arraySortedLookUpClosestIndex( array, ins );
+      var index = _.sorted.lookUpClosestIndex( array, ins );
 
       if( 1 <= index && index <= array.length-1 )
       test.is( array[ index-1 ] <= array[ index ] );
@@ -635,21 +635,21 @@ function arraySortedLookUpClosestIndex( test )
   {
     test.shouldThrowErrorSync( function()
     {
-      _.arraySortedLookUpClosestIndex( a, 0, function() {} );
+      _.sorted.lookUpClosestIndex( a, 0, function() {} );
     })
     test.shouldThrowErrorSync( function()
     {
-      _.arraySortedLookUpClosestIndex( a, 0, 0 );
+      _.sorted.lookUpClosestIndex( a, 0, 0 );
     })
   }
 
 }
 
-arraySortedLookUpClosestIndex.timeOut = 60000;
+lookUpClosestIndex.timeOut = 60000;
 
 //
 
-function arraySortedLookUpInterval( test )
+function lookUpInterval( test )
 {
   var self = this;
 
@@ -657,81 +657,81 @@ function arraySortedLookUpInterval( test )
 
   var arr = [ 0, 0, 0, 0, 1, 1, 1, 1 ];
 
-  var range = _.arraySortedLookUpInterval( arr, [ 1, 1 ] );
+  var range = _.sorted.lookUpInterval( arr, [ 1, 1 ] );
   test.identical( range, [ 4, 8 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ 1, 2 ] );
+  var range = _.sorted.lookUpInterval( arr, [ 1, 2 ] );
   test.identical( range, [ 4, 8 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ 0, 0 ] );
+  var range = _.sorted.lookUpInterval( arr, [ 0, 0 ] );
   test.identical( range, [ 0, 4 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ -1, 0 ] );
+  var range = _.sorted.lookUpInterval( arr, [ -1, 0 ] );
   test.identical( range, [ 0, 4 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ 0, 1 ] );
+  var range = _.sorted.lookUpInterval( arr, [ 0, 1 ] );
   test.identical( range, [ 0, 8 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ -1, 3 ] );
+  var range = _.sorted.lookUpInterval( arr, [ -1, 3 ] );
   test.identical( range, [ 0, 8 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ -2, -1 ] );
+  var range = _.sorted.lookUpInterval( arr, [ -2, -1 ] );
   test.identical( range, [ 0, 0 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ 2, 3 ] );
+  var range = _.sorted.lookUpInterval( arr, [ 2, 3 ] );
   test.identical( range, [ 8, 8 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ -1, -1 ] );
+  var range = _.sorted.lookUpInterval( arr, [ -1, -1 ] );
   test.identical( range, [ 0, 0 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ -1, 1 ] );
+  var range = _.sorted.lookUpInterval( arr, [ -1, 1 ] );
   test.identical( range, [ 0, 8 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ '0', 0 ] );
+  var range = _.sorted.lookUpInterval( arr, [ '0', 0 ] );
   test.identical( range, [ 0, 4 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ '0', '1' ] );
+  var range = _.sorted.lookUpInterval( arr, [ '0', '1' ] );
   test.identical( range, [ 0, 8 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ '-1', '1' ] );
+  var range = _.sorted.lookUpInterval( arr, [ '-1', '1' ] );
   test.identical( range, [ 0, 8 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ 1, 0 ] );
+  var range = _.sorted.lookUpInterval( arr, [ 1, 0 ] );
   test.identical( range, [ 4, 4 ] );
 
   //
 
   var arr = [ 0, 0, 0, 0, 1, 1, 1, 2, 3 ];
 
-  var range = _.arraySortedLookUpInterval( arr, [ '1', '2' ] );
+  var range = _.sorted.lookUpInterval( arr, [ '1', '2' ] );
   test.identical( range, [ 4, 8 ] );
 
   /* arr[ range[ 1 ] ] < range[ 1 ], increase by 1 */
   var arr = [ 0, 1, 0 ];
-  var range = _.arraySortedLookUpInterval( arr, [ 0, 3 ] );
+  var range = _.sorted.lookUpInterval( arr, [ 0, 3 ] );
 
   //
 
   var arr = [ 5, 4, 3, 2, 1 ];
 
-  var range = _.arraySortedLookUpInterval( arr, [ 5, 1 ] );
+  var range = _.sorted.lookUpInterval( arr, [ 5, 1 ] );
   test.identical( range, [ 5, 5 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ 1, 5 ] );
+  var range = _.sorted.lookUpInterval( arr, [ 1, 5 ] );
   test.identical( range, [ 0, 5 ] );
 
-  var range = _.arraySortedLookUpInterval( arr, [ 5, 5 ] );
+  var range = _.sorted.lookUpInterval( arr, [ 5, 5 ] );
   test.identical( range, [ 5, 5 ] );
 
   //
 
-  var range = _.arraySortedLookUpInterval( [], [ 1, 1 ] );
+  var range = _.sorted.lookUpInterval( [], [ 1, 1 ] );
   test.identical( range, [ 0, 0 ] );
 
   /* */
 
   var arr = [ 2, 2, 4, 18, 25, 25, 25, 26, 33, 36 ];
-  var range = _.arraySortedLookUpInterval( arr, [ 7, 28 ] );
+  var range = _.sorted.lookUpInterval( arr, [ 7, 28 ] );
   test.identical( range, [ 3, 8 ] );
 
   /* */
@@ -745,7 +745,7 @@ function arraySortedLookUpInterval( test )
       interval[ 1 ] = interval[ 0 ] + Math.round( Math.random()*( top+2 - interval[ 0 ] ) );
 
       // debugger;
-      var range = _.arraySortedLookUpInterval( arr, interval );
+      var range = _.sorted.lookUpInterval( arr, interval );
 
       if( range[ 0 ] < arr.length )
       test.is( arr[ range[ 0 ] ] >= interval[ 0 ] );
@@ -796,86 +796,118 @@ function arraySortedLookUpInterval( test )
   var arr = [ 1, 1, 1, 0, 0, 0 ];
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLookUpInterval( arr );
+    _.sorted.lookUpInterval( arr );
   })
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLookUpInterval( arr, [ 0, 1 ], function() {} );
+    _.sorted.lookUpInterval( arr, [ 0, 1 ], function() {} );
   })
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLookUpInterval( arr, [ 0, 1], 1 );
+    _.sorted.lookUpInterval( arr, [ 0, 1], 1 );
   })
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLookUpInterval( arr, [ 0 ] );
+    _.sorted.lookUpInterval( arr, [ 0 ] );
   })
 
 }
 
-arraySortedLookUpInterval.timeOut = 60000;
+lookUpInterval.timeOut = 60000;
 
 //
 
-function arraySortedLookUpIntervalNarrowest( test )
+function lookUpIntervalNarrowest( test )
 {
   var self = this;
+
+  /* - */
+
+  test.open( 'extreme' );
+
+  var arr = [ 3, 8, 16, 17, 30, 35, 35, 36, 37, 47 ];
+  var got = _.sorted.lookUpIntervalNarrowest( arr, [ 42, 44 ] );
+  test.identical( got, [ 9, 9 ] );
+
+  var arr = [ 3, 8, 16, 17, 30, 35, 35, 36, 37, 47 ];
+  var got = _.sorted.lookUpIntervalNarrowest( arr, [ 48, 49 ] );
+  test.identical( got, [ 10, 10 ] );
+
+  var arr = [];
+  var got = _.sorted.lookUpIntervalNarrowest( arr, [ 48, 49 ] );
+  test.identical( got, [ 0, 0 ] );
+
+  var arr = [ 47 ];
+  var got = _.sorted.lookUpIntervalNarrowest( arr, [ 48, 49 ] );
+  test.identical( got, [ 1, 1 ] );
+
+  var arr = [ 48 ];
+  var got = _.sorted.lookUpIntervalNarrowest( arr, [ 48, 49 ] );
+  test.identical( got, [ 0, 1 ] );
+
+  var arr = [ 49 ];
+  var got = _.sorted.lookUpIntervalNarrowest( arr, [ 48, 49 ] );
+  test.identical( got, [ 0, 1 ] );
+
+  var arr = [ 50 ];
+  var got = _.sorted.lookUpIntervalNarrowest( arr, [ 48, 49 ] );
+  test.identical( got, [ 0, 0 ] );
+
+  test.close( 'extreme' );
 
   /* */
 
   var arr = [ 0, 0, 0, 0, 1, 1, 1, 1 ];
 
-  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 1, 1 ] );
+  var range = _.sorted.lookUpIntervalNarrowest( arr, [ 1, 1 ] );
   test.identical( range, [ 7, 8 ] );
 
-  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 1, 2 ] );
+  var range = _.sorted.lookUpIntervalNarrowest( arr, [ 1, 2 ] );
   test.identical( range, [ 7, 8 ] );
 
-  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 0, 0 ] );
+  var range = _.sorted.lookUpIntervalNarrowest( arr, [ 0, 0 ] );
   test.identical( range, [ 3, 4 ] );
 
-  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ -1, 0 ] );
+  var range = _.sorted.lookUpIntervalNarrowest( arr, [ -1, 0 ] );
   test.identical( range, [ 0, 1 ] );
 
-  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 0, 1 ] );
+  var range = _.sorted.lookUpIntervalNarrowest( arr, [ 0, 1 ] );
   test.identical( range, [ 3, 5 ] );
 
-  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ -1, 3 ] );
+  var range = _.sorted.lookUpIntervalNarrowest( arr, [ -1, 3 ] );
   test.identical( range, [ 0, 8 ] );
 
-  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ -2, -1 ] );
+  var range = _.sorted.lookUpIntervalNarrowest( arr, [ -2, -1 ] );
   test.identical( range, [ 0, 0 ] );
 
-  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 2, 3 ] );
+  var range = _.sorted.lookUpIntervalNarrowest( arr, [ 2, 3 ] );
   test.identical( range, [ 8, 8 ] );
 
   var arr = [ 0, 1, 2 ];
-  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 3, 3 ] );
+  var range = _.sorted.lookUpIntervalNarrowest( arr, [ 3, 3 ] );
   test.identical( range, [ 3, 3 ] );
 
   /* */
 
   var arr = [ 2, 2, 4, 18, 25, 25, 25, 26, 33, 36 ];
 
-  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 7, 28 ] );
+  var range = _.sorted.lookUpIntervalNarrowest( arr, [ 7, 28 ] );
   test.identical( range, [ 3, 8 ] );
 
-  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 1, 0 ] );
+  var range = _.sorted.lookUpIntervalNarrowest( arr, [ 1, 0 ] );
   test.identical( range, [ 0, 0 ] );
 
-  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 25, 25 ] );
+  var range = _.sorted.lookUpIntervalNarrowest( arr, [ 25, 25 ] );
   test.identical( range, [ 6, 7 ] );
 
-  var range = _.arraySortedLookUpIntervalNarrowest( arr, [ 36, 37 ] );
+  var range = _.sorted.lookUpIntervalNarrowest( arr, [ 36, 37 ] );
   test.identical( range, [ 9, 10 ] );
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLookUpIntervalNarrowest( arr );
+    _.sorted.lookUpIntervalNarrowest( arr );
   })
-
-  return;
 
   /* */
 
@@ -888,7 +920,7 @@ function arraySortedLookUpIntervalNarrowest( test )
       interval[ 1 ] = interval[ 0 ] + Math.round( Math.random()*( top+2 - interval[ 0 ] ) );
 
       // debugger;
-      var range = _.arraySortedLookUpIntervalNarrowest( arr, interval );
+      var range = _.sorted.lookUpIntervalNarrowest( arr, interval );
 
       if( range[ 0 ] < arr.length )
       test.is( arr[ range[ 0 ] ] >= interval[ 0 ] );
@@ -935,11 +967,11 @@ function arraySortedLookUpIntervalNarrowest( test )
   debugger;
 }
 
-arraySortedLookUpIntervalNarrowest.timeOut = 60000;
+lookUpIntervalNarrowest.timeOut = 60000;
 
 //
 
-function arraySortedLookUpIntervalHaving( test )
+function lookUpIntervalHaving( test )
 {
 
   test.open( 'repeats, gaps' );
@@ -948,49 +980,49 @@ function arraySortedLookUpIntervalHaving( test )
 
   var range = [ -1, -1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, -1 ];
   test.identical( got, expected );
 
   var range = [ -1, 0 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, -1 ];
   test.identical( got, expected );
 
   var range = [ -1, 1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, 2 ];
   test.identical( got, expected );
 
   var range = [ -1, 2 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, 2 ];
   test.identical( got, expected );
 
   var range = [ -1, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, 3 ];
   test.identical( got, expected );
 
   var range = [ -1, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, 3 ];
   test.identical( got, expected );
 
   var range = [ -1, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, 5 ];
   test.identical( got, expected );
 
   var range = [ -1, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, 5 ];
   test.identical( got, expected );
 
@@ -998,49 +1030,49 @@ function arraySortedLookUpIntervalHaving( test )
 
   var range = [ 0, -1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 0 ];
   test.identical( got, expected );
 
   var range = [ 0, 0 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 0 ];
   test.identical( got, expected );
 
   var range = [ 0, 1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 2 ];
   test.identical( got, expected );
 
   var range = [ 0, 2 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 2 ];
   test.identical( got, expected );
 
   var range = [ 0, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 3 ];
   test.identical( got, expected );
 
   var range = [ 0, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 3 ];
   test.identical( got, expected );
 
   var range = [ 0, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 5 ];
   test.identical( got, expected );
 
   var range = [ 0, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 5 ];
   test.identical( got, expected );
 
@@ -1050,49 +1082,49 @@ function arraySortedLookUpIntervalHaving( test )
 
   var range = [ 1, -1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 1 ];
   test.identical( got, expected );
 
   var range = [ 1, 0 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 1 ];
   test.identical( got, expected );
 
   var range = [ 1, 1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 2 ];
   test.identical( got, expected );
 
   var range = [ 1, 2 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 2 ];
   test.identical( got, expected );
 
   var range = [ 1, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 3 ];
   test.identical( got, expected );
 
   var range = [ 1, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 3 ];
   test.identical( got, expected );
 
   var range = [ 1, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
   var range = [ 1, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
@@ -1100,49 +1132,49 @@ function arraySortedLookUpIntervalHaving( test )
 
   var range = [ 2, -1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 0 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 2 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 3 ];
   test.identical( got, expected );
 
   var range = [ 2, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 3 ];
   test.identical( got, expected );
 
   var range = [ 2, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
   var range = [ 2, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
@@ -1152,25 +1184,25 @@ function arraySortedLookUpIntervalHaving( test )
 
   var range = [ 3, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 3 ];
   test.identical( got, expected );
 
   var range = [ 3, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 3 ];
   test.identical( got, expected );
 
   var range = [ 3, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
   var range = [ 3, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
@@ -1178,19 +1210,19 @@ function arraySortedLookUpIntervalHaving( test )
 
   var range = [ 4, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 3, 3 ];
   test.identical( got, expected );
 
   var range = [ 4, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 3, 5 ];
   test.identical( got, expected );
 
   var range = [ 4, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 3, 5 ];
   test.identical( got, expected );
 
@@ -1200,13 +1232,13 @@ function arraySortedLookUpIntervalHaving( test )
 
   var range = [ 5, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
   var range = [ 5, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
@@ -1214,7 +1246,7 @@ function arraySortedLookUpIntervalHaving( test )
 
   var range = [ 6, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalHaving( arr, range );
+  var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
@@ -1227,49 +1259,49 @@ function arraySortedLookUpIntervalHaving( test )
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 53, 54 ];
   var expected = [ 3,4 ];
-  var got = _.arraySortedLookUpIntervalHaving( ranges, range );
+  var got = _.sorted.lookUpIntervalHaving( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 53, 55 ];
   var expected = [ 3,4 ];
-  var got = _.arraySortedLookUpIntervalHaving( ranges, range );
+  var got = _.sorted.lookUpIntervalHaving( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 53, 56 ];
   var expected = [ 3,5 ];
-  var got = _.arraySortedLookUpIntervalHaving( ranges, range );
+  var got = _.sorted.lookUpIntervalHaving( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 0, 0 ];
   var expected = [ 0, 0 ];
-  var got = _.arraySortedLookUpIntervalHaving( ranges, range );
+  var got = _.sorted.lookUpIntervalHaving( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 0, 1 ];
   var expected = [ 0, 1 ];
-  var got = _.arraySortedLookUpIntervalHaving( ranges, range );
+  var got = _.sorted.lookUpIntervalHaving( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 0, 2 ];
   var expected = [ 0, 2 ];
-  var got = _.arraySortedLookUpIntervalHaving( ranges, range );
+  var got = _.sorted.lookUpIntervalHaving( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 0, 3 ];
   var expected = [ 0, 2 ];
-  var got = _.arraySortedLookUpIntervalHaving( ranges, range );
+  var got = _.sorted.lookUpIntervalHaving( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ -1, 0 ];
   var expected = [ -1, -1 ];
-  var got = _.arraySortedLookUpIntervalHaving( ranges, range );
+  var got = _.sorted.lookUpIntervalHaving( ranges, range );
   test.identical( got, expected );
 
   test.close( 'special' );
@@ -1278,7 +1310,7 @@ function arraySortedLookUpIntervalHaving( test )
 
 //
 
-function arraySortedLookUpIntervalEmbracingAtLeast( test )
+function lookUpIntervalEmbracingAtLeast( test )
 {
   var self = this;
 
@@ -1288,49 +1320,49 @@ function arraySortedLookUpIntervalEmbracingAtLeast( test )
 
   var range = [ -1, -1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 1 ]; /* 0, 0 */
   test.identical( got, expected );
 
   var range = [ -1, 0 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 1 ];
   test.identical( got, expected );
 
   var range = [ -1, 1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 2 ]; /* 0, 3 */
   test.identical( got, expected );
 
   var range = [ -1, 2 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 2 ]; /* 0, 3 */
   test.identical( got, expected );
 
   var range = [ -1, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 4 ];
   test.identical( got, expected );
 
   var range = [ -1, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 4 ];
   test.identical( got, expected );
 
   var range = [ -1, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 5 ];
   test.identical( got, expected );
 
   var range = [ -1, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 5 ];
   test.identical( got, expected );
 
@@ -1338,49 +1370,49 @@ function arraySortedLookUpIntervalEmbracingAtLeast( test )
 
   var range = [ 0, -1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ]; /* 1, 1 */
   test.identical( got, expected );
 
   var range = [ 0, 0 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ];
   test.identical( got, expected );
 
   var range = [ 0, 1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ]; /* 1, 3 */
   test.identical( got, expected );
 
   var range = [ 0, 2 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ]; /* 1, 3 */
   test.identical( got, expected );
 
   var range = [ 0, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 0, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 0, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
   var range = [ 0, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
@@ -1390,49 +1422,49 @@ function arraySortedLookUpIntervalEmbracingAtLeast( test )
 
   var range = [ 1, -1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ]; /* 1, 2 */
   test.identical( got, expected );
 
   var range = [ 1, 0 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ];
   test.identical( got, expected );
 
   var range = [ 1, 1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ]; /* 1, 3 */
   test.identical( got, expected );
 
   var range = [ 1, 2 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ]; /* 1, 3 */
   test.identical( got, expected );
 
   var range = [ 1, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 1, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 1, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
   var range = [ 1, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
@@ -1442,49 +1474,49 @@ function arraySortedLookUpIntervalEmbracingAtLeast( test )
 
   var range = [ 2, -1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ]; /* 2, 2 */
   test.identical( got, expected );
 
   var range = [ 2, 0 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ]; /* 2, 2 */
   test.identical( got, expected );
 
   var range = [ 2, 1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ]; /* 2, 2 */
   test.identical( got, expected );
 
   var range = [ 2, 2 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ]; /* 2, 2 */
   test.identical( got, expected );
 
   var range = [ 2, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 2, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 2, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
   var range = [ 2, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
@@ -1494,25 +1526,25 @@ function arraySortedLookUpIntervalEmbracingAtLeast( test )
 
   var range = [ 3, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 3, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 3, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
   var range = [ 3, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
@@ -1520,19 +1552,19 @@ function arraySortedLookUpIntervalEmbracingAtLeast( test )
 
   var range = [ 4, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
   var range = [ 4, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
   var range = [ 4, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
@@ -1542,13 +1574,13 @@ function arraySortedLookUpIntervalEmbracingAtLeast( test )
 
   var range = [ 5, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 4, 5 ]; /* 5, 5 */
   test.identical( got, expected );
 
   var range = [ 5, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 4, 5 ]; /* 5, 5 */
   test.identical( got, expected );
 
@@ -1556,7 +1588,7 @@ function arraySortedLookUpIntervalEmbracingAtLeast( test )
 
   var range = [ 6, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 4, 5 ]; /* 5, 5 */
   test.identical( got, expected );
 
@@ -1569,49 +1601,49 @@ function arraySortedLookUpIntervalEmbracingAtLeast( test )
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 53, 54 ];
   var expected = [ 3, 4 ]; /* 3, 5 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 53, 55 ];
   var expected = [ 3, 4 ]; /* 3, 5 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 53, 56 ];
   var expected = [ 3, 5 ]; /* 3, 6 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 0, 0 ];
   var expected = [ 0, 1 ];
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 0, 1 ];
   var expected = [ 0, 1 ]; /* 0, 2 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 0, 2 ];
   var expected = [ 0, 2 ]; /* 0, 2 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 0, 3 ];
   var expected = [ 0, 2 ]; /* 0, 3 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ -1, 0 ];
   var expected = [ 0, 1 ]; /* -1, -1 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeast( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeast( ranges, range );
   test.identical( got, expected );
 
   test.close( 'special' );
@@ -1620,67 +1652,67 @@ function arraySortedLookUpIntervalEmbracingAtLeast( test )
 
   var arr = [ 0, 0, 5, 5, 9, 9 ];
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 5, 9 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 5, 9 ] );
   test.identical( range, [ 3, 5 ] ); /* 3, 5 */
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 0, 5 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 0, 5 ] );
   test.identical( range, [ 1, 3 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 0, 3 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 0, 3 ] );
   test.identical( range, [ 1, 3 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 2, 5 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 2, 5 ] );
   test.identical( range, [ 1, 3 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 2, 3 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 2, 3 ] );
   test.identical( range, [ 1, 3 ] );
 
   var arr = [ 0, 0, 5, 5, 5, 9, 9 ];
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 2, 3 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 2, 3 ] );
   test.identical( range, [ 1, 4 ] );
 
   /* - */
 
   var arr = [ 0, 0, 0, 0, 1, 1, 1, 1 ];
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 1, 1 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 1, 1 ] );
   test.identical( range, [ 7, 8 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 1, 2 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 1, 2 ] );
   test.identical( range, [ 7, 8 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 0, 0 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 0, 0 ] );
   test.identical( range, [ 3, 7 ] ); /* 3, 4 */
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ -1, 0 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ -1, 0 ] );
   test.identical( range, [ 0, 3 ] ); /* 0, 1 */
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 0, 1 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 0, 1 ] );
   test.identical( range, [ 3, 7 ] ); /* 3, 5 */
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ -1, 3 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ -1, 3 ] );
   test.identical( range, [ 0, 8 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ -2, -1 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ -2, -1 ] );
   test.identical( range, [ 0, 3 ] ); /* 0, 0 */
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 2, 3 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 2, 3 ] );
   test.identical( range, [ 7, 8 ] ); /* 8, 8 */
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 1, 0 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 1, 0 ] );
   test.identical( range, [ 7, 8 ] ); /* 7, 7 */
 
   test.case = 'empty';
 
   var arr = [];
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 1, 0 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 1, 0 ] );
   test.identical( range, [ 0, 0 ] );
 
   test.case = 'full';
 
   var arr = [ 2, 2, 4, 18, 25, 25, 25, 26, 33, 36 ];
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, [ 7, 28 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, [ 7, 28 ] );
   test.identical( range, [ 2, 8 ] ); /* 2, 9 */
 
   /* */
@@ -1694,7 +1726,7 @@ function arraySortedLookUpIntervalEmbracingAtLeast( test )
       interval[ 1 ] = interval[ 0 ] + Math.round( Math.random()*( top+2 - interval[ 0 ] ) );
 
       // debugger;
-      var range = _.arraySortedLookUpIntervalEmbracingAtLeast( arr, interval );
+      var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, interval );
 
       if( range[ 0 ] > 0 )
       test.is( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
@@ -1738,26 +1770,26 @@ function arraySortedLookUpIntervalEmbracingAtLeast( test )
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLookUpIntervalEmbracingAtLeast( [], [ 0, 1 ], function() {} );
+    _.sorted.lookUpIntervalEmbracingAtLeast( [], [ 0, 1 ], function() {} );
   })
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLookUpIntervalEmbracingAtLeast( [], [ 0, 1 ], 0 );
+    _.sorted.lookUpIntervalEmbracingAtLeast( [], [ 0, 1 ], 0 );
   })
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLookUpIntervalEmbracingAtLeast( [ 3, 1, 2 ], [ 1, 2] );
+    _.sorted.lookUpIntervalEmbracingAtLeast( [ 3, 1, 2 ], [ 1, 2] );
   })
 
 }
 
-arraySortedLookUpIntervalEmbracingAtLeast.timeOut = 60000;
+lookUpIntervalEmbracingAtLeast.timeOut = 60000;
 
 //
 
-function arraySortedLookUpIntervalEmbracingAtLeastOld( test )
+function lookUpIntervalEmbracingAtLeastOld( test )
 {
   var self = this;
 
@@ -1767,49 +1799,49 @@ function arraySortedLookUpIntervalEmbracingAtLeastOld( test )
 
   var range = [ -1, -1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 0 ];
   test.identical( got, expected );
 
   var range = [ -1, 0 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 1 ];
   test.identical( got, expected );
 
   var range = [ -1, 1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 3 ]; /* xxx */
   test.identical( got, expected );
 
   var range = [ -1, 2 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 3 ];
   test.identical( got, expected );
 
   var range = [ -1, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 4 ];
   test.identical( got, expected );
 
   var range = [ -1, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 4 ];
   test.identical( got, expected );
 
   var range = [ -1, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 5 ];
   test.identical( got, expected );
 
   var range = [ -1, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 5 ];
   test.identical( got, expected );
 
@@ -1817,49 +1849,49 @@ function arraySortedLookUpIntervalEmbracingAtLeastOld( test )
 
   var range = [ 0, -1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 1 ];
   test.identical( got, expected );
 
   var range = [ 0, 0 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 2 ];
   test.identical( got, expected );
 
   var range = [ 0, 1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 3 ];
   test.identical( got, expected );
 
   var range = [ 0, 2 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 3 ];
   test.identical( got, expected );
 
   var range = [ 0, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 0, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 0, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
   var range = [ 0, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
@@ -1869,49 +1901,49 @@ function arraySortedLookUpIntervalEmbracingAtLeastOld( test )
 
   var range = [ 1, -1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 1 ];
   test.identical( got, expected );
 
   var range = [ 1, 0 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 2 ];
   test.identical( got, expected );
 
   var range = [ 1, 1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 3 ]; /* xxx */
   test.identical( got, expected );
 
   var range = [ 1, 2 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 3 ];
   test.identical( got, expected );
 
   var range = [ 1, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 1, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 1, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
   var range = [ 1, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
@@ -1921,49 +1953,49 @@ function arraySortedLookUpIntervalEmbracingAtLeastOld( test )
 
   var range = [ 2, -1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 0 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 1 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 2 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 3 ];
   test.identical( got, expected );
 
   var range = [ 2, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 2, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 2, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
   var range = [ 2, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
@@ -1973,25 +2005,25 @@ function arraySortedLookUpIntervalEmbracingAtLeastOld( test )
 
   var range = [ 3, 3 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 3, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 3, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
   var range = [ 3, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
@@ -1999,19 +2031,19 @@ function arraySortedLookUpIntervalEmbracingAtLeastOld( test )
 
   var range = [ 4, 4 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
   var range = [ 4, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
   var range = [ 4, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
@@ -2021,13 +2053,13 @@ function arraySortedLookUpIntervalEmbracingAtLeastOld( test )
 
   var range = [ 5, 5 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 5, 5 ];
   test.identical( got, expected );
 
   var range = [ 5, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 5, 5 ];
   test.identical( got, expected );
 
@@ -2035,7 +2067,7 @@ function arraySortedLookUpIntervalEmbracingAtLeastOld( test )
 
   var range = [ 6, 6 ];
   test.case = _.toStr( range );
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 5, 5 ];
   test.identical( got, expected );
 
@@ -2048,49 +2080,49 @@ function arraySortedLookUpIntervalEmbracingAtLeastOld( test )
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 53, 54 ];
   var expected = [ 3, 5 ]; /* 3, 4 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 53, 55 ];
   var expected = [ 3, 5 ]; /* 3, 4 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 53, 56 ];
   var expected = [ 3, 6 ]; /* 3, 5 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 0, 0 ];
   var expected = [ 0, 1 ]; /* 0, 0 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 0, 1 ];
   var expected = [ 0, 2 ]; /* 0, 1 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 0, 2 ];
   var expected = [ 0, 3 ]; /* 0, 2 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 0, 3 ];
   var expected = [ 0, 3 ]; /* 0, 2 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ -1, 0 ];
   var expected = [ 0, 1 ]; /* -1, -1 */
-  var got = _.arraySortedLookUpIntervalEmbracingAtLeastOld( ranges, range );
+  var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( ranges, range );
   test.identical( got, expected );
 
   test.close( 'special' );
@@ -2099,65 +2131,65 @@ function arraySortedLookUpIntervalEmbracingAtLeastOld( test )
 
   var arr = [ 0, 0, 5, 5, 9, 9 ];
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ 5, 9 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 5, 9 ] );
   test.identical( range, [ 3, 5 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ 0, 5 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 0, 5 ] );
   test.identical( range, [ 1, 3 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ 0, 3 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 0, 3 ] );
   test.identical( range, [ 1, 3 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ 2, 5 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 2, 5 ] );
   test.identical( range, [ 1, 3 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ 2, 3 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 2, 3 ] );
   test.identical( range, [ 1, 3 ] );
 
   /* - */
 
   var arr = [ 0, 0, 0, 0, 1, 1, 1, 1 ];
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ 1, 1 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 1, 1 ] );
   test.identical( range, [ 7, 8 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ 1, 2 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 1, 2 ] );
   test.identical( range, [ 7, 8 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ 0, 0 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 0, 0 ] );
   test.identical( range, [ 3, 4 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ -1, 0 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ -1, 0 ] );
   test.identical( range, [ 0, 1 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ 0, 1 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 0, 1 ] );
   test.identical( range, [ 3, 5 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ -1, 3 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ -1, 3 ] );
   test.identical( range, [ 0, 8 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ -2, -1 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ -2, -1 ] );
   test.identical( range, [ 0, 0 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ 2, 3 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 2, 3 ] );
   test.identical( range, [ 8, 8 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ 1, 0 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 1, 0 ] );
   test.identical( range, [ 7, 7 ] );
 
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr,[ '0','1' ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr,[ '0','1' ] );
   test.identical( range, [ 3, 5 ] );
 
   test.case = 'empty';
 
   var arr = [];
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ 1, 0 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 1, 0 ] );
   test.identical( range, [ 0, 0 ] );
 
   test.case = 'full';
 
   var arr = [ 2, 2, 4, 18, 25, 25, 25, 26, 33, 36 ];
-  var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, [ 7, 28 ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 7, 28 ] );
   test.identical( range, [ 2, 9 ] );
 
   /* */
@@ -2171,7 +2203,7 @@ function arraySortedLookUpIntervalEmbracingAtLeastOld( test )
       interval[ 1 ] = interval[ 0 ] + Math.round( Math.random()*( top+2 - interval[ 0 ] ) );
 
       // debugger;
-      var range = _.arraySortedLookUpIntervalEmbracingAtLeastOld( arr, interval );
+      var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, interval );
 
       if( range[ 0 ] > 0 )
       test.is( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
@@ -2215,26 +2247,26 @@ function arraySortedLookUpIntervalEmbracingAtLeastOld( test )
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLookUpIntervalEmbracingAtLeastOld( [], [ 0, 1 ], function() {} );
+    _.sorted.lookUpIntervalEmbracingAtLeastOld( [], [ 0, 1 ], function() {} );
   })
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLookUpIntervalEmbracingAtLeastOld( [], [ 0, 1 ], 0 );
+    _.sorted.lookUpIntervalEmbracingAtLeastOld( [], [ 0, 1 ], 0 );
   })
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLookUpIntervalEmbracingAtLeastOld( [ 3, 1, 2 ], [ 1, 2] );
+    _.sorted.lookUpIntervalEmbracingAtLeastOld( [ 3, 1, 2 ], [ 1, 2] );
   })
 
 }
 
-arraySortedLookUpIntervalEmbracingAtLeastOld.timeOut = 60000;
+lookUpIntervalEmbracingAtLeastOld.timeOut = 60000;
 
 //
 
-function arraySortedAdd( test )
+function add( test )
 {
   var self = this;
 
@@ -2275,7 +2307,7 @@ function arraySortedAdd( test )
     var expected = samples[ s ].slice();
     var got = [];
     for( var i = 0 ; i < expected.length ; i++ )
-    _.arraySortedAdd( got, expected[ i ] );
+    _.sorted.add( got, expected[ i ] );
     expected.sort( function( a, b ){ return a-b } );
     test.identical( got, expected );
   }
@@ -2284,33 +2316,33 @@ function arraySortedAdd( test )
 
 //
 
-function arraySortedAddOnce( test )
+function addOnce( test )
 {
-  test.case = 'arraySortedAddOnce test';
+  test.case = 'sorted.addOnce test';
 
   var arr = [];
-  _.arraySortedAddOnce( arr, 1 );
+  _.sorted.addOnce( arr, 1 );
   test.identical( arr, [ 1 ] );
 
   var arr = [ 1 ];
-  _.arraySortedAddOnce( arr, 1 );
+  _.sorted.addOnce( arr, 1 );
   test.identical( arr, [ 1 ] );
 
   var arr = [ 1, 3 ];
-  _.arraySortedAddOnce( arr, 2 );
+  _.sorted.addOnce( arr, 2 );
   test.identical( arr, [ 1, 2, 3 ] );
 
   var arr = [ 1, 3 ];
-  _.arraySortedAddOnce( arr, 0 );
+  _.sorted.addOnce( arr, 0 );
   test.identical( arr, [ 0, 1, 3 ] );
 
   var arr = [ 1, 3 ];
-  _.arraySortedAddOnce( arr, 4 );
+  _.sorted.addOnce( arr, 4 );
   test.identical( arr, [ 1, 3, 4 ] );
 
   var arr = [ 1 ];
   function comparator( a, b ){ return ( a - b ) + 1  }
-  _.arraySortedAddOnce( arr, 2, comparator );
+  _.sorted.addOnce( arr, 2, comparator );
   test.identical( arr, [ 2, 1 ] );
 
   if( !Config.debug )
@@ -2318,56 +2350,56 @@ function arraySortedAddOnce( test )
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedAddOnce();
+    _.sorted.addOnce();
   })
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedAddOnce( 0, 0 );
+    _.sorted.addOnce( 0, 0 );
   })
 
   test.case = 'not enough arguments';
   test.shouldThrowError( function()
   {
-    _.arraySortedAddOnce( [ 1, 2, 3, 4, 5 ] );
+    _.sorted.addOnce( [ 1, 2, 3, 4, 5 ] );
   });
 
   test.case = 'extra argument';
   test.shouldThrowError( function()
   {
-    _.arraySortedAddOnce( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
+    _.sorted.addOnce( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
   });
 }
 
 //
 
-function arraySortedAddArray( test )
+function addArray( test )
 {
-  test.case = 'arraySortedAddOnce test';
+  test.case = 'sorted.addOnce test';
 
   var arr = [];
-  _.arraySortedAddArray( arr, [ 1 ] );
+  _.sorted.addArray( arr, [ 1 ] );
   test.identical( arr, [ 1 ] );
 
   var arr = [ 1 ];
-  _.arraySortedAddArray( arr, [ 1 ] );
+  _.sorted.addArray( arr, [ 1 ] );
   test.identical( arr, [ 1, 1 ] );
 
   var arr = [ 1, 3 ];
-  _.arraySortedAddArray( arr, [ 2, 2, 2 ] );
+  _.sorted.addArray( arr, [ 2, 2, 2 ] );
   test.identical( arr, [ 1, 2, 2, 2, 3 ] );
 
   var arr = [ 1, 3 ];
-  _.arraySortedAddArray( arr, [ 0, 1 ] );
+  _.sorted.addArray( arr, [ 0, 1 ] );
   test.identical( arr, [ 0, 1, 1, 3 ] );
 
   var arr = [ 1, 3 ];
-  _.arraySortedAddArray( arr, [ 1, 4 ]  );
+  _.sorted.addArray( arr, [ 1, 4 ]  );
   test.identical( arr, [ 1, 1, 3, 4 ] );
 
   var arr = [ 1 ];
   function comparator( a, b ){ return ( a - b ) + 1  }
-  _.arraySortedAddArray( arr, [ 1, 2 ], comparator );
+  _.sorted.addArray( arr, [ 1, 2 ], comparator );
   test.identical( arr, [ 1, 2, 1 ] );
 
   if( !Config.debug )
@@ -2375,53 +2407,53 @@ function arraySortedAddArray( test )
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedAddArray();
+    _.sorted.addArray();
   });
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedAddArray( 0, 0 );
+    _.sorted.addArray( 0, 0 );
   });
 
 }
 
 //
 
-function arraySortedRemove( test )
+function remove( test )
 {
-  test.case = 'arraySortedAddOnce test';
+  test.case = 'sorted.addOnce test';
 
   var arr = [];
-  _.arraySortedRemove( arr, [ 1 ] );
+  _.sorted.remove( arr, [ 1 ] );
   test.identical( arr, [ ] );
 
   var arr = [ 1 ];
-  _.arraySortedRemove( arr, [ 1 ] );
+  _.sorted.remove( arr, [ 1 ] );
   test.identical( arr, [ ] );
 
   var arr = [ 1, 3 ];
-  _.arraySortedRemove( arr, 2 );
+  _.sorted.remove( arr, 2 );
   test.identical( arr, [ 1, 3 ] );
 
   var arr = [ 1, 3 ];
-  _.arraySortedRemove( arr, 3 );
+  _.sorted.remove( arr, 3 );
   test.identical( arr, [ 1 ] );
 
   var arr = [ 1, 1, 1 ];
-  _.arraySortedRemove( arr, 1 );
+  _.sorted.remove( arr, 1 );
   test.identical( arr, [ 1, 1 ] );
 
   var arr = [ 1, 3 ];
-  _.arraySortedRemove( arr, -1  );
+  _.sorted.remove( arr, -1  );
   test.identical( arr, [ 1, 3 ] );
 
   test.case = 'nothing to remove';
-  var got = _.arraySortedRemove( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } );
+  var got = _.sorted.remove( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } );
   var expected = false;
   test.identical( got, expected );
 
   test.case = 'remove last index from first argument';
-  var got = _.arraySortedRemove( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } );
+  var got = _.sorted.remove( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } );
   var expected = true;
   test.identical( got, expected );
 
@@ -2430,36 +2462,36 @@ function arraySortedRemove( test )
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedRemove();
+    _.sorted.remove();
   })
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedRemove( 0, 0 );
+    _.sorted.remove( 0, 0 );
   })
 
   test.case = 'first argument is wrong';
   test.shouldThrowError( function()
   {
-    _.arraySortedRemove( 'wrong argument', 5, function( a, b ) { return a - b } );
+    _.sorted.remove( 'wrong argument', 5, function( a, b ) { return a - b } );
   });
 
   test.case = 'not enough arguments';
   test.shouldThrowError( function()
   {
-    _.arraySortedRemove( [ 1, 2, 3, 4, 5 ] );
+    _.sorted.remove( [ 1, 2, 3, 4, 5 ] );
   });
 
   test.case = 'extra argument';
   test.shouldThrowError( function()
   {
-    _.arraySortedRemove( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
+    _.sorted.remove( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
   });
 }
 
 //
 
-function arraySortedLeftMostAtLeast( test )
+function leftMostAtLeast( test )
 {
 
   var arr = [ 0, 0, 0, 0, 1, 1, 1, 1 ];
@@ -2467,27 +2499,27 @@ function arraySortedLeftMostAtLeast( test )
   test.open( 'trivial repeats' );
 
   test.case = '-1';
-  var got = _.arraySortedLeftMostAtLeast( arr, -1 );
+  var got = _.sorted.leftMostAtLeast( arr, -1 );
   var expected = { value : 0, index : 0 }
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedLeftMostAtLeast( arr, 0 );
+  var got = _.sorted.leftMostAtLeast( arr, 0 );
   var expected = { value : 0, index : 0,  }
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedLeftMostAtLeast( arr, 1 );
+  var got = _.sorted.leftMostAtLeast( arr, 1 );
   var expected = { value : 1, index : 4 }
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedLeftMostAtLeast( arr, 2 );
+  var got = _.sorted.leftMostAtLeast( arr, 2 );
   var expected = { value : undefined, index : 8 }
   test.identical( got, expected );
 
   test.case = 'empty';
-  var got = _.arraySortedLeftMostAtLeast( [], 10 );
+  var got = _.sorted.leftMostAtLeast( [], 10 );
   var expected = { value : undefined, index : 0 }
   test.identical( got, expected );
 
@@ -2500,37 +2532,37 @@ function arraySortedLeftMostAtLeast( test )
   var arr = [ 0, 0, 1, 1, 2, 3, 3, 4, 4 ];
 
   test.case = '-1';
-  var got = _.arraySortedLeftMostAtLeast( arr, -1 );
+  var got = _.sorted.leftMostAtLeast( arr, -1 );
   var expected = { value : 0, index : 0 }
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedLeftMostAtLeast( arr, 0 );
+  var got = _.sorted.leftMostAtLeast( arr, 0 );
   var expected = { value : 0, index : 0 }
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedLeftMostAtLeast( arr, 1 );
+  var got = _.sorted.leftMostAtLeast( arr, 1 );
   var expected = { value : 1, index : 2 }
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedLeftMostAtLeast( arr, 2 );
+  var got = _.sorted.leftMostAtLeast( arr, 2 );
   var expected = { value : 2, index : 4 }
   test.identical( got, expected );
 
   test.case = '3';
-  var got = _.arraySortedLeftMostAtLeast( arr, 3 );
+  var got = _.sorted.leftMostAtLeast( arr, 3 );
   var expected = { value : 3, index : 5 }
   test.identical( got, expected );
 
   test.case = '4';
-  var got = _.arraySortedLeftMostAtLeast( arr, 4 );
+  var got = _.sorted.leftMostAtLeast( arr, 4 );
   var expected = { value : 4, index : 7 }
   test.identical( got, expected );
 
   test.case = '5';
-  var got = _.arraySortedLeftMostAtLeast( arr, 5 );
+  var got = _.sorted.leftMostAtLeast( arr, 5 );
   var expected = { value : undefined, index : 9 }
   test.identical( got, expected );
 
@@ -2543,37 +2575,37 @@ function arraySortedLeftMostAtLeast( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   test.case = '-1';
-  var got = _.arraySortedLeftMostAtLeast( arr, -1 );
+  var got = _.sorted.leftMostAtLeast( arr, -1 );
   var expected = { value : 0, index : 0 };
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedLeftMostAtLeast( arr, 0 );
+  var got = _.sorted.leftMostAtLeast( arr, 0 );
   var expected = { value : 0, index : 0 };
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedLeftMostAtLeast( arr, 1 );
+  var got = _.sorted.leftMostAtLeast( arr, 1 );
   var expected = { value : 2, index : 2 };
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedLeftMostAtLeast( arr, 2 );
+  var got = _.sorted.leftMostAtLeast( arr, 2 );
   var expected = { value : 2, index : 2 };
   test.identical( got, expected );
 
   test.case = '3';
-  var got = _.arraySortedLeftMostAtLeast( arr, 3 );
+  var got = _.sorted.leftMostAtLeast( arr, 3 );
   var expected = { value : 4, index : 3 };
   test.identical( got, expected );
 
   test.case = '4';
-  var got = _.arraySortedLeftMostAtLeast( arr, 4 );
+  var got = _.sorted.leftMostAtLeast( arr, 4 );
   var expected = { value : 4, index : 3 };
   test.identical( got, expected );
 
   test.case = '5';
-  var got = _.arraySortedLeftMostAtLeast( arr, 5 );
+  var got = _.sorted.leftMostAtLeast( arr, 5 );
   var expected = { value : undefined, index : 5 };
   test.identical( got, expected );
 
@@ -2587,7 +2619,7 @@ function arraySortedLeftMostAtLeast( test )
   {
     return ( a + 1 ) - b;
   }
-  var got = _.arraySortedLeftMostAtLeast( arr, 2, comparator  );
+  var got = _.sorted.leftMostAtLeast( arr, 2, comparator  );
   var expected = { value : 1, index : 4 }
   test.identical( got, expected );
 
@@ -2596,19 +2628,19 @@ function arraySortedLeftMostAtLeast( test )
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLeftMostAtLeast();
+    _.sorted.leftMostAtLeast();
   })
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLeftMostAtLeast( 0, 0 );
+    _.sorted.leftMostAtLeast( 0, 0 );
   })
 
 }
 
 //
 
-function arraySortedLeftMostAtMost( test )
+function leftMostAtMost( test )
 {
 
   var arr = [ 0, 0, 0, 0, 1, 1, 1, 1 ];
@@ -2616,27 +2648,27 @@ function arraySortedLeftMostAtMost( test )
   test.open( 'trivial repeats' );
 
   test.case = '-1';
-  var got = _.arraySortedLeftMostAtMost( arr, -1 );
+  var got = _.sorted.leftMostAtMost( arr, -1 );
   var expected = { value : undefined, index : -1 }
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedLeftMostAtMost( arr, 0 );
+  var got = _.sorted.leftMostAtMost( arr, 0 );
   var expected = { value : 0, index : 0,  }
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedLeftMostAtMost( arr, 1 );
+  var got = _.sorted.leftMostAtMost( arr, 1 );
   var expected = { value : 1, index : 4 }
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedLeftMostAtMost( arr, 2 );
+  var got = _.sorted.leftMostAtMost( arr, 2 );
   var expected = { value : 1, index : 7 }
   test.identical( got, expected );
 
   test.case = 'empty';
-  var got = _.arraySortedLeftMostAtMost( [], 10 );
+  var got = _.sorted.leftMostAtMost( [], 10 );
   var expected = { value : undefined, index : 0 }
   test.identical( got, expected );
 
@@ -2649,37 +2681,37 @@ function arraySortedLeftMostAtMost( test )
   var arr = [ 0, 0, 1, 1, 2, 3, 3, 4, 4 ];
 
   test.case = '-1';
-  var got = _.arraySortedLeftMostAtMost( arr, -1 );
+  var got = _.sorted.leftMostAtMost( arr, -1 );
   var expected = { value : undefined, index : -1 }
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedLeftMostAtMost( arr, 0 );
+  var got = _.sorted.leftMostAtMost( arr, 0 );
   var expected = { value : 0, index : 0 }
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedLeftMostAtMost( arr, 1 );
+  var got = _.sorted.leftMostAtMost( arr, 1 );
   var expected = { value : 1, index : 2 }
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedLeftMostAtMost( arr, 2 );
+  var got = _.sorted.leftMostAtMost( arr, 2 );
   var expected = { value : 2, index : 4 }
   test.identical( got, expected );
 
   test.case = '3';
-  var got = _.arraySortedLeftMostAtMost( arr, 3 );
+  var got = _.sorted.leftMostAtMost( arr, 3 );
   var expected = { value : 3, index : 5 }
   test.identical( got, expected );
 
   test.case = '4';
-  var got = _.arraySortedLeftMostAtMost( arr, 4 );
+  var got = _.sorted.leftMostAtMost( arr, 4 );
   var expected = { value : 4, index : 7 }
   test.identical( got, expected );
 
   test.case = '5';
-  var got = _.arraySortedLeftMostAtMost( arr, 5 );
+  var got = _.sorted.leftMostAtMost( arr, 5 );
   var expected = { value : 4, index : 8 }
   test.identical( got, expected );
 
@@ -2692,37 +2724,37 @@ function arraySortedLeftMostAtMost( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   test.case = '-1';
-  var got = _.arraySortedLeftMostAtMost( arr, -1 );
+  var got = _.sorted.leftMostAtMost( arr, -1 );
   var expected = { value : undefined, index : -1 };
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedLeftMostAtMost( arr, 0 );
+  var got = _.sorted.leftMostAtMost( arr, 0 );
   var expected = { value : 0, index : 0 };
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedLeftMostAtMost( arr, 1 );
+  var got = _.sorted.leftMostAtMost( arr, 1 );
   var expected = { value : 0, index : 1 };
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedLeftMostAtMost( arr, 2 );
+  var got = _.sorted.leftMostAtMost( arr, 2 );
   var expected = { value : 2, index : 2 };
   test.identical( got, expected );
 
   test.case = '3';
-  var got = _.arraySortedLeftMostAtMost( arr, 3 );
+  var got = _.sorted.leftMostAtMost( arr, 3 );
   var expected = { value : 2, index : 2 };
   test.identical( got, expected );
 
   test.case = '4';
-  var got = _.arraySortedLeftMostAtMost( arr, 4 );
+  var got = _.sorted.leftMostAtMost( arr, 4 );
   var expected = { value : 4, index : 3 };
   test.identical( got, expected );
 
   test.case = '5';
-  var got = _.arraySortedLeftMostAtMost( arr, 5 );
+  var got = _.sorted.leftMostAtMost( arr, 5 );
   var expected = { value : 4, index : 4 };
   test.identical( got, expected );
 
@@ -2736,7 +2768,7 @@ function arraySortedLeftMostAtMost( test )
   {
     return ( a + 1 ) - b;
   }
-  var got = _.arraySortedLeftMostAtMost( arr, 2, comparator  );
+  var got = _.sorted.leftMostAtMost( arr, 2, comparator  );
   var expected = { value : 1, index : 4 }
   test.identical( got, expected );
 
@@ -2745,19 +2777,19 @@ function arraySortedLeftMostAtMost( test )
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLeftMostAtMost();
+    _.sorted.leftMostAtMost();
   })
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedLeftMostAtMost( 0, 0 );
+    _.sorted.leftMostAtMost( 0, 0 );
   })
 
 }
 
 //
 
-function arraySortedRightMostAtLeast( test )
+function rightMostAtLeast( test )
 {
 
   var arr = [ 0, 0, 0, 0, 1, 1, 1, 1 ];
@@ -2765,27 +2797,27 @@ function arraySortedRightMostAtLeast( test )
   test.open( 'trivial repeats' );
 
   test.case = '-1';
-  var got = _.arraySortedRightMostAtLeast( arr, -1 );
+  var got = _.sorted.rightMostAtLeast( arr, -1 );
   var expected = { value : 0, index : 0 }
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedRightMostAtLeast( arr, 0 );
+  var got = _.sorted.rightMostAtLeast( arr, 0 );
   var expected = { value : 0, index : 3 }
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedRightMostAtLeast( arr, 1 );
+  var got = _.sorted.rightMostAtLeast( arr, 1 );
   var expected = { value : 1, index : 7 }
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedRightMostAtLeast( arr, 2 );
+  var got = _.sorted.rightMostAtLeast( arr, 2 );
   var expected = { value : undefined, index : 8 }
   test.identical( got, expected );
 
   test.case = 'empty';
-  var got = _.arraySortedRightMostAtLeast( [], 10 );
+  var got = _.sorted.rightMostAtLeast( [], 10 );
   var expected = { value : undefined, index : 0 }
   test.identical( got, expected );
 
@@ -2798,37 +2830,37 @@ function arraySortedRightMostAtLeast( test )
   var arr = [ 0, 0, 1, 1, 2, 3, 3, 4, 4 ];
 
   test.case = '-1';
-  var got = _.arraySortedRightMostAtLeast( arr, -1 );
+  var got = _.sorted.rightMostAtLeast( arr, -1 );
   var expected = { value : 0, index : 0 }
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedRightMostAtLeast( arr, 0 );
+  var got = _.sorted.rightMostAtLeast( arr, 0 );
   var expected = { value : 0, index : 1 }
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedRightMostAtLeast( arr, 1 );
+  var got = _.sorted.rightMostAtLeast( arr, 1 );
   var expected = { value : 1, index : 3 }
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedRightMostAtLeast( arr, 2 );
+  var got = _.sorted.rightMostAtLeast( arr, 2 );
   var expected = { value : 2, index : 4 }
   test.identical( got, expected );
 
   test.case = '3';
-  var got = _.arraySortedRightMostAtLeast( arr, 3 );
+  var got = _.sorted.rightMostAtLeast( arr, 3 );
   var expected = { value : 3, index : 6 }
   test.identical( got, expected );
 
   test.case = '4';
-  var got = _.arraySortedRightMostAtLeast( arr, 4 );
+  var got = _.sorted.rightMostAtLeast( arr, 4 );
   var expected = { value : 4, index : 8 }
   test.identical( got, expected );
 
   test.case = '5';
-  var got = _.arraySortedRightMostAtLeast( arr, 5 );
+  var got = _.sorted.rightMostAtLeast( arr, 5 );
   var expected = { value : undefined, index : 9 }
   test.identical( got, expected );
 
@@ -2841,37 +2873,37 @@ function arraySortedRightMostAtLeast( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   test.case = '-1';
-  var got = _.arraySortedRightMostAtLeast( arr, -1 );
+  var got = _.sorted.rightMostAtLeast( arr, -1 );
   var expected = { value : 0, index : 0 };
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedRightMostAtLeast( arr, 0 );
+  var got = _.sorted.rightMostAtLeast( arr, 0 );
   var expected = { value : 0, index : 1 };
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedRightMostAtLeast( arr, 1 );
+  var got = _.sorted.rightMostAtLeast( arr, 1 );
   var expected = { value : 2, index : 2 };
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedRightMostAtLeast( arr, 2 );
+  var got = _.sorted.rightMostAtLeast( arr, 2 );
   var expected = { value : 2, index : 2 };
   test.identical( got, expected );
 
   test.case = '3';
-  var got = _.arraySortedRightMostAtLeast( arr, 3 );
+  var got = _.sorted.rightMostAtLeast( arr, 3 );
   var expected = { value : 4, index : 3 };
   test.identical( got, expected );
 
   test.case = '4';
-  var got = _.arraySortedRightMostAtLeast( arr, 4 );
+  var got = _.sorted.rightMostAtLeast( arr, 4 );
   var expected = { value : 4, index : 4 };
   test.identical( got, expected );
 
   test.case = '5';
-  var got = _.arraySortedRightMostAtLeast( arr, 5 );
+  var got = _.sorted.rightMostAtLeast( arr, 5 );
   var expected = { value : undefined, index : 5 };
   test.identical( got, expected );
 
@@ -2885,7 +2917,7 @@ function arraySortedRightMostAtLeast( test )
   {
     return ( a + 1 ) - b;
   }
-  var got = _.arraySortedRightMostAtLeast( arr, 2, comparator );
+  var got = _.sorted.rightMostAtLeast( arr, 2, comparator );
   var expected = { value : 1, index : 7 }
   test.identical( got, expected );
 
@@ -2894,19 +2926,19 @@ function arraySortedRightMostAtLeast( test )
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedRightMostAtLeast();
+    _.sorted.rightMostAtLeast();
   })
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedRightMostAtLeast( 0, 0 );
+    _.sorted.rightMostAtLeast( 0, 0 );
   })
 
 }
 
 //
 
-function arraySortedRightMostAtMost( test )
+function rightMostAtMost( test )
 {
 
   var arr = [ 0, 0, 0, 0, 1, 1, 1, 1 ];
@@ -2914,27 +2946,27 @@ function arraySortedRightMostAtMost( test )
   test.open( 'trivial repeats' );
 
   test.case = '-1';
-  var got = _.arraySortedRightMostAtMost( arr, -1 );
+  var got = _.sorted.rightMostAtMost( arr, -1 );
   var expected = { value : undefined, index : -1 }
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedRightMostAtMost( arr, 0 );
+  var got = _.sorted.rightMostAtMost( arr, 0 );
   var expected = { value : 0, index : 3 }
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedRightMostAtMost( arr, 1 );
+  var got = _.sorted.rightMostAtMost( arr, 1 );
   var expected = { value : 1, index : 7 }
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedRightMostAtMost( arr, 2 );
+  var got = _.sorted.rightMostAtMost( arr, 2 );
   var expected = { value : 1, index : 7 }
   test.identical( got, expected );
 
   test.case = 'empty';
-  var got = _.arraySortedRightMostAtMost( [], 10 );
+  var got = _.sorted.rightMostAtMost( [], 10 );
   var expected = { value : undefined, index : 0 }
   test.identical( got, expected );
 
@@ -2947,37 +2979,37 @@ function arraySortedRightMostAtMost( test )
   var arr = [ 0, 0, 1, 1, 2, 3, 3, 4, 4 ];
 
   test.case = '-1';
-  var got = _.arraySortedRightMostAtMost( arr, -1 );
+  var got = _.sorted.rightMostAtMost( arr, -1 );
   var expected = { value : undefined, index : -1 }
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedRightMostAtMost( arr, 0 );
+  var got = _.sorted.rightMostAtMost( arr, 0 );
   var expected = { value : 0, index : 1 }
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedRightMostAtMost( arr, 1 );
+  var got = _.sorted.rightMostAtMost( arr, 1 );
   var expected = { value : 1, index : 3 }
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedRightMostAtMost( arr, 2 );
+  var got = _.sorted.rightMostAtMost( arr, 2 );
   var expected = { value : 2, index : 4 }
   test.identical( got, expected );
 
   test.case = '3';
-  var got = _.arraySortedRightMostAtMost( arr, 3 );
+  var got = _.sorted.rightMostAtMost( arr, 3 );
   var expected = { value : 3, index : 6 }
   test.identical( got, expected );
 
   test.case = '4';
-  var got = _.arraySortedRightMostAtMost( arr, 4 );
+  var got = _.sorted.rightMostAtMost( arr, 4 );
   var expected = { value : 4, index : 8 }
   test.identical( got, expected );
 
   test.case = '5';
-  var got = _.arraySortedRightMostAtMost( arr, 5 );
+  var got = _.sorted.rightMostAtMost( arr, 5 );
   var expected = { value : 4, index : 8 }
   test.identical( got, expected );
 
@@ -2990,37 +3022,37 @@ function arraySortedRightMostAtMost( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   test.case = '-1';
-  var got = _.arraySortedRightMostAtMost( arr, -1 );
+  var got = _.sorted.rightMostAtMost( arr, -1 );
   var expected = { value : undefined, index : -1 };
   test.identical( got, expected );
 
   test.case = '0';
-  var got = _.arraySortedRightMostAtMost( arr, 0 );
+  var got = _.sorted.rightMostAtMost( arr, 0 );
   var expected = { value : 0, index : 1 };
   test.identical( got, expected );
 
   test.case = '1';
-  var got = _.arraySortedRightMostAtMost( arr, 1 );
+  var got = _.sorted.rightMostAtMost( arr, 1 );
   var expected = { value : 0, index : 1 };
   test.identical( got, expected );
 
   test.case = '2';
-  var got = _.arraySortedRightMostAtMost( arr, 2 );
+  var got = _.sorted.rightMostAtMost( arr, 2 );
   var expected = { value : 2, index : 2 };
   test.identical( got, expected );
 
   test.case = '3';
-  var got = _.arraySortedRightMostAtMost( arr, 3 );
+  var got = _.sorted.rightMostAtMost( arr, 3 );
   var expected = { value : 2, index : 2 };
   test.identical( got, expected );
 
   test.case = '4';
-  var got = _.arraySortedRightMostAtMost( arr, 4 );
+  var got = _.sorted.rightMostAtMost( arr, 4 );
   var expected = { value : 4, index : 4 };
   test.identical( got, expected );
 
   test.case = '5';
-  var got = _.arraySortedRightMostAtMost( arr, 5 );
+  var got = _.sorted.rightMostAtMost( arr, 5 );
   var expected = { value : 4, index : 4 };
   test.identical( got, expected );
 
@@ -3034,7 +3066,7 @@ function arraySortedRightMostAtMost( test )
   {
     return ( a + 1 ) - b;
   }
-  var got = _.arraySortedRightMostAtMost( arr, 2, comparator );
+  var got = _.sorted.rightMostAtMost( arr, 2, comparator );
   var expected = { value : 1, index : 7 }
   test.identical( got, expected );
 
@@ -3043,33 +3075,33 @@ function arraySortedRightMostAtMost( test )
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedRightMostAtMost();
+    _.sorted.rightMostAtMost();
   })
 
   test.shouldThrowErrorSync( function()
   {
-    _.arraySortedRightMostAtMost( 0, 0 );
+    _.sorted.rightMostAtMost( 0, 0 );
   })
 
 }
 
 //
-
-function arraySortedLookUpIntervalNarrowestExperiment( test )
-{
-  var arr = [ 3, 8, 16, 17, 30, 35, 35, 36, 37, 47 ];
-
-  /**/
-
-  var got = _.arraySortedLookUpIntervalNarrowest( arr, [ 42, 44 ] );
-  test.identical( got, [ 9, 9 ] );
-
-  /**/
-
-  var got = _.arraySortedLookUpIntervalNarrowest( arr, [ 48, 49 ] );
-  test.identical( got, [ 10, 10 ] );
-
-}
+//
+// function lookUpIntervalNarrowestExperiment( test )
+// {
+//   var arr = [ 3, 8, 16, 17, 30, 35, 35, 36, 37, 47 ];
+//
+//   /**/
+//
+//   var got = _.sorted.lookUpIntervalNarrowest( arr, [ 42, 44 ] );
+//   test.identical( got, [ 9, 9 ] );
+//
+//   /**/
+//
+//   var got = _.sorted.lookUpIntervalNarrowest( arr, [ 48, 49 ] );
+//   test.identical( got, [ 10, 10 ] );
+//
+// }
 
 // --
 // declare
@@ -3084,31 +3116,31 @@ var Self =
   tests :
   {
 
-    _arraySortedLookUpAct : _arraySortedLookUpAct,
+    _lookUpAct : _lookUpAct,
 
-    arraySortedLookUp : arraySortedLookUp,
-    arraySortedLookUpClosest : arraySortedLookUpClosest,
+    lookUp : lookUp,
+    lookUpClosest : lookUpClosest,
 
-    arraySortedLookUpIndex : arraySortedLookUpIndex,
-    arraySortedLookUpClosestIndex : arraySortedLookUpClosestIndex,
+    lookUpIndex : lookUpIndex,
+    lookUpClosestIndex : lookUpClosestIndex,
 
-    arraySortedLookUpInterval : arraySortedLookUpInterval,
-    arraySortedLookUpIntervalNarrowest : arraySortedLookUpIntervalNarrowest,
-    arraySortedLookUpIntervalHaving : arraySortedLookUpIntervalHaving,
-    arraySortedLookUpIntervalEmbracingAtLeast : arraySortedLookUpIntervalEmbracingAtLeast,
-    arraySortedLookUpIntervalEmbracingAtLeastOld : arraySortedLookUpIntervalEmbracingAtLeastOld,
+    lookUpInterval : lookUpInterval,
+    lookUpIntervalNarrowest : lookUpIntervalNarrowest,
+    lookUpIntervalHaving : lookUpIntervalHaving,
+    lookUpIntervalEmbracingAtLeast : lookUpIntervalEmbracingAtLeast,
+    lookUpIntervalEmbracingAtLeastOld : lookUpIntervalEmbracingAtLeastOld,
 
-    arraySortedAdd : arraySortedAdd,
-    arraySortedRemove : arraySortedRemove,
-    arraySortedAddOnce : arraySortedAddOnce,
-    arraySortedAddArray : arraySortedAddArray,
+    add : add,
+    remove : remove,
+    addOnce : addOnce,
+    addArray : addArray,
 
-    arraySortedLeftMostAtLeast : arraySortedLeftMostAtLeast,
-    arraySortedLeftMostAtMost : arraySortedLeftMostAtMost,
-    arraySortedRightMostAtLeast : arraySortedRightMostAtLeast,
-    arraySortedRightMostAtMost : arraySortedRightMostAtMost,
+    leftMostAtLeast : leftMostAtLeast,
+    leftMostAtMost : leftMostAtMost,
+    rightMostAtLeast : rightMostAtLeast,
+    rightMostAtMost : rightMostAtMost,
 
-    arraySortedLookUpIntervalNarrowestExperiment : arraySortedLookUpIntervalNarrowestExperiment
+    // lookUpIntervalNarrowestExperiment : lookUpIntervalNarrowestExperiment
 
   },
 

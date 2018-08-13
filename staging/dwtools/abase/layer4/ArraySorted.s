@@ -34,9 +34,9 @@ if( typeof module !== 'undefined' )
 
 //
 
-let Self = _global_.wTools;
 let _global = _global_;
 let _ = _global_.wTools;
+let Self = _.sorted = _.sorted || Object.create( null );
 
 // --
 // array sorted
@@ -58,20 +58,20 @@ let _ = _global_.wTools;
  *
  * @example
  * // returns 4
- * _arraySortedLookUpAct( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 0, 5 );
+ * _lookUpAct( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 0, 5 );
  *
  * @example
  * // returns 5
- * _arraySortedLookUpAct( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b }, 0, 5 );
+ * _lookUpAct( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b }, 0, 5 );
  *
  * @returns { Number } Returns the first index at which a given element (ins)
  * can be found in the array (arr).
  * Otherwise, if (ins) was not found, it returns the length of the array (arr) or the index from which it ended search at.
- * @method _arraySortedLookUpAct
+ * @method _lookUpAct
  * @memberof wTools
  */
 
-function _arraySortedLookUpAct( arr,ins,comparator,left,right )
+function _lookUpAct( arr,ins,comparator,left,right )
 {
 
   _.assert( right >= 0 );
@@ -142,14 +142,14 @@ function _arraySortedLookUpAct( arr,ins,comparator,left,right )
 
 //
 
-function arraySortedLookUpIndex( arr,ins,comparator )
+function lookUpIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( arr ) );
 
   comparator = _._comparatorFromEvaluator( comparator );
-  let index = this._arraySortedLookUpAct( arr,ins,comparator,0,arr.length );
+  let index = this._lookUpAct( arr,ins,comparator,0,arr.length );
 
   if( index === arr.length )
   return -1;
@@ -162,19 +162,19 @@ function arraySortedLookUpIndex( arr,ins,comparator )
 
 //
 
-function arraySortedLookUpValue( arr,ins,comparator )
+function lookUpValue( arr,ins,comparator )
 {
-  let index = arraySortedLookUpIndex.apply( this, arguments );
+  let index = this.lookUpIndex.apply( this, arguments );
   return arr[ index ];
 }
 
 //
 
 /**
- * The arraySortedLookUp() method returns a new object containing the properties, (value, index),
+ * The wTools.sorted.lookUp() method returns a new object containing the properties, (value, index),
  * corresponding to the found value (ins) from array (arr).
  *
- * @see {@link wTools._arraySortedLookUpAct} - See for more information.
+ * @see {@link wTools._lookUpAct} - See for more information.
  *
  * @param { longIs } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
@@ -182,60 +182,60 @@ function arraySortedLookUpValue( arr,ins,comparator )
  *
  * @example
  * // returns { value : 5, index : 4 }
- * arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } );
+ * _.sorted.lookUp( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } );
  *
  * @example
  * // returns undefined
- * arraySortedLookUp( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } );
+ * _.sorted.lookUp( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } );
  *
  * @returns { Object } Returns a new object containing the properties, (value, index),
  * corresponding to the found value (ins) from the array (arr).
  * Otherwise, it returns 'undefined'.
- * @method arraySortedLookUp
+ * @method wTools.sorted.lookUp
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (arr) is not an array-like.
  * @memberof wTools
  */
 
-function arraySortedLookUp( arr,ins,comparator )
+function lookUp( arr,ins,comparator )
 {
-  let index = arraySortedLookUpIndex.apply( this, arguments );
+  let index = this.lookUpIndex.apply( this, arguments );
   return { value : arr[ index ], index : index };
 }
 
 //
 
-function arraySortedLookUpClosestIndex( arr,ins,comparator )
+function lookUpClosestIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( arr ) );
 
   comparator = _._comparatorFromEvaluator( comparator );
-  let index = this._arraySortedLookUpAct( arr,ins,comparator,0,arr.length );
+  let index = this._lookUpAct( arr,ins,comparator,0,arr.length );
 
   return index;
 }
 
 //
 
-function arraySortedLookUpClosestValue( arr,ins,comparator )
+function lookUpClosestValue( arr,ins,comparator )
 {
-  let index = arraySortedLookUpClosestIndex.apply( this, arguments );
+  let index = this.lookUpClosestIndex.apply( this, arguments );
   return arr[ index ];
 }
 
 //
 
-function arraySortedLookUpClosest( arr,ins,comparator )
+function lookUpClosest( arr,ins,comparator )
 {
-  let index = arraySortedLookUpClosestIndex.apply( this, arguments );
+  let index = this.lookUpClosestIndex.apply( this, arguments );
   return { value : arr[ index ], index : index };
 }
 
 //
 
-function arraySortedLookUpInterval( arr,range,comparator )
+function lookUpInterval( arr,range,comparator )
 {
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( arr ) );
@@ -274,7 +274,7 @@ function arraySortedLookUpInterval( arr,range,comparator )
 
 //
 
-function arraySortedLookUpIntervalNarrowest( arr, range, comparator )
+function lookUpIntervalNarrowest( arr, range, comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
@@ -325,7 +325,7 @@ function arraySortedLookUpIntervalNarrowest( arr, range, comparator )
 
 //
 
-function arraySortedLookUpIntervalNarrowestOld( arr, range, comparator )
+function lookUpIntervalNarrowestOld( arr, range, comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
@@ -373,7 +373,7 @@ function arraySortedLookUpIntervalNarrowestOld( arr, range, comparator )
 
 //
 
-function arraySortedLookUpIntervalHaving( arr, range, comparator )
+function lookUpIntervalHaving( arr, range, comparator )
 {
   comparator = _._comparatorFromEvaluator( comparator );
 
@@ -399,7 +399,7 @@ function arraySortedLookUpIntervalHaving( arr, range, comparator )
 
 //
 
-function arraySortedLookUpIntervalEmbracingAtLeast( arr, range, comparator )
+function lookUpIntervalEmbracingAtLeast( arr, range, comparator )
 {
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( arr ) );
@@ -444,7 +444,7 @@ function arraySortedLookUpIntervalEmbracingAtLeast( arr, range, comparator )
 
 //
 
-function arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range, comparator )
+function lookUpIntervalEmbracingAtLeastOld( arr, range, comparator )
 {
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
   _.assert( _.longIs( arr ) );
@@ -501,7 +501,7 @@ function arraySortedLookUpIntervalEmbracingAtLeastOld( arr, range, comparator )
 
 function _arraySortedLeftMostAtLeastIndex( arr,ins,comparator,left,right )
 {
-  let index = _._arraySortedLookUpAct( arr,ins,comparator,left,right );
+  let index = _._lookUpAct( arr,ins,comparator,left,right );
 
   _.assert( arguments.length === 5 );
 
@@ -528,7 +528,7 @@ function _arraySortedLeftMostAtLeastIndex( arr,ins,comparator,left,right )
 
 //
 
-function arraySortedLeftMostAtLeastIndex( arr,ins,comparator )
+function leftMostAtLeastIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
@@ -546,12 +546,12 @@ function arraySortedLeftMostAtLeastIndex( arr,ins,comparator )
 
 //
 
-function arraySortedLeftMostAtLeastValue( arr,ins,comparator )
+function leftMostAtLeastValue( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
-  let index = _.arraySortedLeftMostAtLeastIndex( arr,ins,comparator );
+  let index = this.leftMostAtLeastIndex( arr,ins,comparator );
   let result = arr[ index ];
 
   return result;
@@ -559,12 +559,12 @@ function arraySortedLeftMostAtLeastValue( arr,ins,comparator )
 
 //
 
-function arraySortedLeftMostAtLeast( arr,ins,comparator )
+function leftMostAtLeast( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
-  let index = _.arraySortedLeftMostAtLeastIndex( arr,ins,comparator );
+  let index = this.leftMostAtLeastIndex( arr,ins,comparator );
   let result = { value : arr[ index ], index : index };
 
   return result;
@@ -576,7 +576,7 @@ function arraySortedLeftMostAtLeast( arr,ins,comparator )
 
 function _arraySortedLeftMostAtMostIndex( arr,ins,comparator,left,right )
 {
-  let index = _._arraySortedLookUpAct( arr,ins,comparator,left,right );
+  let index = _._lookUpAct( arr,ins,comparator,left,right );
 
   _.assert( arguments.length === 5 );
   _.assert( index >= 0, 'expectation' );
@@ -585,21 +585,25 @@ function _arraySortedLeftMostAtMostIndex( arr,ins,comparator,left,right )
   return right-1;
 
   let i = index;
-  index = -1;
+  // index = left;
   while( i >= left )
   {
     let c = comparator( arr[ i ],ins );
     if( c < 0 )
     {
-      if( index === -1 )
-      index = i;
-      else
-      index = i + 1;
+      // if( index === -1 )
+      // index = i;
+      // else
+      // index = i + 1;
       return index;
     }
     else if( c === 0 )
     {
       index = i;
+    }
+    else
+    {
+      index -= 1;
     }
     i -= 1;
   }
@@ -609,7 +613,7 @@ function _arraySortedLeftMostAtMostIndex( arr,ins,comparator,left,right )
 
 //
 
-function arraySortedLeftMostAtMostIndex( arr,ins,comparator )
+function leftMostAtMostIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
@@ -627,12 +631,12 @@ function arraySortedLeftMostAtMostIndex( arr,ins,comparator )
 
 //
 
-function arraySortedLeftMostAtMostValue( arr,ins,comparator )
+function leftMostAtMostValue( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
-  let index = _.arraySortedLeftMostAtMostIndex( arr,ins,comparator );
+  let index = this.leftMostAtMostIndex( arr,ins,comparator );
   let result = arr[ index ];
 
   return result;
@@ -640,12 +644,12 @@ function arraySortedLeftMostAtMostValue( arr,ins,comparator )
 
 //
 
-function arraySortedLeftMostAtMost( arr,ins,comparator )
+function leftMostAtMost( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
-  let index = _.arraySortedLeftMostAtMostIndex( arr,ins,comparator );
+  let index = this.leftMostAtMostIndex( arr,ins,comparator );
   let result = { value : arr[ index ], index : index };
 
   return result;
@@ -657,7 +661,7 @@ function arraySortedLeftMostAtMost( arr,ins,comparator )
 
 function _arraySortedRightMostAtLeastIndex( arr,ins,comparator,left,right )
 {
-  let index = _._arraySortedLookUpAct( arr,ins,comparator,left,right );
+  let index = _._lookUpAct( arr,ins,comparator,left,right );
 
   _.assert( arguments.length === 5 );
 
@@ -682,7 +686,7 @@ function _arraySortedRightMostAtLeastIndex( arr,ins,comparator,left,right )
 
 //
 
-function arraySortedRightMostAtLeastIndex( arr,ins,comparator )
+function rightMostAtLeastIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
@@ -700,12 +704,12 @@ function arraySortedRightMostAtLeastIndex( arr,ins,comparator )
 
 //
 
-function arraySortedRightMostAtLeastValue( arr,ins,comparator )
+function rightMostAtLeastValue( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
-  let index = _.arraySortedRightMostAtLeastIndex( arr,ins,comparator );
+  let index = this.rightMostAtLeastIndex( arr,ins,comparator );
   let result = arr[ index ];
 
   return result;
@@ -713,12 +717,12 @@ function arraySortedRightMostAtLeastValue( arr,ins,comparator )
 
 //
 
-function arraySortedRightMostAtLeast( arr,ins,comparator )
+function rightMostAtLeast( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
-  let index = _.arraySortedRightMostAtLeastIndex( arr,ins,comparator );
+  let index = this.rightMostAtLeastIndex( arr,ins,comparator );
   let result = { value : arr[ index ], index : index };
 
   return result;
@@ -730,7 +734,7 @@ function arraySortedRightMostAtLeast( arr,ins,comparator )
 
 function _arraySortedRightMostAtMostIndex( arr,ins,comparator,left,right )
 {
-  let index = _._arraySortedLookUpAct( arr,ins,comparator,left,right );
+  let index = _._lookUpAct( arr,ins,comparator,left,right );
 
   _.assert( arguments.length === 5 );
 
@@ -758,7 +762,7 @@ function _arraySortedRightMostAtMostIndex( arr,ins,comparator,left,right )
 
 //
 
-function arraySortedRightMostAtMostIndex( arr,ins,comparator )
+function rightMostAtMostIndex( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
@@ -776,12 +780,12 @@ function arraySortedRightMostAtMostIndex( arr,ins,comparator )
 
 //
 
-function arraySortedRightMostAtMostValue( arr,ins,comparator )
+function rightMostAtMostValue( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
-  let index = _.arraySortedRightMostAtMostIndex( arr,ins,comparator );
+  let index = this.rightMostAtMostIndex( arr,ins,comparator );
   let result = arr[ index ];
 
   return result;
@@ -789,12 +793,12 @@ function arraySortedRightMostAtMostValue( arr,ins,comparator )
 
 //
 
-function arraySortedRightMostAtMost( arr,ins,comparator )
+function rightMostAtMost( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
 
-  let index = _.arraySortedRightMostAtMostIndex( arr,ins,comparator );
+  let index = this.rightMostAtMostIndex( arr,ins,comparator );
   let result = { value : arr[ index ], index : index };
 
   return result;
@@ -805,10 +809,10 @@ function arraySortedRightMostAtMost( arr,ins,comparator )
 // --
 
 /**
- * The arraySortedRemove() method returns true, if a value (ins) was removed from an array (arr).
+ * The wTools.sorted.remove() method returns true, if a value (ins) was removed from an array (arr).
  * Otherwise, it returns false.
  *
- * @see {@link wTools._arraySortedLookUpAct} - See for more information.
+ * @see {@link wTools._lookUpAct} - See for more information.
  *
  * @param { longIs } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
@@ -816,21 +820,21 @@ function arraySortedRightMostAtMost( arr,ins,comparator )
  *
  * @example
  * // returns true
- * arraySortedRemove( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } ); // => [ 1, 2, 3, 4 ]
+ * this.sorted.remove( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } ); // => [ 1, 2, 3, 4 ]
  *
  * @example
  * // returns false
- * arraySortedRemove( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } ); // => [ 1, 2, 3, 4, 5 ]
+ * this.sorted.remove( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } ); // => [ 1, 2, 3, 4, 5 ]
  *
  * @returns { Boolean } Returns true, if a value (ins) was removed from an array (arr).
  * Otherwise, it returns false.
- * @method arraySortedRemove
+ * @method wTools.sorted.remove
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (arr) is not an array-like.
  * @memberof wTools
  */
 
-function arraySortedRemove( arr,ins,comparator )
+function remove( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
@@ -838,7 +842,7 @@ function arraySortedRemove( arr,ins,comparator )
 
   comparator = _._comparatorFromEvaluator( comparator );
   let l = arr.length;
-  let index = _._arraySortedLookUpAct( arr,ins,comparator,0,l );
+  let index = _._lookUpAct( arr,ins,comparator,0,l );
 
   let remove = index !== l && comparator( ins,arr[ index ] ) === 0;
 
@@ -850,17 +854,17 @@ function arraySortedRemove( arr,ins,comparator )
 //
 
 /**
- * The arraySortedAddOnce() method returns true, if a value (ins) was added to an array (arr).
+ * The wTools.sorted.addOnce() method returns true, if a value (ins) was added to an array (arr).
  * Otherwise, it returns false.
  *
- * It calls the method (_._arraySortedLookUpAct( arr, ins, comparator, 0, arr.length - 1 )),
+ * It calls the method (_._lookUpAct( arr, ins, comparator, 0, arr.length - 1 )),
  * that returns the index of the value (ins) in the array (arr).
- * [wTools._arraySortedLookUpAct() ]{@link wTools._arraySortedLookUpAct}.
+ * [wTools._lookUpAct() ]{@link wTools._lookUpAct}.
  * If (index) is equal to the one, and call callback function(comparator( ins, arr[ index ])
  * returns a value that is not equal to the zero (i.e the array (arr) doesn't contain the value (ins)), it adds the value (ins) to the array (arr), and returns true.
  * Otherwise, it returns false.
  *
- * @see {@link wTools._arraySortedLookUpAct} - See for more information.
+ * @see {@link wTools._lookUpAct} - See for more information.
  *
  * @param { longIs } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
@@ -868,21 +872,21 @@ function arraySortedRemove( arr,ins,comparator )
  *
  * @example
  * // returns false
- * arraySortedAddOnce( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } ); // => [ 1, 2, 3, 4, 5 ]
+ * wTools.sorted.addOnce( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } ); // => [ 1, 2, 3, 4, 5 ]
  *
  * @example
  * // returns true
- * arraySortedAddOnce( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } ); // => [ 1, 2, 3, 4, 5, 55 ]
+ * wTools.sorted.addOnce( [ 1, 2, 3, 4, 5 ], 55, function( a, b ) { return a - b } ); // => [ 1, 2, 3, 4, 5, 55 ]
  *
  * @returns { Boolean } Returns true, if a value (ins) was added to an array (arr).
  * Otherwise, it returns false.
- * @method arraySortedAddOnce
+ * @method wTools.sorted.addOnce
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (arr) is not an array-like.
  * @memberof wTools
  */
 
-function arraySortedAddOnce( arr,ins,comparator )
+function addOnce( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
@@ -890,7 +894,7 @@ function arraySortedAddOnce( arr,ins,comparator )
 
   comparator = _._comparatorFromEvaluator( comparator );
   let l = arr.length;
-  let index = _._arraySortedLookUpAct( arr,ins,comparator,0,l );
+  let index = _._lookUpAct( arr,ins,comparator,0,l );
 
   let add = index === l || comparator( ins,arr[ index ] ) !== 0;
 
@@ -903,16 +907,16 @@ function arraySortedAddOnce( arr,ins,comparator )
 //
 
 /**
- * The arraySortedAdd() method adds the value (ins) to the array (arr), no matter whether it has there or hasn't,
+ * The wTools.sorted.add() method adds the value (ins) to the array (arr), no matter whether it has there or hasn't,
  * and returns the new added or the updated index.
  *
- * It calls the method (_._arraySortedLookUpAct( arr, ins, comparator, 0, arr.length - 1 )),
+ * It calls the method (_._lookUpAct( arr, ins, comparator, 0, arr.length - 1 )),
  * that returns the index of the value (ins) in the array (arr).
- * [wTools._arraySortedLookUpAct() ]{@link wTools._arraySortedLookUpAct}.
+ * [wTools._lookUpAct() ]{@link wTools._lookUpAct}.
  * If value (ins) has in the array (arr), it adds (ins) to that found index and offsets the old values in the (arr).
  * Otherwise, it adds the new index.
  *
- * @see {@link wTools._arraySortedLookUpAct} - See for more information.
+ * @see {@link wTools._lookUpAct} - See for more information.
  *
  * @param { longIs } arr - Entity to check.
  * @param { Number } ins - Element to locate in the array.
@@ -920,20 +924,20 @@ function arraySortedAddOnce( arr,ins,comparator )
  *
  * @example
  * // returns 5
- * arraySortedAdd( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } ); // => [ 1, 2, 3, 4, 5, 5 ]
+ * wTools.sorted.add( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b } ); // => [ 1, 2, 3, 4, 5, 5 ]
  *
  * @example
  * // returns 4
- * arraySortedAdd( [ 1, 2, 3, 4 ], 2, function( a, b ) { return a - b } ); // => [ 1, 2, 2, 3, 4 ]
+ * wTools.sorted.add( [ 1, 2, 3, 4 ], 2, function( a, b ) { return a - b } ); // => [ 1, 2, 2, 3, 4 ]
  *
  * @returns { Number } Returns the new added or the updated index.
- * @method arraySortedAdd
+ * @method wTools.sorted.add
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (arr) is not an array-like.
  * @memberof wTools
  */
 
-function arraySortedAdd( arr,ins,comparator )
+function add( arr,ins,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
@@ -941,7 +945,7 @@ function arraySortedAdd( arr,ins,comparator )
 
   comparator = _._comparatorFromEvaluator( comparator );
   let l = arr.length;
-  let index = _._arraySortedLookUpAct( arr,ins,comparator,0,l );
+  let index = _._lookUpAct( arr,ins,comparator,0,l );
 
   arr.splice( index,0,ins );
 
@@ -951,13 +955,13 @@ function arraySortedAdd( arr,ins,comparator )
 //
 
 /**
- * The arraySortedAddArray() method returns the sum of the added indexes from an array (src) to an array (dst).
+ * The wTools.sorted.addArray() method returns the sum of the added indexes from an array (src) to an array (dst).
  *
  * It creates variable (result = 0), iterates over an array (src),
- * adds to the (result +=) each call the function(arraySortedAdd( dst, src[ s ], comparator ))
+ * adds to the (result +=) each call the function( _.sorted.add( dst, src[ s ], comparator ) )
  * that returns the new added or the updated index.
  *
- * @see {@link wTools_.arraySortedAdd} - See for more information.
+ * @see {@link wTools_.sorted.add} - See for more information.
  *
  * @param { longIs } dst - Entity to check.
  * @param { longIs } src - Entity to check.
@@ -965,20 +969,20 @@ function arraySortedAdd( arr,ins,comparator )
  *
  * @example
  * // returns 19
- * arraySortedAddArray( [ 1, 2, 3, 4, 5 ], [ 6, 7, 8, 2 ], function( a, b ) { return a - b } ); // => [ 1, 2, 2, 3, 4, 5, 6, 7, 8 ]
+ * _.sorted.addArray( [ 1, 2, 3, 4, 5 ], [ 6, 7, 8, 2 ], function( a, b ) { return a - b } ); // => [ 1, 2, 2, 3, 4, 5, 6, 7, 8 ]
  *
  * @example
  * // returns 3
- * arraySortedAddArray( [  ], [ 1, 2, 3 ], function( a, b ) { return a - b } ); // => [ 1, 2, 3 ]
+ * _.sorted.addArray( [  ], [ 1, 2, 3 ], function( a, b ) { return a - b } ); // => [ 1, 2, 3 ]
  *
  * @returns { Number } Returns the sum of the added indexes from an array (src) to an array (dst).
- * @method arraySortedAddArray
+ * @method wTools.sorted.addArray
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (dst and src) are not an array-like.
  * @memberof wTools
  */
 
-function arraySortedAddArray( dst,src,comparator )
+function addArray( dst,src,comparator )
 {
 
   _.assert( arguments.length === 2 || arguments.length === 3, 'expects two or three arguments' );
@@ -988,7 +992,7 @@ function arraySortedAddArray( dst,src,comparator )
   comparator = _._comparatorFromEvaluator( comparator );
 
   for( let s = 0 ; s < src.length ; s++ )
-  result += _.arraySortedAdd( dst,src[ s ],comparator );
+  result += this.add( dst,src[ s ],comparator );
 
   return result;
 }
@@ -1004,54 +1008,55 @@ let Proto =
 
   // _comparatorFromEvaluator : _comparatorFromEvaluator,
 
-  _arraySortedLookUpAct : _arraySortedLookUpAct,
+  _lookUpAct : _lookUpAct,
 
-  arraySortedLookUpIndex : arraySortedLookUpIndex,
-  arraySortedLookUpValue : arraySortedLookUpValue,
-  arraySortedLookUp : arraySortedLookUp,
+  lookUpIndex : lookUpIndex,
+  lookUpValue : lookUpValue,
+  lookUp : lookUp,
 
-  arraySortedLookUpClosestIndex : arraySortedLookUpClosestIndex,
-  arraySortedLookUpClosestValue : arraySortedLookUpClosestValue,
-  arraySortedLookUpClosest : arraySortedLookUpClosest,
+  lookUpClosestIndex : lookUpClosestIndex,
+  lookUpClosestValue : lookUpClosestValue,
+  lookUpClosest : lookUpClosest,
 
-  arraySortedLookUpInterval : arraySortedLookUpInterval,
-  arraySortedLookUpIntervalNarrowest : arraySortedLookUpIntervalNarrowest, /* experimental */
-  arraySortedLookUpIntervalNarrowestOld : arraySortedLookUpIntervalNarrowestOld, /* experimental */
-  arraySortedLookUpIntervalHaving : arraySortedLookUpIntervalHaving,
-  arraySortedLookUpIntervalEmbracingAtLeast : arraySortedLookUpIntervalEmbracingAtLeast, /* experimental */
-  arraySortedLookUpIntervalEmbracingAtLeastOld : arraySortedLookUpIntervalEmbracingAtLeastOld, /* experimental */
+  lookUpInterval : lookUpInterval,
+  lookUpIntervalNarrowest : lookUpIntervalNarrowest, /* experimental */
+  lookUpIntervalNarrowestOld : lookUpIntervalNarrowestOld, /* experimental */
+  lookUpIntervalHaving : lookUpIntervalHaving,
+  lookUpIntervalEmbracingAtLeast : lookUpIntervalEmbracingAtLeast, /* experimental */
+  lookUpIntervalEmbracingAtLeastOld : lookUpIntervalEmbracingAtLeastOld, /* experimental */
 
   _arraySortedLeftMostAtLeastIndex : _arraySortedLeftMostAtLeastIndex,
-  arraySortedLeftMostAtLeastIndex : arraySortedLeftMostAtLeastIndex,
-  arraySortedLeftMostAtLeastValue : arraySortedLeftMostAtLeastValue,
-  arraySortedLeftMostAtLeast : arraySortedLeftMostAtLeast,
+  leftMostAtLeastIndex : leftMostAtLeastIndex,
+  leftMostAtLeastValue : leftMostAtLeastValue,
+  leftMostAtLeast : leftMostAtLeast,
 
   _arraySortedLeftMostAtMostIndex : _arraySortedLeftMostAtMostIndex,
-  arraySortedLeftMostAtMostIndex : arraySortedLeftMostAtMostIndex,
-  arraySortedLeftMostAtMostValue : arraySortedLeftMostAtMostValue,
-  arraySortedLeftMostAtMost : arraySortedLeftMostAtMost,
+  leftMostAtMostIndex : leftMostAtMostIndex,
+  leftMostAtMostValue : leftMostAtMostValue,
+  leftMostAtMost : leftMostAtMost,
 
   _arraySortedRightMostAtLeastIndex : _arraySortedRightMostAtLeastIndex,
-  arraySortedRightMostAtLeastIndex : arraySortedRightMostAtLeastIndex,
-  arraySortedRightMostAtLeastValue : arraySortedRightMostAtLeastValue,
-  arraySortedRightMostAtLeast : arraySortedRightMostAtLeast,
+  rightMostAtLeastIndex : rightMostAtLeastIndex,
+  rightMostAtLeastValue : rightMostAtLeastValue,
+  rightMostAtLeast : rightMostAtLeast,
 
   _arraySortedRightMostAtMostIndex : _arraySortedRightMostAtMostIndex,
-  arraySortedRightMostAtMostIndex : arraySortedRightMostAtMostIndex,
-  arraySortedRightMostAtMostValue : arraySortedRightMostAtMostValue,
-  arraySortedRightMostAtMost : arraySortedRightMostAtMost,
+  rightMostAtMostIndex : rightMostAtMostIndex,
+  rightMostAtMostValue : rightMostAtMostValue,
+  rightMostAtMost : rightMostAtMost,
 
-  // arraySortedClosestIndex : arraySortedClosestIndex,
-  // arraySortedClosestValue : arraySortedClosestValue,
-  // arraySortedClosest : arraySortedClosest,
+  // closestIndex : closestIndex,
+  // closestValue : closestValue,
+  // closest : closest,
 
-  arraySortedRemove : arraySortedRemove,
-  arraySortedAdd : arraySortedAdd,
-  arraySortedAddOnce : arraySortedAddOnce,
-  arraySortedAddArray : arraySortedAddArray,
+  remove : remove,
+  add : add,
+  addOnce : addOnce,
+  addArray : addArray,
 
 }
 
+_.mapExtend( _, Proto );
 _.mapExtend( Self, Proto );
 
 // --
