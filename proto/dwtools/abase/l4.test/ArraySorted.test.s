@@ -26,13 +26,13 @@ if( typeof module !== 'undefined' )
 
   _.include( 'wTesting' );
 
-  require( '../layer4/ArraySorted.s' );
+  require( '../l4/ArraySorted.s' );
 
 }
 
 var _global = _global_;
 var _ = _global_.wTools;
-var Parent = _.Tester;
+var Parent = /*_.*/wTester;
 
 // --
 // test
@@ -3110,7 +3110,7 @@ function rightMostAtMost( test )
 var Self =
 {
 
-  name : 'Tools/base/layer4/ArraySorted',
+  name : 'Tools/base/l4/ArraySorted',
   silencing : 1,
 
   tests :
@@ -3150,6 +3150,6 @@ var Self =
 
 Self = wTestSuite( Self );
 if( typeof module !== 'undefined' && !module.parent )
-_.Tester.test( Self.name );
+/*_.*/wTester.test( Self.name );
 
 })();

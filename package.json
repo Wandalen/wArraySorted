@@ -11,17 +11,17 @@
     }
   ],
   "license": "MIT",
-  "main": "staging/dwtools/abase/layer4/ArraySorted.s",
+  "main": "proto/dwtools/abase/l4/ArraySorted.s",
   "files": [
-    "staging/dwtools/abase/layer4",
+    "proto/dwtools/abase/l4",
     "production"
   ],
   "directories": {
     "doc": "doc",
-    "main": "staging/dwtools/abase/layer4/ArraySorted.s"
+    "main": "proto/dwtools/abase/l4/ArraySorted.s"
   },
   "scripts": {
-    "test": "wtest staging",
+    "test": "wtest proto",
     "make_doc": "x"
   },
   "repository": {
