@@ -14,7 +14,7 @@
   "main": "proto/dwtools/abase/l4/ArraySorted.s",
   "files": [
     "proto/dwtools/abase/l4",
-    "production"
+    "proto/dwtools/Tools.s", "production"
   ],
   "directories": {
     "doc": "doc",
