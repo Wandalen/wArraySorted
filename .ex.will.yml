@@ -3,7 +3,7 @@ about :
 
   name : "wArraySorted"
   description : "Collection of routines to operate effectively sorted arrays. For that ArraySorted provides customizable quicksort algorithm and a dozen functions to optimally find/add/remove single/multiple elements into a sorted array, add/remove sorted array to/from another sorted array. Use it to increase the performance of your algorithms."
-  version : "0.3.63"
+  version : "0.3.69"
   enabled : 1
   interpreters :
   - nodejs >= 6.0.0
@@ -26,7 +26,7 @@ path :
 step :
 
   export.proto :
-    inherit : export
+    inherit : predefined.export
     export : path::proto
     tar : 0
     criterion :
