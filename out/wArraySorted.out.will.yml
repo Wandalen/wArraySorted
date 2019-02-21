@@ -7,7 +7,7 @@ about:
     to optimally find/add/remove single/multiple elements into a sorted array,
     add/remove sorted array to/from another sorted array. Use it to increase the
     performance of your algorithms.
-  version: 0.3.74
+  version: 0.3.75
   enabled: 1
   interpreters:
     - nodejs >= 6.0.0
@@ -286,7 +286,7 @@ build:
       - 'step::export.proto'
 exported:
   proto.export:
-    version: 0.3.74
+    version: 0.3.75
     criterion:
       default: 1
       debug: 1
