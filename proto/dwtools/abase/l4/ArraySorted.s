@@ -13,7 +13,7 @@
 
 /**
  * Collection of routines to operate effectively sorted arrays.
-  @namespace wTools(module:ArraySorted)
+  @namespace "wTools.sorted"
   @memberof module:Tools/base/ArraySorted
 */
 
@@ -60,7 +60,7 @@ let Self = _.sorted = _.sorted || Object.create( null );
  * can be found in the array (arr).
  * Otherwise, if (ins) was not found, it returns the length of the array (arr) or the index from which it ended search at.
  * @function _lookUpAct
- * @memberof module:Tools/base/ArraySorted.wTools(module:ArraySorted)
+ * @memberof module:Tools/base/ArraySorted.wTools.sorted
  */
 
 function _lookUpAct( arr,ins,comparator,left,right )
@@ -152,7 +152,7 @@ function _lookUpAct( arr,ins,comparator,left,right )
  * _.sorted.lookUpIndex( [ 2,3,4 ], 0 )// -1
  *
  * @function lookUpIndex
- * @memberof module:Tools/base/ArraySorted.wTools(module:ArraySorted)
+ * @memberof module:Tools/base/ArraySorted.wTools.sorted
  *
  */
 
@@ -193,7 +193,7 @@ function lookUpIndex( arr,ins,comparator )
  * _.sorted.lookUpValue( [ 2,3,4 ], 0 )// undefined
  *
  * @function lookUpValue
- * @memberof module:Tools/base/ArraySorted.wTools(module:ArraySorted)
+ * @memberof module:Tools/base/ArraySorted.wTools.sorted
  *
  */
 
@@ -229,7 +229,7 @@ function lookUpValue( arr,ins,comparator )
  * @function lookUp
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (arr) is not an array-like.
- * @memberof module:Tools/base/ArraySorted.wTools(module:ArraySorted)
+ * @memberof module:Tools/base/ArraySorted.wTools.sorted
  */
 
 function lookUp( arr,ins,comparator )
@@ -262,7 +262,7 @@ function lookUp( arr,ins,comparator )
  * _.sorted.lookUpClosestIndex( [ 2,3,4 ], 10 )// -1
  *
  * @function lookUpClosestIndex
- * @memberof module:Tools/base/ArraySorted.wTools(module:ArraySorted)
+ * @memberof module:Tools/base/ArraySorted.wTools.sorted
  *
  */
 
@@ -302,7 +302,7 @@ function lookUpClosestIndex( arr,ins,comparator )
  * _.sorted.lookUpClosestValue( [ 2,3,4 ], 10 )// undefined
  *
  * @function lookUpClosestValue
- * @memberof module:Tools/base/ArraySorted.wTools(module:ArraySorted)
+ * @memberof module:Tools/base/ArraySorted.wTools.sorted
  *
  */
 
@@ -336,7 +336,7 @@ function lookUpClosestValue( arr,ins,comparator )
  * _.sorted.lookUpClosest( [ 2,3,4 ], 10 )// { value : undefined, index : -1 }
  *
  * @function lookUpClosest
- * @memberof module:Tools/base/ArraySorted.wTools(module:ArraySorted)
+ * @memberof module:Tools/base/ArraySorted.wTools.sorted
  *
  */
 
@@ -370,7 +370,7 @@ function lookUpClosest( arr,ins,comparator )
  * _.sorted.lookUpInterval( [ 2,3,4 ], [ 5,10 ] )// [3, 3]
  *
  * @function lookUpInterval
- * @memberof module:Tools/base/ArraySorted.wTools(module:ArraySorted)
+ * @memberof module:Tools/base/ArraySorted.wTools.sorted
  *
  */
 
@@ -970,7 +970,7 @@ function rightMostAtMost( arr,ins,comparator )
  * @function remove
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (arr) is not an array-like.
- * @memberof module:Tools/base/ArraySorted.wTools(module:ArraySorted)
+ * @memberof module:Tools/base/ArraySorted.wTools.sorted
  */
 
 function remove( arr,ins,comparator )
@@ -1022,7 +1022,7 @@ function remove( arr,ins,comparator )
  * @function addOnce
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (arr) is not an array-like.
- * @memberof module:Tools/base/ArraySorted.wTools(module:ArraySorted)
+ * @memberof module:Tools/base/ArraySorted.wTools.sorted
  */
 
 function addOnce( arr,ins,comparator )
@@ -1073,7 +1073,7 @@ function addOnce( arr,ins,comparator )
  * @function add
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (arr) is not an array-like.
- * @memberof module:Tools/base/ArraySorted.wTools(module:ArraySorted)
+ * @memberof module:Tools/base/ArraySorted.wTools.sorted
  */
 
 function add( arr,ins,comparator )
@@ -1118,7 +1118,7 @@ function add( arr,ins,comparator )
  * @function addArray
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (dst and src) are not an array-like.
- * @memberof module:Tools/base/ArraySorted.wTools(module:ArraySorted)
+ * @memberof module:Tools/base/ArraySorted.wTools.sorted
  */
 
 function addArray( dst,src,comparator )
