@@ -11,6 +11,13 @@
  * @file ArraySorted.s.
  */
 
+/**
+ * Collection of routines to operate effectively sorted arrays.
+  @namespace ArraySorted
+  @augments wTools
+  @memberof module:Tools/base/ArraySorted
+*/
+
 if( typeof module !== 'undefined' )
 {
 
@@ -53,8 +60,8 @@ let Self = _.sorted = _.sorted || Object.create( null );
  * @returns { Number } Returns the first index at which a given element (ins)
  * can be found in the array (arr).
  * Otherwise, if (ins) was not found, it returns the length of the array (arr) or the index from which it ended search at.
- * @method _lookUpAct
- * @memberof wTools
+ * @function _lookUpAct
+ * @memberof module:Tools/base/ArraySorted.ArraySorted
  */
 
 function _lookUpAct( arr,ins,comparator,left,right )
@@ -128,6 +135,28 @@ function _lookUpAct( arr,ins,comparator,left,right )
 
 //
 
+/**
+ * @summary Binary search of element( ins ) in array( arr ).
+ * @description
+ * Returns index if element exists, otherwise returns `-1`.
+ * Accepts comparator routine as third argument.
+ *
+ * @param {Array} src - Source array
+ * @param {} ins - Element to find
+ * @param {Function} [comparator] Routine comparator
+ * @returns {Number} Returns index of found element or `-1`
+ *
+ * @example
+ * _.sorted.lookUpIndex( [ 2,3,4 ], 4 )// 2
+ *
+ * @example
+ * _.sorted.lookUpIndex( [ 2,3,4 ], 0 )// -1
+ *
+ * @function lookUpIndex
+ * @memberof module:Tools/base/ArraySorted.ArraySorted
+ *
+ */
+
 function lookUpIndex( arr,ins,comparator )
 {
 
@@ -147,6 +176,27 @@ function lookUpIndex( arr,ins,comparator )
 }
 
 //
+
+/**
+ * @summary Binary search of element( ins ) in array( arr ).
+ * @description
+ * Returns found element or undefined.
+ * Accepts comparator routine as third argument.
+ *
+ * @param {Array} src - Source array
+ * @param {} ins - Element to find
+ * @param {Function} [comparator] Routine comparator
+ * @returns {} Returns found element or undefined.
+ * @example
+ * _.sorted.lookUpValue( [ 2,3,4 ], 4 )// 4
+ *
+ * @example
+ * _.sorted.lookUpValue( [ 2,3,4 ], 0 )// undefined
+ *
+ * @function lookUpValue
+ * @memberof module:Tools/base/ArraySorted.ArraySorted
+ *
+ */
 
 function lookUpValue( arr,ins,comparator )
 {
@@ -177,10 +227,10 @@ function lookUpValue( arr,ins,comparator )
  * @returns { Object } Returns a new object containing the properties, (value, index),
  * corresponding to the found value (ins) from the array (arr).
  * Otherwise, it returns 'undefined'.
- * @method wTools.sorted.lookUp
+ * @function lookUp
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (arr) is not an array-like.
- * @memberof wTools
+ * @memberof module:Tools/base/ArraySorted.ArraySorted
  */
 
 function lookUp( arr,ins,comparator )
@@ -190,6 +240,32 @@ function lookUp( arr,ins,comparator )
 }
 
 //
+
+/**
+ * @summary Binary search of element( ins ) in array( arr ).
+ * @description
+ * Finds element equal to passed value( ins ) or element with smallest possible difference.
+ * Returns index of found element or `-1`.
+ * Accepts comparator routine as third argument.
+ *
+ * @param {Array} src - Source array
+ * @param {} ins - Element to find
+ * @param {Function} [comparator] Routine comparator
+ * @returns {Number} Returns index of found element or `-1`
+ *
+ * @example
+ * _.sorted.lookUpClosestIndex( [ 2,3,4 ], 4 )// 2
+ *
+ * @example
+ * _.sorted.lookUpClosestIndex( [ 2,3,4 ], 1 )// 0
+ *
+ * @example
+ * _.sorted.lookUpClosestIndex( [ 2,3,4 ], 10 )// -1
+ *
+ * @function lookUpClosestIndex
+ * @memberof module:Tools/base/ArraySorted.ArraySorted
+ *
+ */
 
 function lookUpClosestIndex( arr,ins,comparator )
 {
@@ -205,6 +281,32 @@ function lookUpClosestIndex( arr,ins,comparator )
 
 //
 
+/**
+ * @summary Binary search of element( ins ) in array( arr ).
+ * @description
+ * Finds element equal to passed value( ins ) or element with smallest possible difference.
+ * Returns value of found element or undefined.
+ * Accepts comparator routine as third argument.
+ *
+ * @param {Array} src - Source array
+ * @param {} ins - Element to find
+ * @param {Function} [comparator] Routine comparator
+ * @returns {Number} Returns value of found element or undefined
+ *
+ * @example
+ * _.sorted.lookUpClosestValue( [ 2,3,4 ], 4 )// 4
+ *
+ * @example
+ * _.sorted.lookUpClosestValue( [ 2,3,4 ], 1 )// 2
+ *
+ * @example
+ * _.sorted.lookUpClosestValue( [ 2,3,4 ], 10 )// undefined
+ *
+ * @function lookUpClosestValue
+ * @memberof module:Tools/base/ArraySorted.ArraySorted
+ *
+ */
+
 function lookUpClosestValue( arr,ins,comparator )
 {
   let index = this.lookUpClosestIndex.apply( this, arguments );
@@ -213,6 +315,32 @@ function lookUpClosestValue( arr,ins,comparator )
 
 //
 
+/**
+ * @summary Binary search of element( ins ) in array( arr ).
+ * @description
+ * Finds element equal to passed value( ins ) or element with smallest possible difference.
+ * Returns map with two properties: `value` and `index`. If element is not found, `value` is `undefined`, index : `-1`.
+ * Accepts comparator routine as third argument.
+ *
+ * @param {Array} src - Source array
+ * @param {} ins - Element to find
+ * @param {Function} [comparator] Routine comparator
+ * @returns {Object} Returns results of search as map with two properties: `value` and `index`.
+ *
+ * @example
+ * _.sorted.lookUpClosest( [ 2,3,4 ], 4 )// { value : 4, index : 2 }
+ *
+ * @example
+ * _.sorted.lookUpClosest( [ 2,3,4 ], 1 )// { value : 2, index : 0 }
+ *
+ * @example
+ * _.sorted.lookUpClosest( [ 2,3,4 ], 10 )// { value : undefined, index : -1 }
+ *
+ * @function lookUpClosest
+ * @memberof module:Tools/base/ArraySorted.ArraySorted
+ *
+ */
+
 function lookUpClosest( arr,ins,comparator )
 {
   let index = this.lookUpClosestIndex.apply( this, arguments );
@@ -220,6 +348,32 @@ function lookUpClosest( arr,ins,comparator )
 }
 
 //
+
+/**
+ * @summary Looks for elements from provived interval( range ) in source array( arr ).
+ *
+ * @description
+ * Returns range of indecies where found elements are located.
+ * Accepts comparator routine as third argument.
+ *
+ * @param {Array} src - Source array
+ * @param {} ins - Element to find
+ * @param {Function} [comparator] Routine comparator
+ * @returns {Object} Returns range of indecies where found elements are located.
+ *
+ * @example
+ * _.sorted.lookUpInterval( [ 2,3,4 ], [ 0,10 ] )// [0, 3]
+ *
+ * @example
+ * _.sorted.lookUpInterval( [ 2,3,4 ], [ -1,1 ] )// [0, 0]
+ *
+ * @example
+ * _.sorted.lookUpInterval( [ 2,3,4 ], [ 5,10 ] )// [3, 3]
+ *
+ * @function lookUpInterval
+ * @memberof module:Tools/base/ArraySorted.ArraySorted
+ *
+ */
 
 function lookUpInterval( arr,range,comparator )
 {
@@ -814,10 +968,10 @@ function rightMostAtMost( arr,ins,comparator )
  *
  * @returns { Boolean } Returns true, if a value (ins) was removed from an array (arr).
  * Otherwise, it returns false.
- * @method wTools.sorted.remove
+ * @function remove
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (arr) is not an array-like.
- * @memberof wTools
+ * @memberof module:Tools/base/ArraySorted.ArraySorted
  */
 
 function remove( arr,ins,comparator )
@@ -866,10 +1020,10 @@ function remove( arr,ins,comparator )
  *
  * @returns { Boolean } Returns true, if a value (ins) was added to an array (arr).
  * Otherwise, it returns false.
- * @method wTools.sorted.addOnce
+ * @function addOnce
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (arr) is not an array-like.
- * @memberof wTools
+ * @memberof module:Tools/base/ArraySorted.ArraySorted
  */
 
 function addOnce( arr,ins,comparator )
@@ -917,10 +1071,10 @@ function addOnce( arr,ins,comparator )
  * wTools.sorted.add( [ 1, 2, 3, 4 ], 2, function( a, b ) { return a - b } ); // => [ 1, 2, 2, 3, 4 ]
  *
  * @returns { Number } Returns the new added or the updated index.
- * @method wTools.sorted.add
+ * @function add
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (arr) is not an array-like.
- * @memberof wTools
+ * @memberof module:Tools/base/ArraySorted.ArraySorted
  */
 
 function add( arr,ins,comparator )
@@ -962,10 +1116,10 @@ function add( arr,ins,comparator )
  * _.sorted.addArray( [  ], [ 1, 2, 3 ], function( a, b ) { return a - b } ); // => [ 1, 2, 3 ]
  *
  * @returns { Number } Returns the sum of the added indexes from an array (src) to an array (dst).
- * @method wTools.sorted.addArray
+ * @function addArray
  * @throws { Error } Will throw an Error if (arguments.length) is less than two or more than three.
  * @throws { Error } Will throw an Error if (dst and src) are not an array-like.
- * @memberof wTools
+ * @memberof module:Tools/base/ArraySorted.ArraySorted
  */
 
 function addArray( dst,src,comparator )
