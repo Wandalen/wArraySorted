@@ -21,8 +21,8 @@ execution :
 
 path :
 
-  repository : git+https://github.com/Wandalen/wArraySorted.git
-  bugs : https://github.com/Wandalen/wArraySorted/issues
+  repository : git+https:///github.com/Wandalen/wArraySorted.git
+  bugs : https:///github.com/Wandalen/wArraySorted/issues
 
 step :
 
