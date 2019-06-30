@@ -235,7 +235,7 @@ function lookUpValue( arr,ins,comparator )
 function lookUp( arr,ins,comparator )
 {
   let index = this.lookUpIndex.apply( this, arguments );
-  return { value : arr[ index ], index : index };
+  return { value : arr[ index ], /*ttt*/index };
 }
 
 //
@@ -343,7 +343,7 @@ function lookUpClosestValue( arr,ins,comparator )
 function lookUpClosest( arr,ins,comparator )
 {
   let index = this.lookUpClosestIndex.apply( this, arguments );
-  return { value : arr[ index ], index : index };
+  return { value : arr[ index ], /*ttt*/index };
 }
 
 //
@@ -704,7 +704,7 @@ function leftMostAtLeast( arr,ins,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'Expects two or three arguments' );
 
   let index = this.leftMostAtLeastIndex( arr,ins,comparator );
-  let result = { value : arr[ index ], index : index };
+  let result = { value : arr[ index ], /*ttt*/index };
 
   return result;
 }
@@ -789,7 +789,7 @@ function leftMostAtMost( arr,ins,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'Expects two or three arguments' );
 
   let index = this.leftMostAtMostIndex( arr,ins,comparator );
-  let result = { value : arr[ index ], index : index };
+  let result = { value : arr[ index ], /*ttt*/index };
 
   return result;
 }
@@ -862,7 +862,7 @@ function rightMostAtLeast( arr,ins,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'Expects two or three arguments' );
 
   let index = this.rightMostAtLeastIndex( arr,ins,comparator );
-  let result = { value : arr[ index ], index : index };
+  let result = { value : arr[ index ], /*ttt*/index };
 
   return result;
 }
@@ -938,7 +938,7 @@ function rightMostAtMost( arr,ins,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'Expects two or three arguments' );
 
   let index = this.rightMostAtMostIndex( arr,ins,comparator );
-  let result = { value : arr[ index ], index : index };
+  let result = { value : arr[ index ], /*ttt*/index };
 
   return result;
 }
@@ -1145,53 +1145,53 @@ let Proto =
 
   // array sorted
 
-  // _comparatorFromEvaluator : _comparatorFromEvaluator,
+  // /*ttt*/_comparatorFromEvaluator,
 
-  _lookUpAct : _lookUpAct,
+  /*ttt*/_lookUpAct,
 
-  lookUpIndex : lookUpIndex,
-  lookUpValue : lookUpValue,
-  lookUp : lookUp,
+  /*ttt*/lookUpIndex,
+  /*ttt*/lookUpValue,
+  /*ttt*/lookUp,
 
-  lookUpClosestIndex : lookUpClosestIndex,
-  lookUpClosestValue : lookUpClosestValue,
-  lookUpClosest : lookUpClosest,
+  /*ttt*/lookUpClosestIndex,
+  /*ttt*/lookUpClosestValue,
+  /*ttt*/lookUpClosest,
 
-  lookUpInterval : lookUpInterval,
-  lookUpIntervalNarrowest : lookUpIntervalNarrowest, /* experimental */
-  lookUpIntervalNarrowestOld : lookUpIntervalNarrowestOld, /* experimental */
-  lookUpIntervalHaving : lookUpIntervalHaving,
-  lookUpIntervalEmbracingAtLeast : lookUpIntervalEmbracingAtLeast, /* experimental */
-  lookUpIntervalEmbracingAtLeastOld : lookUpIntervalEmbracingAtLeastOld, /* experimental */
+  /*ttt*/lookUpInterval,
+  /*ttt*/lookUpIntervalNarrowest, /* experimental */
+  /*ttt*/lookUpIntervalNarrowestOld, /* experimental */
+  /*ttt*/lookUpIntervalHaving,
+  /*ttt*/lookUpIntervalEmbracingAtLeast, /* experimental */
+  /*ttt*/lookUpIntervalEmbracingAtLeastOld, /* experimental */
 
-  _leftMostAtLeastIndex : _leftMostAtLeastIndex,
-  leftMostAtLeastIndex : leftMostAtLeastIndex,
-  leftMostAtLeastValue : leftMostAtLeastValue,
-  leftMostAtLeast : leftMostAtLeast,
+  /*ttt*/_leftMostAtLeastIndex,
+  /*ttt*/leftMostAtLeastIndex,
+  /*ttt*/leftMostAtLeastValue,
+  /*ttt*/leftMostAtLeast,
 
-  _leftMostAtMostIndex : _leftMostAtMostIndex,
-  leftMostAtMostIndex : leftMostAtMostIndex,
-  leftMostAtMostValue : leftMostAtMostValue,
-  leftMostAtMost : leftMostAtMost,
+  /*ttt*/_leftMostAtMostIndex,
+  /*ttt*/leftMostAtMostIndex,
+  /*ttt*/leftMostAtMostValue,
+  /*ttt*/leftMostAtMost,
 
-  _rightMostAtLeastIndex : _rightMostAtLeastIndex,
-  rightMostAtLeastIndex : rightMostAtLeastIndex,
-  rightMostAtLeastValue : rightMostAtLeastValue,
-  rightMostAtLeast : rightMostAtLeast,
+  /*ttt*/_rightMostAtLeastIndex,
+  /*ttt*/rightMostAtLeastIndex,
+  /*ttt*/rightMostAtLeastValue,
+  /*ttt*/rightMostAtLeast,
 
-  _rightMostAtMostIndex : _rightMostAtMostIndex,
-  rightMostAtMostIndex : rightMostAtMostIndex,
-  rightMostAtMostValue : rightMostAtMostValue,
-  rightMostAtMost : rightMostAtMost,
+  /*ttt*/_rightMostAtMostIndex,
+  /*ttt*/rightMostAtMostIndex,
+  /*ttt*/rightMostAtMostValue,
+  /*ttt*/rightMostAtMost,
 
-  // closestIndex : closestIndex,
-  // closestValue : closestValue,
-  // closest : closest,
+  // /*ttt*/closestIndex,
+  // /*ttt*/closestValue,
+  // /*ttt*/closest,
 
-  remove : remove,
-  add : add,
-  addOnce : addOnce,
-  addArray : addArray,
+  /*ttt*/remove,
+  /*ttt*/add,
+  /*ttt*/addOnce,
+  /*ttt*/addArray,
 
 }
 

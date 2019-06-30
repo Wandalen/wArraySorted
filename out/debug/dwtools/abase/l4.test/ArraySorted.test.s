@@ -3099,31 +3099,31 @@ var Self =
   tests :
   {
 
-    _lookUpAct : _lookUpAct,
+    /*ttt*/_lookUpAct,
 
-    lookUp : lookUp,
-    lookUpClosest : lookUpClosest,
+    /*ttt*/lookUp,
+    /*ttt*/lookUpClosest,
 
-    lookUpIndex : lookUpIndex,
-    lookUpClosestIndex : lookUpClosestIndex,
+    /*ttt*/lookUpIndex,
+    /*ttt*/lookUpClosestIndex,
 
-    lookUpInterval : lookUpInterval,
-    lookUpIntervalNarrowest : lookUpIntervalNarrowest,
-    lookUpIntervalHaving : lookUpIntervalHaving,
-    lookUpIntervalEmbracingAtLeast : lookUpIntervalEmbracingAtLeast,
-    lookUpIntervalEmbracingAtLeastOld : lookUpIntervalEmbracingAtLeastOld,
+    /*ttt*/lookUpInterval,
+    /*ttt*/lookUpIntervalNarrowest,
+    /*ttt*/lookUpIntervalHaving,
+    /*ttt*/lookUpIntervalEmbracingAtLeast,
+    /*ttt*/lookUpIntervalEmbracingAtLeastOld,
 
-    add : add,
-    remove : remove,
-    addOnce : addOnce,
-    addArray : addArray,
+    /*ttt*/add,
+    /*ttt*/remove,
+    /*ttt*/addOnce,
+    /*ttt*/addArray,
 
-    leftMostAtLeast : leftMostAtLeast,
-    leftMostAtMost : leftMostAtMost,
-    rightMostAtLeast : rightMostAtLeast,
-    rightMostAtMost : rightMostAtMost,
+    /*ttt*/leftMostAtLeast,
+    /*ttt*/leftMostAtMost,
+    /*ttt*/rightMostAtLeast,
+    /*ttt*/rightMostAtMost,
 
-    // lookUpIntervalNarrowestExperiment : lookUpIntervalNarrowestExperiment
+    // /*ttt*/lookUpIntervalNarrowestExperiment
 
   },
 
