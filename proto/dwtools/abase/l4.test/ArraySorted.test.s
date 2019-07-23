@@ -3099,31 +3099,31 @@ var Self =
   tests :
   {
 
-    /*ttt*/_lookUpAct,
+    _lookUpAct,
 
-    /*ttt*/lookUp,
-    /*ttt*/lookUpClosest,
+    lookUp,
+    lookUpClosest,
 
-    /*ttt*/lookUpIndex,
-    /*ttt*/lookUpClosestIndex,
+    lookUpIndex,
+    lookUpClosestIndex,
 
-    /*ttt*/lookUpInterval,
-    /*ttt*/lookUpIntervalNarrowest,
-    /*ttt*/lookUpIntervalHaving,
-    /*ttt*/lookUpIntervalEmbracingAtLeast,
-    /*ttt*/lookUpIntervalEmbracingAtLeastOld,
+    lookUpInterval,
+    lookUpIntervalNarrowest,
+    lookUpIntervalHaving,
+    lookUpIntervalEmbracingAtLeast,
+    lookUpIntervalEmbracingAtLeastOld,
 
-    /*ttt*/add,
-    /*ttt*/remove,
-    /*ttt*/addOnce,
-    /*ttt*/addArray,
+    add,
+    remove,
+    addOnce,
+    addArray,
 
-    /*ttt*/leftMostAtLeast,
-    /*ttt*/leftMostAtMost,
-    /*ttt*/rightMostAtLeast,
-    /*ttt*/rightMostAtMost,
+    leftMostAtLeast,
+    leftMostAtMost,
+    rightMostAtLeast,
+    rightMostAtMost,
 
-    // /*ttt*/lookUpIntervalNarrowestExperiment
+    // lookUpIntervalNarrowestExperiment
 
   },
 

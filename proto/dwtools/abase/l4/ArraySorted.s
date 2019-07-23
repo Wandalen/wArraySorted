@@ -235,7 +235,7 @@ function lookUpValue( arr,ins,comparator )
 function lookUp( arr,ins,comparator )
 {
   let index = this.lookUpIndex.apply( this, arguments );
-  return { value : arr[ index ], /*ttt*/index };
+  return { value : arr[ index ], index };
 }
 
 //
@@ -343,7 +343,7 @@ function lookUpClosestValue( arr,ins,comparator )
 function lookUpClosest( arr,ins,comparator )
 {
   let index = this.lookUpClosestIndex.apply( this, arguments );
-  return { value : arr[ index ], /*ttt*/index };
+  return { value : arr[ index ], index };
 }
 
 //
@@ -704,7 +704,7 @@ function leftMostAtLeast( arr,ins,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'Expects two or three arguments' );
 
   let index = this.leftMostAtLeastIndex( arr,ins,comparator );
-  let result = { value : arr[ index ], /*ttt*/index };
+  let result = { value : arr[ index ], index };
 
   return result;
 }
@@ -789,7 +789,7 @@ function leftMostAtMost( arr,ins,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'Expects two or three arguments' );
 
   let index = this.leftMostAtMostIndex( arr,ins,comparator );
-  let result = { value : arr[ index ], /*ttt*/index };
+  let result = { value : arr[ index ], index };
 
   return result;
 }
@@ -862,7 +862,7 @@ function rightMostAtLeast( arr,ins,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'Expects two or three arguments' );
 
   let index = this.rightMostAtLeastIndex( arr,ins,comparator );
-  let result = { value : arr[ index ], /*ttt*/index };
+  let result = { value : arr[ index ], index };
 
   return result;
 }
@@ -938,7 +938,7 @@ function rightMostAtMost( arr,ins,comparator )
   _.assert( arguments.length === 2 || arguments.length === 3, 'Expects two or three arguments' );
 
   let index = this.rightMostAtMostIndex( arr,ins,comparator );
-  let result = { value : arr[ index ], /*ttt*/index };
+  let result = { value : arr[ index ], index };
 
   return result;
 }
@@ -1145,66 +1145,61 @@ let Proto =
 
   // array sorted
 
-  // /*ttt*/_comparatorFromEvaluator,
+  // _comparatorFromEvaluator,
 
-  /*ttt*/_lookUpAct,
+  _lookUpAct,
 
-  /*ttt*/lookUpIndex,
-  /*ttt*/lookUpValue,
-  /*ttt*/lookUp,
+  lookUpIndex,
+  lookUpValue,
+  lookUp,
 
-  /*ttt*/lookUpClosestIndex,
-  /*ttt*/lookUpClosestValue,
-  /*ttt*/lookUpClosest,
+  lookUpClosestIndex,
+  lookUpClosestValue,
+  lookUpClosest,
 
-  /*ttt*/lookUpInterval,
-  /*ttt*/lookUpIntervalNarrowest, /* experimental */
-  /*ttt*/lookUpIntervalNarrowestOld, /* experimental */
-  /*ttt*/lookUpIntervalHaving,
-  /*ttt*/lookUpIntervalEmbracingAtLeast, /* experimental */
-  /*ttt*/lookUpIntervalEmbracingAtLeastOld, /* experimental */
+  lookUpInterval,
+  lookUpIntervalNarrowest, /* experimental */
+  lookUpIntervalNarrowestOld, /* experimental */
+  lookUpIntervalHaving,
+  lookUpIntervalEmbracingAtLeast, /* experimental */
+  lookUpIntervalEmbracingAtLeastOld, /* experimental */
 
-  /*ttt*/_leftMostAtLeastIndex,
-  /*ttt*/leftMostAtLeastIndex,
-  /*ttt*/leftMostAtLeastValue,
-  /*ttt*/leftMostAtLeast,
+  _leftMostAtLeastIndex,
+  leftMostAtLeastIndex,
+  leftMostAtLeastValue,
+  leftMostAtLeast,
 
-  /*ttt*/_leftMostAtMostIndex,
-  /*ttt*/leftMostAtMostIndex,
-  /*ttt*/leftMostAtMostValue,
-  /*ttt*/leftMostAtMost,
+  _leftMostAtMostIndex,
+  leftMostAtMostIndex,
+  leftMostAtMostValue,
+  leftMostAtMost,
 
-  /*ttt*/_rightMostAtLeastIndex,
-  /*ttt*/rightMostAtLeastIndex,
-  /*ttt*/rightMostAtLeastValue,
-  /*ttt*/rightMostAtLeast,
+  _rightMostAtLeastIndex,
+  rightMostAtLeastIndex,
+  rightMostAtLeastValue,
+  rightMostAtLeast,
 
-  /*ttt*/_rightMostAtMostIndex,
-  /*ttt*/rightMostAtMostIndex,
-  /*ttt*/rightMostAtMostValue,
-  /*ttt*/rightMostAtMost,
+  _rightMostAtMostIndex,
+  rightMostAtMostIndex,
+  rightMostAtMostValue,
+  rightMostAtMost,
 
-  // /*ttt*/closestIndex,
-  // /*ttt*/closestValue,
-  // /*ttt*/closest,
+  // closestIndex,
+  // closestValue,
+  // closest,
 
-  /*ttt*/remove,
-  /*ttt*/add,
-  /*ttt*/addOnce,
-  /*ttt*/addArray,
+  remove,
+  add,
+  addOnce,
+  addArray,
 
 }
 
-// _.mapExtend( _, Proto );
 _.mapExtend( Self, Proto );
 
 // --
 // export
 // --
-
-if( typeof module !== 'undefined' )
-if( _global_.WTOOLS_PRIVATE )
-{ /* delete require.cache[ module.id ]; */ }
 
 if( typeof module !== 'undefined' && module !== null )
 module[ 'exports' ] = Self;
