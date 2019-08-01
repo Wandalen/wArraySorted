@@ -22,7 +22,7 @@
     "main": "proto/dwtools/abase/l4/ArraySorted.s"
   },
   "scripts": {
-    "test": "wtest proto",
+    "test": "wtest .run proto/**",
     "docgen": "wdocgen proto"
   },
   "repository": {
