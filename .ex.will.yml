@@ -32,13 +32,16 @@ about :
 path :
 
   repository : git+https:///github.com/Wandalen/wArraySorted.git
+  remotes :
+   - git+https:///github.com/Wandalen/wArraySorted.git
+   - npm:///warraysorted
   bugtracker : https:///github.com/Wandalen/wArraySorted/issues
 
 step :
 
   proto.export :
     inherit : module.export
-    export : path::proto
+    export : path::export
     tar : 0
     criterion :
       content : 'proto'
