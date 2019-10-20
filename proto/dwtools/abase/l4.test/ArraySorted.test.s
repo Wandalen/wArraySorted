@@ -62,7 +62,7 @@ function _lookUpAct( test )
   return;
 
   test.case = 'no arguments';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted._lookUpAct();
   });
@@ -173,25 +173,25 @@ function lookUp( test )
   return;
 
   test.case = 'no arguments';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted.lookUp();
   });
 
   test.case = 'first argument is wrong';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted.lookUp( 'wrong argument', 5, function( a, b ) { return a - b } );
   });
 
   test.case = 'not enough arguments';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted.lookUp( [ 1, 2, 3, 4, 5 ] );
   });
 
   test.case = 'extra argument';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted.lookUp( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
   });
@@ -302,25 +302,25 @@ function lookUpClosest( test )
   return;
 
   test.case = 'no arguments';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted.lookUpClosest();
   });
 
   test.case = 'first argument is wrong';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted.lookUpClosest( 'wrong argument', 5, function( a, b ) { return a - b } );
   });
 
   test.case = 'not enough arguments';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted.lookUpClosest( [ 1, 2, 3, 4, 5 ] );
   });
 
   test.case = 'extra argument';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted.lookUpClosest( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
   });
@@ -2342,13 +2342,13 @@ function addOnce( test )
   })
 
   test.case = 'not enough arguments';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted.addOnce( [ 1, 2, 3, 4, 5 ] );
   });
 
   test.case = 'extra argument';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted.addOnce( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
   });
@@ -2454,19 +2454,19 @@ function remove( test )
   })
 
   test.case = 'first argument is wrong';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted.remove( 'wrong argument', 5, function( a, b ) { return a - b } );
   });
 
   test.case = 'not enough arguments';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted.remove( [ 1, 2, 3, 4, 5 ] );
   });
 
   test.case = 'extra argument';
-  test.shouldThrowError( function()
+  test.shouldThrowErrorOfAnyKind( function()
   {
     _.sorted.remove( [ 1, 2, 3, 4, 5 ], 5, function( a, b ) { return a - b }, 'extra argument' );
   });
@@ -3093,7 +3093,7 @@ function rightMostAtMost( test )
 var Self =
 {
 
-  name : 'Tools/base/l4/ArraySorted',
+  name : 'Tools.base.l4.ArraySorted',
   silencing : 1,
 
   tests :
