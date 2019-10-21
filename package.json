@@ -22,7 +22,7 @@
   {
     "url" : "https://github.com/Wandalen/wArraySorted/issues"
   }, 
-  "dependencies" : { "wTools" : "" }, 
-  "devDependencies" : { "wTesting" : "" }, 
+  "dependencies" : { "wTools" : "beta" }, 
+  "devDependencies" : { "wTesting" : "beta" }, 
   "keywords" : [ "sorted array", "wTools", "binnary search", "range", "interval", "search in sorted array", "sort" ]
 }
