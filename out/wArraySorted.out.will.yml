@@ -3,18 +3,19 @@ root:
   - wArraySorted.out
 consistency:
   wArraySorted.out.will.yml: &ref_0
-    hash: 540e2096c3a5aa2265c29c6ab2c8555e
-    size: 38849
+    hash: e860ad8ef042844e617375d9496ff890
+    size: 38878
   ../.ex.will.yml: &ref_1
     hash: cbc2aafc70ea6a15b8c8ed26dd4635fe
     size: 2177
   ../.im.will.yml: &ref_2
-    hash: fcf09577aa5b3afe93f28aa8559c744c
-    size: 4869
+    hash: 6fc54bec722642c1354c3bd26703590d
+    size: 4943
 module:
   wArraySorted.out:
     about:
       name: wArraySorted
+      org: noorg
       description: >-
         Collection of routines to operate effectively sorted arrays. For that
         ArraySorted provides customizable quicksort algorithm and a dozen
@@ -74,9 +75,6 @@ module:
       download:
         criterion:
           predefined: 1
-      remote:
-        criterion:
-          predefined: 1
       repository:
         path: 'git+https:///github.com/Wandalen/wArraySorted.git'
       origins:
@@ -86,15 +84,15 @@ module:
       bugtracker:
         path: 'https:///github.com/Wandalen/wArraySorted/issues'
       in:
-        criterion:
-          predefined: 0
         path: .
       out:
-        criterion:
-          predefined: 0
         path: .
       temp:
-        path: 'path::out'
+        path:
+          - 'path::out'
+          - ../package-lock.json
+          - ../package.json
+          - ../node_modules
       proto:
         path: ../proto
       export:
@@ -159,11 +157,13 @@ module:
         path: '{path::out.*=}/source/Index.s'
       exported.dir.proto.export:
         criterion:
+          generated: 1
           content: proto
           export: 1
         path: ../proto
       exported.files.proto.export:
         criterion:
+          generated: 1
           content: proto
           export: 1
         path:
@@ -342,6 +342,7 @@ module:
           prefixPath: ../proto
         mandatory: 1
         criterion:
+          generated: 1
           content: proto
           export: 1
       exported.files.proto.export:
@@ -354,6 +355,7 @@ module:
         recursive: 0
         mandatory: 1
         criterion:
+          generated: 1
           content: proto
           export: 1
     step:
@@ -711,6 +713,7 @@ module:
         opts:
           reflector: 'reflector::exported.proto.export*'
         criterion:
+          generated: 1
           content: proto
           export: 1
         inherit:
@@ -719,6 +722,7 @@ module:
         opts:
           reflector: 'reflector::exported.files.proto.export*'
         criterion:
+          generated: 1
           content: proto
           export: 1
         inherit:
@@ -817,6 +821,7 @@ module:
   ../:
     about:
       name: wArraySorted
+      org: noorg
       description: >-
         Collection of routines to operate effectively sorted arrays. For that
         ArraySorted provides customizable quicksort algorithm and a dozen
@@ -876,9 +881,6 @@ module:
       download:
         criterion:
           predefined: 1
-      remote:
-        criterion:
-          predefined: 1
       repository:
         path: 'git+https:///github.com/Wandalen/wArraySorted.git'
       origins:
@@ -888,21 +890,21 @@ module:
       bugtracker:
         path: 'https:///github.com/Wandalen/wArraySorted/issues'
       in:
-        criterion:
-          predefined: 0
         path: .
       out:
-        criterion:
-          predefined: 0
         path: out
       temp:
-        path: 'path::out'
+        path:
+          - 'path::out'
+          - package-lock.json
+          - package.json
+          - node_modules
       proto:
-        path: ./proto
+        path: proto
       export:
         path: '{path::proto}/**'
       doc:
-        path: ./doc
+        path: doc
       out.raw.debug:
         criterion:
           debug: debug
@@ -1520,6 +1522,6 @@ module:
         hash: cbc2aafc70ea6a15b8c8ed26dd4635fe
         size: 2177
       ../.im.will.yml:
-        hash: fcf09577aa5b3afe93f28aa8559c744c
-        size: 4869
+        hash: 6fc54bec722642c1354c3bd26703590d
+        size: 4943
       wArraySorted.out.will.yml: *ref_0
