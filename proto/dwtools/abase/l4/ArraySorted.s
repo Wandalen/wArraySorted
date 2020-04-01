@@ -14,6 +14,7 @@
 /**
  * Collection of routines to operate effectively sorted arrays.
   @namespace "wTools.sorted"
+  @extends Tools
   @memberof module:Tools/base/ArraySorted
 */
 
