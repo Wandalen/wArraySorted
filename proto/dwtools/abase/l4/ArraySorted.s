@@ -13,7 +13,7 @@
 
 /**
  * Collection of routines to operate effectively sorted arrays.
-  @namespace "wTools.sorted"
+  @namespace wTools.sorted
   @extends Tools
   @module Tools/base/ArraySorted
 */
@@ -142,7 +142,7 @@ function _lookUpAct( arr, ins, comparator, left, right )
  * Accepts comparator routine as third argument.
  *
  * @param {Array} src - Source array
- * @param {} ins - Element to find
+ * @param {*} ins - Element to find
  * @param {Function} [comparator] Routine comparator
  * @returns {Number} Returns index of found element or `-1`
  *
@@ -184,7 +184,7 @@ function lookUpIndex( arr, ins, comparator )
  * Accepts comparator routine as third argument.
  *
  * @param {Array} src - Source array
- * @param {} ins - Element to find
+ * @param {*} ins - Element to find
  * @param {Function} [comparator] Routine comparator
  * @returns {} Returns found element or undefined.
  * @example
@@ -249,7 +249,7 @@ function lookUp( arr, ins, comparator )
  * Accepts comparator routine as third argument.
  *
  * @param {Array} src - Source array
- * @param {} ins - Element to find
+ * @param {*} ins - Element to find
  * @param {Function} [comparator] Routine comparator
  * @returns {Number} Returns index of found element or `-1`
  *
@@ -289,7 +289,7 @@ function lookUpClosestIndex( arr, ins, comparator )
  * Accepts comparator routine as third argument.
  *
  * @param {Array} src - Source array
- * @param {} ins - Element to find
+ * @param {*} ins - Element to find
  * @param {Function} [comparator] Routine comparator
  * @returns {Number} Returns value of found element or undefined
  *
@@ -323,7 +323,7 @@ function lookUpClosestValue( arr, ins, comparator )
  * Accepts comparator routine as third argument.
  *
  * @param {Array} src - Source array
- * @param {} ins - Element to find
+ * @param {*} ins - Element to find
  * @param {Function} [comparator] Routine comparator
  * @returns {Object} Returns results of search as map with two properties: `value` and `index`.
  *
@@ -357,7 +357,7 @@ function lookUpClosest( arr, ins, comparator )
  * Accepts comparator routine as third argument.
  *
  * @param {Array} src - Source array
- * @param {} ins - Element to find
+ * @param {*} ins - Element to find
  * @param {Function} [comparator] Routine comparator
  * @returns {Object} Returns range of indecies where found elements are located.
  *
