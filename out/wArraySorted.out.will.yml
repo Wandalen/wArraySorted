@@ -37,9 +37,9 @@ module:
         - search in sorted array
         - sort
       license: MIT
-      author: Kostiantyn Wandalen <wanalen@willbe.so>
+      author: Kostiantyn Wandalen <wanalen@01.school>
       contributors:
-        - Kostiantyn Wandalen <wanalen@willbe.so>
+        - Kostiantyn Wandalen <wanalen@01.school>
       npm.name: warraysorted
       npm.scripts:
         test: wtest .run proto/**
@@ -843,9 +843,9 @@ module:
         - search in sorted array
         - sort
       license: MIT
-      author: Kostiantyn Wandalen <wanalen@willbe.so>
+      author: Kostiantyn Wandalen <wanalen@01.school>
       contributors:
-        - Kostiantyn Wandalen <wanalen@willbe.so>
+        - Kostiantyn Wandalen <wanalen@01.school>
       npm.name: warraysorted
       npm.scripts:
         test: wtest .run proto/**
