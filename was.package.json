@@ -12,7 +12,7 @@
   "main" : "proto/dwtools/abase/l4/ArraySorted.s",
   "files" : [ "proto/dwtools/abase/l4", "proto/dwtools/Tools.s", "out" ],
   "directories" : { "doc" : "doc", "main" : "proto/dwtools/abase/l4/ArraySorted.s" },
-  "scripts" : { "test" : "wtest .run 'proto/**'", "docgen" : "wdocgen proto" },
+  "scripts" : { "test" : "wtest .run 'proto/**' rapidity:-3", "docgen" : "wdocgen proto" },
   "repository" :
   {
     "type" : "git",
