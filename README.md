@@ -1,5 +1,5 @@
 
-# wArraySorted [![Build Status](https://travis-ci.org/Wandalen/wArraySorted.svg?branch=master)](https://travis-ci.org/Wandalen/wArraySorted)
+# module::ArraySorted [![Status](https://github.com/Wandalen/wArraySorted/workflows/Test/badge.svg)](https://github.com/Wandalen/wArraySorted}/actions?query=workflow%3ATest)
 
 Collection of routines to operate effectively sorted arrays. For that ArraySorted provides customizable quicksort algorithm and a dozen functions to optimally find/add/remove single/multiple elements into a sorted array, add/remove sorted array to/from another sorted array. Use it to increase the performance of your algorithms.
 
