@@ -27,7 +27,7 @@ about :
     docgen : 'wdocgen .build proto'
   npm.directories :
     doc: 'doc'
-    main: 'proto/dwtools/abase/l4/ArraySorted.s'
+    main: 'proto/wtools/abase/l4/ArraySorted.s'
 
 path :
 

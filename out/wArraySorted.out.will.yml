@@ -46,7 +46,7 @@ module:
         docgen: wdocgen .build proto
       npm.directories:
         doc: doc
-        main: proto/dwtools/abase/l4/ArraySorted.s
+        main: proto/wtools/abase/l4/ArraySorted.s
     path:
       module.willfiles:
         criterion:
@@ -126,7 +126,7 @@ module:
       entry.proto.no.tests:
         criterion:
           tests: no.tests
-        path: ../proto/dwtools/abase/l4/ArraySorted.s
+        path: ../proto/wtools/abase/l4/ArraySorted.s
       entry.proto.only.tests:
         criterion:
           tests: only.tests
@@ -136,13 +136,13 @@ module:
           debug: debug
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/dwtools/abase/l4/ArraySorted'
+        path: '{path::out.*=1}/source/wtools/abase/l4/ArraySorted'
       entry.out.raw.debug.release:
         criterion:
           debug: release
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/dwtools/abase/l4/ArraySorted'
+        path: '{path::out.*=1}/source/wtools/abase/l4/ArraySorted'
       entry.out.compiled.debug.debug:
         criterion:
           debug: debug
@@ -169,15 +169,15 @@ module:
         path:
           - ../proto
           - ../proto/Integration.test.s
-          - ../proto/dwtools
-          - ../proto/dwtools/Tools.s
-          - ../proto/dwtools/abase
-          - ../proto/dwtools/abase/l4
-          - ../proto/dwtools/abase/l4/ArraySorted.s
-          - ../proto/dwtools/abase/l4.test
-          - ../proto/dwtools/abase/l4.test/ArraySorted.test.s
-          - ../proto/dwtools/amid
-          - ../proto/dwtools/atop
+          - ../proto/wtools
+          - ../proto/wtools/Tools.s
+          - ../proto/wtools/abase
+          - ../proto/wtools/abase/l4
+          - ../proto/wtools/abase/l4/ArraySorted.s
+          - ../proto/wtools/abase/l4.test
+          - ../proto/wtools/abase/l4.test/ArraySorted.test.s
+          - ../proto/wtools/amid
+          - ../proto/wtools/atop
     submodule:
       wTools:
         path: 'npm:///wTools'
@@ -845,7 +845,7 @@ module:
         docgen: wdocgen .build proto
       npm.directories:
         doc: doc
-        main: proto/dwtools/abase/l4/ArraySorted.s
+        main: proto/wtools/abase/l4/ArraySorted.s
     path:
       module.willfiles:
         criterion:
@@ -925,7 +925,7 @@ module:
       entry.proto.no.tests:
         criterion:
           tests: no.tests
-        path: proto/dwtools/abase/l4/ArraySorted.s
+        path: proto/wtools/abase/l4/ArraySorted.s
       entry.proto.only.tests:
         criterion:
           tests: only.tests
@@ -935,13 +935,13 @@ module:
           debug: debug
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/dwtools/abase/l4/ArraySorted'
+        path: '{path::out.*=1}/source/wtools/abase/l4/ArraySorted'
       entry.out.raw.debug.release:
         criterion:
           debug: release
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/dwtools/abase/l4/ArraySorted'
+        path: '{path::out.*=1}/source/wtools/abase/l4/ArraySorted'
       entry.out.compiled.debug.debug:
         criterion:
           debug: debug

@@ -9,9 +9,9 @@
     { "name" : "Kostiantyn Wandalen", "email" : "wanalen@01.school" }
   ],
   "license" : "MIT",
-  "main" : "proto/dwtools/abase/l4/ArraySorted.s",
-  "files" : [ "proto/dwtools/abase/l4", "proto/dwtools/Tools.s", "out" ],
-  "directories" : { "doc" : "doc", "main" : "proto/dwtools/abase/l4/ArraySorted.s" },
+  "main" : "proto/wtools/abase/l4/ArraySorted.s",
+  "files" : [ "proto/wtools/abase/l4", "proto/wtools/Tools.s", "out" ],
+  "directories" : { "doc" : "doc", "main" : "proto/wtools/abase/l4/ArraySorted.s" },
   "scripts" : { "test" : "wtest .run 'proto/**' rapidity:-3", "docgen" : "wdocgen proto" },
   "repository" :
   {
