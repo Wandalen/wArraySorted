@@ -2,15 +2,12 @@ format: outwillfile-2.0
 root:
   - wArraySorted.out
 consistency:
-  wArraySorted.out.will.yml: &ref_0
-    hash: e6f3f0702f529cab33de96ba47a330a5
-    size: 38531
-  ../.ex.will.yml: &ref_1
-    hash: 51e9a946fe077863455ebc4673f43d03
-    size: 2178
-  ../.im.will.yml: &ref_2
-    hash: 6fc54bec722642c1354c3bd26703590d
-    size: 4943
+  ../.ex.will.yml: &ref_0
+    hash: b01fe24aaec859caa2b27ad27221d7d3
+    size: 2177
+  ../.im.will.yml: &ref_1
+    hash: 2d1745db8c1f546a1d889a529af8aaa6
+    size: 4940
 module:
   wArraySorted.out:
     about:
@@ -24,11 +21,11 @@ module:
         it to increase the performance of your algorithms.
       enabled: 1
       version: 0.4.0
-      interpreters:
+      interpreters: &ref_2
         - njs >= 10.0.0
         - chrome >= 60.0.0
         - firefox >= 60.0.0
-      keywords:
+      keywords: &ref_3
         - sorted array
         - wTools
         - binnary search
@@ -38,13 +35,13 @@ module:
         - sort
       license: MIT
       author: Kostiantyn Wandalen <wanalen@01.school>
-      contributors:
+      contributors: &ref_4
         - Kostiantyn Wandalen <wanalen@01.school>
       npm.name: warraysorted
-      npm.scripts:
+      npm.scripts: &ref_5
         test: wtest .run proto/**
         docgen: wdocgen .build proto
-      npm.directories:
+      npm.directories: &ref_6
         doc: doc
         main: proto/wtools/abase/l4/ArraySorted.s
     path:
@@ -608,7 +605,7 @@ module:
           debug: release
       reflect.proto.debug.raw:
         opts:
-          filePath: 'reflector::reflect.proto*'
+          filePath: 'reflector::reflect.proto.debug.raw'
         criterion:
           tests: no.tests
           debug: debug
@@ -618,7 +615,7 @@ module:
           - files.reflect
       reflect.proto.release.raw:
         opts:
-          filePath: 'reflector::reflect.proto*'
+          filePath: 'reflector::reflect.proto.release.raw'
         criterion:
           tests: no.tests
           debug: release
@@ -628,7 +625,7 @@ module:
           - files.reflect
       reflect.proto.debug.compiled:
         opts:
-          filePath: 'reflector::reflect.proto*'
+          filePath: 'reflector::reflect.proto.debug.compiled'
         criterion:
           tests: no.tests
           debug: debug
@@ -638,7 +635,7 @@ module:
           - files.reflect
       reflect.proto.release.compiled:
         opts:
-          filePath: 'reflector::reflect.proto*'
+          filePath: 'reflector::reflect.proto.release.compiled'
         criterion:
           tests: no.tests
           debug: release
@@ -649,7 +646,7 @@ module:
       transpile.proto.raw:
         opts:
           entry: 'path::entry.proto.no.tests'
-          filePath: 'reflector::transpile.proto.raw*'
+          filePath: 'reflector::transpile.proto.raw'
         criterion:
           raw: raw
           debug: release
@@ -659,7 +656,7 @@ module:
       transpile.proto.no.tests.compiled.debug:
         opts:
           entry: 'path::entry.proto.*=1'
-          filePath: 'reflector::transpile.proto.no.tests.compiled*'
+          filePath: 'reflector::transpile.proto.no.tests.compiled.debug'
         criterion:
           tests: no.tests
           raw: compiled
@@ -670,7 +667,7 @@ module:
       transpile.proto.no.tests.compiled.release:
         opts:
           entry: 'path::entry.proto.*=1'
-          filePath: 'reflector::transpile.proto.no.tests.compiled*'
+          filePath: 'reflector::transpile.proto.no.tests.compiled.release'
         criterion:
           tests: no.tests
           raw: compiled
@@ -682,7 +679,7 @@ module:
         opts:
           entry: 'path::entry.proto.*=1'
           external.before: '{path::out.*=1}/Main.s'
-          filePath: 'reflector::transpile.proto.only.tests.compiled*'
+          filePath: 'reflector::transpile.proto.only.tests.compiled.debug'
         criterion:
           tests: only.tests
           raw: compiled
@@ -694,7 +691,7 @@ module:
         opts:
           entry: 'path::entry.proto.*=1'
           external.before: '{path::out.*=1}/Main.s'
-          filePath: 'reflector::transpile.proto.only.tests.compiled*'
+          filePath: 'reflector::transpile.proto.only.tests.compiled.release'
         criterion:
           tests: only.tests
           raw: compiled
@@ -702,24 +699,6 @@ module:
           content: prime
         inherit:
           - files.transpile
-      exported.proto.export:
-        opts:
-          filePath: 'reflector::exported.proto.export'
-        criterion:
-          generated: 1
-          content: proto
-          export: 1
-        inherit:
-          - files.reflect
-      exported.files.proto.export:
-        opts:
-          filePath: 'reflector::exported.files.proto.export'
-        criterion:
-          generated: 1
-          content: proto
-          export: 1
-        inherit:
-          - files.reflect
     build:
       proto.export:
         steps:
@@ -808,9 +787,8 @@ module:
           content: proto
           export: 1
     consistency:
-      wArraySorted.out.will.yml: *ref_0
-      ../.ex.will.yml: *ref_1
-      ../.im.will.yml: *ref_2
+      ../.ex.will.yml: *ref_0
+      ../.im.will.yml: *ref_1
   ../:
     about:
       name: wArraySorted
@@ -823,29 +801,14 @@ module:
         it to increase the performance of your algorithms.
       enabled: 1
       version: 0.4.0
-      interpreters:
-        - njs >= 10.0.0
-        - chrome >= 60.0.0
-        - firefox >= 60.0.0
-      keywords:
-        - sorted array
-        - wTools
-        - binnary search
-        - range
-        - interval
-        - search in sorted array
-        - sort
+      interpreters: *ref_2
+      keywords: *ref_3
       license: MIT
       author: Kostiantyn Wandalen <wanalen@01.school>
-      contributors:
-        - Kostiantyn Wandalen <wanalen@01.school>
+      contributors: *ref_4
       npm.name: warraysorted
-      npm.scripts:
-        test: wtest .run proto/**
-        docgen: wdocgen .build proto
-      npm.directories:
-        doc: doc
-        main: proto/wtools/abase/l4/ArraySorted.s
+      npm.scripts: *ref_5
+      npm.directories: *ref_6
     path:
       module.willfiles:
         criterion:
@@ -1503,9 +1466,8 @@ module:
           - 'build::npm'
     consistency:
       ../.ex.will.yml:
-        hash: 51e9a946fe077863455ebc4673f43d03
-        size: 2178
+        hash: b01fe24aaec859caa2b27ad27221d7d3
+        size: 2177
       ../.im.will.yml:
-        hash: 6fc54bec722642c1354c3bd26703590d
-        size: 4943
-      wArraySorted.out.will.yml: *ref_0
+        hash: 2d1745db8c1f546a1d889a529af8aaa6
+        size: 4940
