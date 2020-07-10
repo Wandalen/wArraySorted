@@ -1508,6 +1508,4 @@ module:
       ../.im.will.yml:
         hash: 2d1745db8c1f546a1d889a529af8aaa6
         size: 4940
-      wArraySorted.out.will.yml:
-        hash: 37091ff42d00f9a93a6188eee9812a6f
-        size: 38701
+      wArraySorted.out.will.yml: *ref_0
