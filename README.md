@@ -6,7 +6,7 @@ Collection of routines to operate effectively sorted arrays. For that ArraySorte
 ### Try out
 ```
 npm install
-node sample/Sample.js
+node sample/Sample.s
 ```
 
 #### Binary search
