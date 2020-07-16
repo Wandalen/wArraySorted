@@ -2,7 +2,7 @@
 if( typeof module !== 'undefined' )
 require( 'warraysorted' );
 
-var _ = wTools;
+let _ = wTools;
 var arr = [ 1,3,5,7,9,12,16 ];
 
 var interval = [ 0, 1 ];

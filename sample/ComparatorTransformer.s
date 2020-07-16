@@ -2,7 +2,7 @@
 if( typeof module !== 'undefined' )
 require( 'warraysorted' );
 
-var _ = wTools;
+let _ = wTools;
 
 /*transformer*/
 
