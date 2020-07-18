@@ -1,13 +1,21 @@
 
-# module::ArraySorted [![Status](https://github.com/Wandalen/wArraySorted/workflows/Publish/badge.svg)](https://github.com/Wandalen/wArraySorted/actions?query=workflow%3APublish) [![experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
+# module::ArraySorted [![Status](https://github.com/Wandalen/wArraySorted/workflows/publish/badge.svg)](https://github.com/Wandalen/wArraySorted/actions?query=workflow%3Apublish) [![experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
 
 Collection of routines to operate effectively sorted arrays. For that ArraySorted provides customizable quicksort algorithm and a dozen functions to optimally find/add/remove single/multiple elements into a sorted array, add/remove sorted array to/from another sorted array. Use it to increase the performance of your algorithms.
 
-### Try out
+### Try out from the repository
 ```
+git clone https://github.com/Wandalen/wArraySorted
+cd wArraySorted
 npm install
 node sample/Sample.s
 ```
+
+## To add to your project
+```
+npm add 'warraysorted@alpha'
+```
+
 
 #### Binary search
 Binary search algorithm is used for finding an item from an ordered list of elements. Its based on dividing in half the part of list that can contain the element, until the count of the possible locations is decreased to just one. [More about binary search.]( https://en.wikipedia.org/wiki/Binary_search_algorithm )

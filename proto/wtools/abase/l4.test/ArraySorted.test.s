@@ -3093,7 +3093,7 @@ function rightMostAtMost( test )
 let Self =
 {
 
-  name : 'Tools.base.l4.ArraySorted',
+  name : 'Tools.l4.ArraySorted',
   silencing : 1,
 
   tests :
