@@ -8,8 +8,7 @@
 */
 
 /**
- * @file ArraySorted.s.
- */
+ *  */
 
 /**
  * Collection of routines to operate effectively sorted arrays.
