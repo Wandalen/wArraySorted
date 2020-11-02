@@ -1,4 +1,5 @@
-( function _ArraySorted_s_() {
+( function _ArraySorted_s_()
+{
 
 'use strict';
 
@@ -63,8 +64,13 @@ let Self = _.sorted = _.sorted || Object.create( null );
  * @namespace Tools.sorted
  */
 
-function _lookUpAct( arr, ins, comparator, left, right )
+function _lookUpAct( /* arr, ins, comparator, left, right */ )
 {
+  let arr = arguments[ 0 ];
+  let ins = arguments[ 1 ];
+  let comparator = arguments[ 2 ];
+  let left = arguments[ 3 ];
+  let right = arguments[ 4 ];
 
   _.assert( right >= 0 );
   _.assert( left <= arr.length );
@@ -638,8 +644,14 @@ function lookUpIntervalEmbracingAtLeastOld( arr, range, comparator )
 // left-most at-least
 // --
 
-function _leftMostAtLeastIndex( arr, ins, comparator, left, right )
+function _leftMostAtLeastIndex( /* arr, ins, comparator, left, right */ )
 {
+  let arr = arguments[ 0 ];
+  let ins = arguments[ 1 ];
+  let comparator = arguments[ 2 ];
+  let left = arguments[ 3 ];
+  let right = arguments[ 4 ];
+
   let index = _.sorted._lookUpAct( arr, ins, comparator, left, right );
 
   _.assert( arguments.length === 5 );
@@ -713,8 +725,14 @@ function leftMostAtLeast( arr, ins, comparator )
 // left-most at-most
 // --
 
-function _leftMostAtMostIndex( arr, ins, comparator, left, right )
+function _leftMostAtMostIndex( /* arr, ins, comparator, left, right */ )
 {
+  let arr = arguments[ 0 ];
+  let ins = arguments[ 1 ];
+  let comparator = arguments[ 2 ];
+  let left = arguments[ 3 ];
+  let right = arguments[ 4 ];
+
   let index = _.sorted._lookUpAct( arr, ins, comparator, left, right );
 
   _.assert( arguments.length === 5 );
@@ -798,8 +816,14 @@ function leftMostAtMost( arr, ins, comparator )
 // right-most at-least
 // --
 
-function _rightMostAtLeastIndex( arr, ins, comparator, left, right )
+function _rightMostAtLeastIndex( /* arr, ins, comparator, left, right */ )
 {
+  let arr = arguments[ 0 ];
+  let ins = arguments[ 1 ];
+  let comparator = arguments[ 2 ];
+  let left = arguments[ 3 ];
+  let right = arguments[ 4 ];
+
   let index = _.sorted._lookUpAct( arr, ins, comparator, left, right );
 
   _.assert( arguments.length === 5 );
@@ -871,8 +895,14 @@ function rightMostAtLeast( arr, ins, comparator )
 // right-most at-most
 // --
 
-function _rightMostAtMostIndex( arr, ins, comparator, left, right )
+function _rightMostAtMostIndex( /* arr, ins, comparator, left, right */ )
 {
+  let arr = arguments[ 0 ];
+  let ins = arguments[ 1 ];
+  let comparator = arguments[ 2 ];
+  let left = arguments[ 3 ];
+  let right = arguments[ 4 ];
+
   let index = _.sorted._lookUpAct( arr, ins, comparator, left, right );
 
   _.assert( arguments.length === 5 );
