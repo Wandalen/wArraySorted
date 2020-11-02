@@ -18,9 +18,9 @@ var transformer = function( value )
 }
 
 var e = 5;
-var i = _.arraySortedLookUp( arr,e, transformer );
-console.log( 'arraySortedLookUp(',e,') :',i );
-// arraySortedLookUp( 5 ) : { value: 5.7, index: 2 }
+var i = _.sorted.lookUp( arr,e, transformer );
+console.log( 'sorted.lookUp(',e,') :',i );
+// sorted.lookUp( 5 ) : { value: 5.7, index: 2 }
 
 
 /*comparator*/
@@ -34,9 +34,9 @@ var comparator = function( a, b )
 }
 
 var e = 5;
-var i = _.arraySortedLookUp( arr,e, comparator );
-console.log( 'arraySortedLookUp(',e,') :',i );
-// arraySortedLookUp( 5 ) : { value: 5, index: 2 }
+var i = _.sorted.lookUp( arr,e, comparator );
+console.log( 'sorted.lookUp(',e,') :',i );
+// sorted.lookUp( 5 ) : { value: 5, index: 2 }
 
 
 /*Combination of custom transformer and comparator*/
@@ -55,6 +55,6 @@ var comparator = function( a, b )
 }
 
 var e = 5;
-var i = _.arraySortedLookUp( arr,e, comparator );
-console.log( 'arraySortedLookUp(',e,') :',i );
-// arraySortedLookUp( 5 ) : { value: -5, index: 2 }
+var i = _.sorted.lookUp( arr,e, comparator );
+console.log( 'sorted.lookUp(',e,') :',i );
+// sorted.lookUp( 5 ) : { value: -5, index: 2 }
