@@ -1,4 +1,5 @@
-( function _ArraySorted_test_s_( ) {
+( function _ArraySorted_test_s_()
+{
 
 'use strict';
 
@@ -387,22 +388,16 @@ function lookUpIndex( test )
 
   var arr = [ 1.5, 2.6, 5.7, 9.8 ];
 
-  var transformer = function( value )
-  {
-    return Math.floor( value );
-  }
+  var transformer = ( value ) => Math.floor( value );
 
   var i = _.sorted.lookUpIndex( arr, 5, transformer );
   test.identical( i, 2 )
 
   //
 
-  var arr = [{ value : 1 }, { value : 2 }, { value : 3 } ];
+  var arr = [ { value : 1 }, { value : 2 }, { value : 3 } ];
 
-  var comparator = function( a, b )
-  {
-    return a.value - b.value;
-  }
+  var comparator = ( a, b ) => a.value - b.value;
 
   var i = _.sorted.lookUpIndex( arr, { value : 2 }, comparator );
   test.identical( i, 1 )
@@ -437,15 +432,15 @@ function lookUpIndex( test )
 
   }
 
-  for( var c = 10 ; c <= 100 ; c *= 10 )
+  for( let c = 10 ; c <= 100 ; c *= 10 )
   {
-    var array = makeArray( c, 5 );
+    let array = makeArray( c, 5 );
     testArray( array, c/5 );
   }
 
-  for( var c = 10 ; c <= 100 ; c *= 10 )
+  for( let c = 10 ; c <= 100 ; c *= 10 )
   {
-    var array = makeArray( c, 0.2 );
+    let array = makeArray( c, 0.2 );
     testArray( array, c/0.2 );
   }
 
@@ -546,22 +541,16 @@ function lookUpClosestIndex( test )
 
   var arr = [ 1.5, 2.6, 6.2, 9.8 ];
 
-  var transformer = function( value )
-  {
-    return Math.floor( value );
-  }
+  var transformer = ( value ) => Math.floor( value );
 
   var i = _.sorted.lookUpClosestIndex( arr, 5, transformer );
   test.identical( i, 2 )
 
   //
 
-  var arr = [{ value : 1 }, { value : 3 }, { value : 4 } ];
+  var arr = [ { value : 1 }, { value : 3 }, { value : 4 } ];
 
-  var comparator = function( a, b )
-  {
-    return a.value - b.value;
-  }
+  var comparator = ( a, b ) => a.value - b.value;
 
   var i = _.sorted.lookUpClosestIndex( arr, { value : 2 }, comparator );
   test.identical( i, 1 )
@@ -596,15 +585,15 @@ function lookUpClosestIndex( test )
 
   }
 
-  for( var c = 10 ; c <= 100 ; c *= 10 )
+  for( let c = 10 ; c <= 100 ; c *= 10 )
   {
-    var array = makeArray( c, 5 );
+    let array = makeArray( c, 5 );
     testArray( array, c/5 );
   }
 
-  for( var c = 10 ; c <= 100 ; c *= 10 )
+  for( let c = 10 ; c <= 100 ; c *= 10 )
   {
-    var array = makeArray( c, 0.2 );
+    let array = makeArray( c, 0.2 );
     testArray( array, c/0.2 );
   }
 
@@ -615,16 +604,15 @@ function lookUpClosestIndex( test )
   if( !Config.debug )
   return;
 
+  test.shouldThrowErrorSync( function()
   {
-    test.shouldThrowErrorSync( function()
-    {
-      _.sorted.lookUpClosestIndex( a, 0, function() {} );
-    })
-    test.shouldThrowErrorSync( function()
-    {
-      _.sorted.lookUpClosestIndex( a, 0, 0 );
-    })
-  }
+    _.sorted.lookUpClosestIndex( [ 1, 2, 3 ], 0, function() {} );
+  })
+
+  test.shouldThrowErrorSync( function()
+  {
+    _.sorted.lookUpClosestIndex( [ 1, 2, 3 ], 0, 0 );
+  })
 
 }
 
@@ -755,15 +743,15 @@ function lookUpInterval( test )
 
   /* */
 
-  for( var c = 10 ; c <= 100 ; c *= 10 )
+  for( let c = 10 ; c <= 100 ; c *= 10 )
   {
-    var arr = makeArray( c, 5 );
+    let arr = makeArray( c, 5 );
     testArray( arr, c/5 );
   }
 
-  for( var c = 10 ; c <= 100 ; c *= 10 )
+  for( let c = 10 ; c <= 100 ; c *= 10 )
   {
-    var arr = makeArray( c, 0.2 );
+    let arr = makeArray( c, 0.2 );
     testArray( arr, c/0.2 );
   }
 
@@ -776,23 +764,22 @@ function lookUpInterval( test )
   if( !Config.debug )
   return;
 
-  var arr = [ 1, 1, 1, 0, 0, 0 ];
   test.shouldThrowErrorSync( function()
   {
-    _.sorted.lookUpInterval( arr );
+    _.sorted.lookUpInterval( [ 1, 1, 1, 0, 0, 0 ] );
   })
 
   test.shouldThrowErrorSync( function()
   {
-    _.sorted.lookUpInterval( arr, [ 0, 1 ], function() {} );
+    _.sorted.lookUpInterval( [ 1, 1, 1, 0, 0, 0 ], [ 0, 1 ], function() {} );
   })
   test.shouldThrowErrorSync( function()
   {
-    _.sorted.lookUpInterval( arr, [ 0, 1], 1 );
+    _.sorted.lookUpInterval( [ 1, 1, 1, 0, 0, 0 ], [ 0, 1 ], 1 );
   })
   test.shouldThrowErrorSync( function()
   {
-    _.sorted.lookUpInterval( arr, [ 0 ] );
+    _.sorted.lookUpInterval( [ 1, 1, 1, 0, 0, 0 ], [ 0 ] );
   })
 
 }
@@ -930,24 +917,21 @@ function lookUpIntervalNarrowest( test )
 
   /* */
 
-  debugger;
-
-  for( var c = 10 ; c <= 100 ; c *= 10 )
+  for( let c = 10 ; c <= 100 ; c *= 10 )
   {
-    var arr = makeArray( c, 5 );
+    let arr = makeArray( c, 5 );
     testArray( arr, c/5 );
   }
 
-  for( var c = 10 ; c <= 100 ; c *= 10 )
+  for( let c = 10 ; c <= 100 ; c *= 10 )
   {
-    var arr = makeArray( c, 0.2 );
+    let arr = makeArray( c, 0.2 );
     testArray( arr, c/0.2 );
   }
 
   /* */
 
   test.identical( true, true );
-  debugger;
 }
 
 lookUpIntervalNarrowest.timeOut = 60000;
@@ -1241,19 +1225,19 @@ function lookUpIntervalHaving( test )
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 53, 54 ];
-  var expected = [ 3,4 ];
+  var expected = [ 3, 4 ];
   var got = _.sorted.lookUpIntervalHaving( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 53, 55 ];
-  var expected = [ 3,4 ];
+  var expected = [ 3, 4 ];
   var got = _.sorted.lookUpIntervalHaving( ranges, range );
   test.identical( got, expected );
 
   var ranges = [ 0, 1, 11, 12, 55, 56, 57, 58, 59, 65, 66, 68, 69 ];
   var range = [ 53, 56 ];
-  var expected = [ 3,5 ];
+  var expected = [ 3, 5 ];
   var got = _.sorted.lookUpIntervalHaving( ranges, range );
   test.identical( got, expected );
 
@@ -1734,15 +1718,15 @@ function lookUpIntervalEmbracingAtLeast( test )
   }
   /* */
 
-  for( var c = 10 ; c <= 100 ; c *= 10 )
+  for( let c = 10 ; c <= 100 ; c *= 10 )
   {
-    var arr = makeArray( c, 5 );
+    let arr = makeArray( c, 5 );
     testArray( arr, c/5 );
   }
 
-  for( var c = 10 ; c <= 100 ; c *= 10 )
+  for( let c = 10 ; c <= 100 ; c *= 10 )
   {
-    var arr = makeArray( c, 0.2 );
+    let arr = makeArray( c, 0.2 );
     testArray( arr, c/0.2 );
   }
 
@@ -1763,7 +1747,7 @@ function lookUpIntervalEmbracingAtLeast( test )
 
   test.shouldThrowErrorSync( function()
   {
-    _.sorted.lookUpIntervalEmbracingAtLeast( [ 3, 1, 2 ], [ 1, 2] );
+    _.sorted.lookUpIntervalEmbracingAtLeast( [ 3, 1, 2 ], [ 1, 2 ] );
   })
 
 }
@@ -2160,7 +2144,7 @@ function lookUpIntervalEmbracingAtLeastOld( test )
   var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ 1, 0 ] );
   test.identical( range, [ 7, 7 ] );
 
-  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr,[ '0','1' ] );
+  var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, [ '0', '1' ] );
   test.identical( range, [ 3, 5 ] );
 
   test.case = 'empty';
@@ -2211,15 +2195,15 @@ function lookUpIntervalEmbracingAtLeastOld( test )
   }
   /* */
 
-  for( var c = 10 ; c <= 100 ; c *= 10 )
+  for( let c = 10 ; c <= 100 ; c *= 10 )
   {
-    var arr = makeArray( c, 5 );
+    let arr = makeArray( c, 5 );
     testArray( arr, c/5 );
   }
 
-  for( var c = 10 ; c <= 100 ; c *= 10 )
+  for( let c = 10 ; c <= 100 ; c *= 10 )
   {
-    var arr = makeArray( c, 0.2 );
+    let arr = makeArray( c, 0.2 );
     testArray( arr, c/0.2 );
   }
 
@@ -2240,7 +2224,7 @@ function lookUpIntervalEmbracingAtLeastOld( test )
 
   test.shouldThrowErrorSync( function()
   {
-    _.sorted.lookUpIntervalEmbracingAtLeastOld( [ 3, 1, 2 ], [ 1, 2] );
+    _.sorted.lookUpIntervalEmbracingAtLeastOld( [ 3, 1, 2 ], [ 1, 2 ] );
   })
 
 }
@@ -2261,25 +2245,25 @@ function add( test )
     [],
     [ 0 ],
 
-    [ 0,1 ],
-    [ 1,0 ],
+    [ 0, 1 ],
+    [ 1, 0 ],
 
-    [ 1,0,2 ],
-    [ 2,0,1 ],
-    [ 0,1,2 ],
-    [ 0,2,1 ],
-    [ 2,1,0 ],
-    [ 1,2,0 ],
+    [ 1, 0, 2 ],
+    [ 2, 0, 1 ],
+    [ 0, 1, 2 ],
+    [ 0, 2, 1 ],
+    [ 2, 1, 0 ],
+    [ 1, 2, 0 ],
 
-    [ 0,1,1 ],
-    [ 1,0,1 ],
-    [ 1,1,0 ],
+    [ 0, 1, 1 ],
+    [ 1, 0, 1 ],
+    [ 1, 1, 0 ],
 
-    [ 0,0,1,1 ],
-    [ 0,1,1,0 ],
-    [ 1,1,0,0 ],
-    [ 1,0,1,0 ],
-    [ 0,1,0,1 ],
+    [ 0, 0, 1, 1 ],
+    [ 0, 1, 1, 0 ],
+    [ 1, 1, 0, 0 ],
+    [ 1, 0, 1, 0 ],
+    [ 0, 1, 0, 1 ],
 
     //_.arrayFill({ times : 16 }).map( function(){ return Math.floor( Math.random() * 16 ) } ),
 
@@ -2488,7 +2472,7 @@ function leftMostAtLeast( test )
 
   test.case = '0';
   var got = _.sorted.leftMostAtLeast( arr, 0 );
-  var expected = { value : 0, index : 0,  }
+  var expected = { value : 0, index : 0 }
   test.identical( got, expected );
 
   test.case = '1';
@@ -2637,7 +2621,7 @@ function leftMostAtMost( test )
 
   test.case = '0';
   var got = _.sorted.leftMostAtMost( arr, 0 );
-  var expected = { value : 0, index : 0,  }
+  var expected = { value : 0, index : 0 }
   test.identical( got, expected );
 
   test.case = '1';
