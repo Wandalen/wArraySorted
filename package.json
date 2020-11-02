@@ -1,52 +1,28 @@
 {
-  "name": "warraysorted",
-  "version": "0.3.244",
-  "engine": "node >= 10.0.0",
-  "description": "Collection of cross-platform routines to operate effectively sorted arrays. For that ArraySorted provides customizable quicksort algorithm and a dozen functions to optimally find/add/remove single/multiple elements into a sorted array, add/remove sorted array to/from another sorted array. Use it to increase the performance of your algorithms.",
-  "author": "Kostiantyn Wandalen <wanalen@01.school>",
-  "contributors": [
-    {
-      "name": "Kostiantyn Wandalen",
-      "email": "wanalen@01.school"
-    }
+  "name" : "warraysorted",
+  "version" : "0.3.245",
+  "engine" : "node >= 10.0.0",
+  "description" : "Collection of cross-platform routines to operate effectively sorted arrays. For that ArraySorted provides customizable quicksort algorithm and a dozen functions to optimally find/add/remove single/multiple elements into a sorted array, add/remove sorted array to/from another sorted array. Use it to increase the performance of your algorithms.",
+  "author" : "Kostiantyn Wandalen <wanalen@01.school>",
+  "contributors" :
+  [
+    { "name" : "Kostiantyn Wandalen", "email" : "wanalen@01.school" }
   ],
-  "license": "MIT",
-  "main": "proto/wtools/abase/l4/ArraySorted.s",
-  "files": [
-    "proto/wtools/abase/l4",
-    "proto/wtools/Tools.s",
-    "out"
-  ],
-  "directories": {
-    "doc": "doc",
-    "main": "proto/wtools/abase/l4/ArraySorted.s"
+  "license" : "MIT",
+  "main" : "proto/wtools/abase/l4/ArraySorted.s",
+  "files" : [ "proto/wtools/abase/l4", "proto/wtools/Tools.s", "out" ],
+  "directories" : { "doc" : "doc", "main" : "proto/wtools/abase/l4/ArraySorted.s" },
+  "scripts" : { "test" : "wtest .run 'proto/**' rapidity:-3", "docgen" : "wdocgen proto" },
+  "repository" :
+  {
+    "type" : "git",
+    "url" : "https://github.com/Wandalen/wArraySorted.git"
   },
-  "scripts": {
-    "test": "wtest .run 'proto/**' rapidity:-3",
-    "docgen": "wdocgen proto"
+  "bugs" :
+  {
+    "url" : "https://github.com/Wandalen/wArraySorted/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Wandalen/wArraySorted.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Wandalen/wArraySorted/issues"
-  },
-  "dependencies": {
-    "wTools": "alpha"
-  },
-  "devDependencies": {
-    "wTesting": "alpha",
-    "eslint": "7.1.0",
-    "warraysorted": "file:."
-  },
-  "keywords": [
-    "sorted array",
-    "wTools",
-    "binnary search",
-    "range",
-    "interval",
-    "search in sorted array",
-    "sort"
-  ]
+  "dependencies" : { "wTools" : "alpha" },
+  "devDependencies" : { "eslint" : "7.1.0", "warraysorted" : "file:.", "wTesting" : "alpha" },
+  "keywords" : [ "sorted array", "wTools", "binnary search", "range", "interval", "search in sorted array", "sort" ]
 }
