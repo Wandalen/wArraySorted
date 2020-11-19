@@ -430,23 +430,9 @@ function lookUpIntervalNarrowest( arr, range, comparator )
   let length = arr.length;
   let b = _.sorted._rightMostAtLeastIndex( arr, range[ 0 ], comparator, 0, length );
 
-  // if( b === length )
-  // if( comparator( arr[ b - 1 ], range[ 0 ] ) < 0 )
-  // return [ b, b ];
-  //
-  // if( b === 0 )
-  // if( comparator( arr[ b ], range[ 1 ] ) > 0 )
-  // return [ b, b ];
-
   let e = _.sorted._leftMostAtMostIndex( arr, range[ 1 ], comparator, b, length );
 
   e += 1;
-
-  // if( comparator( arr[ e - 1 ], range[ 1 ] ) > 0 )
-  // e -= 1;
-  //
-  // if( comparator( arr[ e ], range[ 1 ] ) <= 0 )
-  // e += 1;
 
   if( Config.debug )
   {
@@ -570,17 +556,11 @@ function lookUpIntervalEmbracingAtLeast( arr, range, comparator )
   if( Config.debug )
   {
 
-    // if( b < length )
-    // _.assert( arr[ b ] >= range[ 0 ] );
-
     if( b > 0 )
     _.assert( arr[ b-1 ] <= range[ 0 ] );
 
     if( e < length )
     _.assert( arr[ e ] >= range[ 1 ] );
-
-    // if( e > 0 )
-    // _.assert( arr[ e-1 ] <= range[ 1 ] );
 
   }
 
@@ -742,16 +722,11 @@ function _leftMostAtMostIndex( /* arr, ins, comparator, left, right */ )
   return right-1;
 
   let i = index;
-  // index = left;
   while( i >= left )
   {
     let c = comparator( arr[ i ], ins );
     if( c < 0 )
     {
-      // if( index === -1 )
-      // index = i;
-      // else
-      // index = i + 1;
       return index;
     }
     else if( c === 0 )
@@ -1123,6 +1098,30 @@ function add( arr, ins, comparator )
 
 //
 
+function addLeft( arr, ins, comparator )
+{
+  _.assert( arguments.length === 2 || arguments.length === 3, 'Expects two or three arguments' );
+  _.assert( _.longIs( arr ), 'Expect a Long' );
+  comparator = _._comparatorFromEvaluator( comparator );
+  let index = _.sorted.leftMostAtLeastIndex( arr, ins, comparator );
+  arr.splice( index, 0, ins );
+  return index;
+}
+
+//
+
+function addRight( arr, ins, comparator )
+{
+  _.assert( arguments.length === 2 || arguments.length === 3, 'Expects two or three arguments' );
+  _.assert( _.longIs( arr ), 'Expect a Long' );
+  comparator = _._comparatorFromEvaluator( comparator );
+  let index = _.sorted.rightMostAtMostIndex( arr, ins, comparator );
+  arr.splice( index+1, 0, ins );
+  return index;
+}
+
+//
+
 /**
  * The wTools.sorted.addArray() method returns the sum of the added indexes from an array (src) to an array (dst).
  *
@@ -1218,6 +1217,8 @@ let Proto =
 
   remove,
   add,
+  addLeft,
+  addRight,
   addOnce,
   addArray,
 

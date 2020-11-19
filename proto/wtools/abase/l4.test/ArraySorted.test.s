@@ -2283,9 +2283,200 @@ function add( test )
 
 //
 
+function addRight( test )
+{
+
+  test.case = 'empty';
+  var arr = [];
+  _.sorted.addRight( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 } ] );
+  _.sorted.addRight( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 }, { val : 0, i : 1 } ] );
+  _.sorted.addRight( arr, { val : 0, i : 2 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 }, { val : 0, i : 1 }, { val : 0, i : 2 } ] );
+  _.sorted.addRight( arr, { val : 0, i : 3 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 }, { val : 0, i : 1 }, { val : 0, i : 2 }, { val : 0, i : 3 } ] );
+
+  test.case = 'right 1';
+  var arr = [ { val : -1 } ];
+  _.sorted.addRight( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : -1 }, { val : 0, i : 0 } ] );
+  _.sorted.addRight( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : -1 }, { val : 0, i : 0 }, { val : 0, i : 1 } ] );
+
+  test.case = 'right 2';
+  var arr = [ { val : -2 }, { val : -1 } ];
+  _.sorted.addRight( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : -2 }, { val : -1 }, { val : 0, i : 0 } ] );
+  _.sorted.addRight( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : -2 }, { val : -1 }, { val : 0, i : 0 }, { val : 0, i : 1 } ] );
+
+  test.case = 'right 3';
+  var arr = [ { val : -3 }, { val : -2 }, { val : -1 } ];
+  _.sorted.addRight( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : -3 }, { val : -2 }, { val : -1 }, { val : 0, i : 0 } ] );
+  _.sorted.addRight( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : -3 }, { val : -2 }, { val : -1 }, { val : 0, i : 0 }, { val : 0, i : 1 } ] );
+
+  test.case = 'left 1';
+  var arr = [ { val : 1 } ];
+  _.sorted.addRight( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 }, { val : 1 } ] );
+  _.sorted.addRight( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 }, { val : 0, i : 1 }, { val : 1 } ] );
+
+  test.case = 'left 2';
+  var arr = [ { val : 1 }, { val : 2 } ];
+  _.sorted.addRight( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 }, { val : 1 }, { val : 2 } ] );
+  _.sorted.addRight( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 }, { val : 0, i : 1 }, { val : 1 }, { val : 2 } ] );
+
+  test.case = 'left 3';
+  var arr = [ { val : 1 }, { val : 2 }, { val : 3 } ];
+  _.sorted.addRight( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 }, { val : 1 }, { val : 2 }, { val : 3 } ] );
+  _.sorted.addRight( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 }, { val : 0, i : 1 }, { val : 1 }, { val : 2 }, { val : 3 } ] );
+
+  test.case = 'mid';
+  var arr = [ { val : -2 }, { val : -1 }, { val : 1 }, { val : 2 } ];
+  _.sorted.addRight( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  var exp = [ { val : -2 }, { val : -1 }, { val : 0, i : 0 }, { val : 1 }, { val : 2 } ]
+  test.identical( arr, exp );
+  _.sorted.addRight( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  var exp = [ { val : -2 }, { val : -1 }, { val : 0, i : 0 }, { val : 0, i : 1 }, { val : 1 }, { val : 2 } ]
+  test.identical( arr, exp );
+  _.sorted.addRight( arr, { val : 0, i : 2 }, ( e ) => e.val );
+  var exp = [ { val : -2 }, { val : -1 }, { val : 0, i : 0 }, { val : 0, i : 1 }, { val : 0, i : 2 }, { val : 1 }, { val : 2 } ]
+  test.identical( arr, exp );
+
+  test.case = 'mid left';
+  var arr = [ { val : -3 }, { val : -2 }, { val : -1 }, { val : 1 } ];
+  _.sorted.addRight( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  var exp = [ { val : -3 }, { val : -2 }, { val : -1 }, { val : 0, i : 0 }, { val : 1 } ];
+  test.identical( arr, exp );
+  _.sorted.addRight( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  var exp = [ { val : -3 }, { val : -2 }, { val : -1 }, { val : 0, i : 0 }, { val : 0, i : 1 }, { val : 1 } ];
+  test.identical( arr, exp );
+  _.sorted.addRight( arr, { val : 0, i : 2 }, ( e ) => e.val );
+  var exp = [ { val : -3 }, { val : -2 }, { val : -1 }, { val : 0, i : 0 }, { val : 0, i : 1 }, { val : 0, i : 2 }, { val : 1 } ];
+  test.identical( arr, exp );
+
+  test.case = 'mid right';
+  var arr = [ { val : -1 }, { val : 1 }, { val : 2 }, { val : 3 } ];
+  _.sorted.addRight( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  var exp = [ { val : -1 }, { val : 0, i : 0 }, { val : 1 }, { val : 2 }, { val : 3 } ];
+  test.identical( arr, exp );
+  _.sorted.addRight( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  var exp = [ { val : -1 }, { val : 0, i : 0 }, { val : 0, i : 1 }, { val : 1 }, { val : 2 }, { val : 3 } ];
+  test.identical( arr, exp );
+  _.sorted.addRight( arr, { val : 0, i : 2 }, ( e ) => e.val );
+  var exp = [ { val : -1 }, { val : 0, i : 0 }, { val : 0, i : 1 }, { val : 0, i : 2 }, { val : 1 }, { val : 2 }, { val : 3 } ];
+  test.identical( arr, exp );
+
+}
+
+//
+
+function addLeft( test )
+{
+
+  test.case = 'empty';
+  var arr = [];
+  _.sorted.addLeft( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 } ] );
+  _.sorted.addLeft( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 1 }, { val : 0, i : 0 } ] );
+  _.sorted.addLeft( arr, { val : 0, i : 2 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 2 }, { val : 0, i : 1 }, { val : 0, i : 0 } ] );
+  _.sorted.addLeft( arr, { val : 0, i : 3 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 3 }, { val : 0, i : 2 }, { val : 0, i : 1 }, { val : 0, i : 0 } ] );
+
+  test.case = 'right 1';
+  var arr = [ { val : -1 } ];
+  _.sorted.addLeft( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : -1 }, { val : 0, i : 0 } ] );
+  _.sorted.addLeft( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : -1 }, { val : 0, i : 1 }, { val : 0, i : 0 } ] );
+
+  test.case = 'right 2';
+  var arr = [ { val : -2 }, { val : -1 } ];
+  _.sorted.addLeft( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : -2 }, { val : -1 }, { val : 0, i : 0 } ] );
+  _.sorted.addLeft( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : -2 }, { val : -1 }, { val : 0, i : 1 }, { val : 0, i : 0 } ] );
+
+  test.case = 'right 3';
+  var arr = [ { val : -3 }, { val : -2 }, { val : -1 } ];
+  _.sorted.addLeft( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : -3 }, { val : -2 }, { val : -1 }, { val : 0, i : 0 } ] );
+  _.sorted.addLeft( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : -3 }, { val : -2 }, { val : -1 }, { val : 0, i : 1 }, { val : 0, i : 0 } ] );
+
+  test.case = 'left 1';
+  var arr = [ { val : 1 } ];
+  _.sorted.addLeft( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 }, { val : 1 } ] );
+  _.sorted.addLeft( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 1 }, { val : 0, i : 0 }, { val : 1 } ] );
+
+  test.case = 'left 2';
+  var arr = [ { val : 1 }, { val : 2 } ];
+  _.sorted.addLeft( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 }, { val : 1 }, { val : 2 } ] );
+  _.sorted.addLeft( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 1 }, { val : 0, i : 0 }, { val : 1 }, { val : 2 } ] );
+
+  test.case = 'left 3';
+  var arr = [ { val : 1 }, { val : 2 }, { val : 3 } ];
+  _.sorted.addLeft( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 0 }, { val : 1 }, { val : 2 }, { val : 3 } ] );
+  _.sorted.addLeft( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  test.identical( arr, [ { val : 0, i : 1 }, { val : 0, i : 0 }, { val : 1 }, { val : 2 }, { val : 3 } ] );
+
+  test.case = 'mid';
+  var arr = [ { val : -2 }, { val : -1 }, { val : 1 }, { val : 2 } ];
+  _.sorted.addLeft( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  var exp = [ { val : -2 }, { val : -1 }, { val : 0, i : 0 }, { val : 1 }, { val : 2 } ];
+  test.identical( arr, exp );
+  _.sorted.addLeft( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  var exp = [ { val : -2 }, { val : -1 }, { val : 0, i : 1 }, { val : 0, i : 0 }, { val : 1 }, { val : 2 } ];
+  test.identical( arr, exp );
+  _.sorted.addLeft( arr, { val : 0, i : 2 }, ( e ) => e.val );
+  var exp = [ { val : -2 }, { val : -1 }, { val : 0, i : 2 }, { val : 0, i : 1 }, { val : 0, i : 0 }, { val : 1 }, { val : 2 } ];
+  test.identical( arr, exp );
+
+  test.case = 'mid left';
+  var arr = [ { val : -3 }, { val : -2 }, { val : -1 }, { val : 1 } ];
+  _.sorted.addLeft( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  var exp = [ { val : -3 }, { val : -2 }, { val : -1 }, { val : 0, i : 0 }, { val : 1 } ];
+  test.identical( arr, exp );
+  _.sorted.addLeft( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  var exp = [ { val : -3 }, { val : -2 }, { val : -1 }, { val : 0, i : 1 }, { val : 0, i : 0 }, { val : 1 } ];
+  test.identical( arr, exp );
+  _.sorted.addLeft( arr, { val : 0, i : 2 }, ( e ) => e.val );
+  var exp = [ { val : -3 }, { val : -2 }, { val : -1 }, { val : 0, i : 2 }, { val : 0, i : 1 }, { val : 0, i : 0 }, { val : 1 } ];
+  test.identical( arr, exp );
+
+  test.case = 'mid right';
+  var arr = [ { val : -1 }, { val : 1 }, { val : 2 }, { val : 3 } ];
+  _.sorted.addLeft( arr, { val : 0, i : 0 }, ( e ) => e.val );
+  var exp = [ { val : -1 }, { val : 0, i : 0 }, { val : 1 }, { val : 2 }, { val : 3 } ];
+  test.identical( arr, exp );
+  _.sorted.addLeft( arr, { val : 0, i : 1 }, ( e ) => e.val );
+  var exp = [ { val : -1 }, { val : 0, i : 1 }, { val : 0, i : 0 }, { val : 1 }, { val : 2 }, { val : 3 } ];
+  test.identical( arr, exp );
+  _.sorted.addLeft( arr, { val : 0, i : 2 }, ( e ) => e.val );
+  var exp = [ { val : -1 }, { val : 0, i : 2 }, { val : 0, i : 1 }, { val : 0, i : 0 }, { val : 1 }, { val : 2 }, { val : 3 } ];
+  test.identical( arr, exp );
+
+}
+
+//
+
 function addOnce( test )
 {
-  test.case = 'sorted.addOnce test';
 
   var arr = [];
   _.sorted.addOnce( arr, 1 );
@@ -3098,6 +3289,8 @@ let Self =
     lookUpIntervalEmbracingAtLeastOld,
 
     add,
+    addRight,
+    addLeft,
     remove,
     addOnce,
     addArray,
