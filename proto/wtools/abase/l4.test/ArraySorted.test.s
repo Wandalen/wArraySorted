@@ -412,19 +412,19 @@ function lookUpIndex( test )
       var index = _.sorted.lookUpIndex( array, ins );
 
       if( 1 <= index && index <= array.length-1 )
-      test.is( array[ index-1 ] <= array[ index ] );
+      test.true( array[ index-1 ] <= array[ index ] );
 
       if( 0 <= index && index <= array.length-2 )
-      test.is( array[ index ] <= array[ index+1 ] );
+      test.true( array[ index ] <= array[ index+1 ] );
 
       if( ins !== array[ index ] )
       {
 
         if( 0 <= index && index <= array.length-1 )
-        test.is( ins < array[ index ] );
+        test.true( ins < array[ index ] );
 
         if( 1 <= index && index <= array.length-1 )
-        test.is( array[ index-1 ] < ins );
+        test.true( array[ index-1 ] < ins );
 
       }
 
@@ -565,19 +565,19 @@ function lookUpClosestIndex( test )
       var index = _.sorted.lookUpClosestIndex( array, ins );
 
       if( 1 <= index && index <= array.length-1 )
-      test.is( array[ index-1 ] <= array[ index ] );
+      test.true( array[ index-1 ] <= array[ index ] );
 
       if( 0 <= index && index <= array.length-2 )
-      test.is( array[ index ] <= array[ index+1 ] );
+      test.true( array[ index ] <= array[ index+1 ] );
 
       if( ins !== array[ index ] )
       {
 
         if( 0 <= index && index <= array.length-1 )
-        test.is( ins < array[ index ] );
+        test.true( ins < array[ index ] );
 
         if( 1 <= index && index <= array.length-1 )
-        test.is( array[ index-1 ] < ins );
+        test.true( array[ index-1 ] < ins );
 
       }
 
@@ -719,21 +719,21 @@ function lookUpInterval( test )
       var range = _.sorted.lookUpInterval( arr, interval );
 
       if( range[ 0 ] < arr.length )
-      test.is( arr[ range[ 0 ] ] >= interval[ 0 ] );
+      test.true( arr[ range[ 0 ] ] >= interval[ 0 ] );
 
-      test.is( range[ 0 ] >= 0 );
-      test.is( range[ 1 ] <= arr.length );
+      test.true( range[ 0 ] >= 0 );
+      test.true( range[ 1 ] <= arr.length );
 
       if( range[ 0 ] < range[ 1 ] )
       {
-        test.is( arr[ range[ 0 ] ] >= interval[ 0 ] );
-        test.is( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
+        test.true( arr[ range[ 0 ] ] >= interval[ 0 ] );
+        test.true( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
 
         if( range[ 0 ] > 0 )
-        test.is( arr[ range[ 0 ]-1 ] < interval[ 0 ] );
+        test.true( arr[ range[ 0 ]-1 ] < interval[ 0 ] );
 
         if( range[ 1 ] < arr.length )
-        test.is( arr[ range[ 1 ] ] > interval[ 1 ] );
+        test.true( arr[ range[ 1 ] ] > interval[ 1 ] );
 
       }
 
@@ -893,21 +893,21 @@ function lookUpIntervalNarrowest( test )
       var range = _.sorted.lookUpIntervalNarrowest( arr, interval );
 
       if( range[ 0 ] < arr.length )
-      test.is( arr[ range[ 0 ] ] >= interval[ 0 ] );
+      test.true( arr[ range[ 0 ] ] >= interval[ 0 ] );
 
-      test.is( range[ 0 ] >= 0 );
-      test.is( range[ 1 ] <= arr.length );
+      test.true( range[ 0 ] >= 0 );
+      test.true( range[ 1 ] <= arr.length );
 
       if( range[ 0 ] < range[ 1 ] )
       {
-        test.is( arr[ range[ 0 ] ] >= interval[ 0 ] );
-        test.is( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
+        test.true( arr[ range[ 0 ] ] >= interval[ 0 ] );
+        test.true( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
 
         if( range[ 0 ] > 0 )
-        test.is( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
+        test.true( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
 
         if( range[ 1 ] < arr.length )
-        test.is( arr[ range[ 1 ] ] >= interval[ 1 ] );
+        test.true( arr[ range[ 1 ] ] >= interval[ 1 ] );
 
       }
 
@@ -1696,21 +1696,21 @@ function lookUpIntervalEmbracingAtLeast( test )
       var range = _.sorted.lookUpIntervalEmbracingAtLeast( arr, interval );
 
       if( range[ 0 ] > 0 )
-      test.is( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
+      test.true( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
 
-      test.is( range[ 0 ] >= 0 );
-      test.is( range[ 1 ] <= arr.length );
+      test.true( range[ 0 ] >= 0 );
+      test.true( range[ 1 ] <= arr.length );
 
       if( range[ 0 ] < range[ 1 ] )
       {
-        // test.is( arr[ range[ 0 ] ] >= interval[ 0 ] );
-        // test.is( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
+        // test.true( arr[ range[ 0 ] ] >= interval[ 0 ] );
+        // test.true( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
 
         if( range[ 0 ] > 0 )
-        test.is( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
+        test.true( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
 
         if( range[ 1 ] < arr.length )
-        test.is( arr[ range[ 1 ] ] >= interval[ 1 ] );
+        test.true( arr[ range[ 1 ] ] >= interval[ 1 ] );
       }
 
     }
@@ -2173,21 +2173,21 @@ function lookUpIntervalEmbracingAtLeastOld( test )
       var range = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, interval );
 
       if( range[ 0 ] > 0 )
-      test.is( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
+      test.true( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
 
-      test.is( range[ 0 ] >= 0 );
-      test.is( range[ 1 ] <= arr.length );
+      test.true( range[ 0 ] >= 0 );
+      test.true( range[ 1 ] <= arr.length );
 
       if( range[ 0 ] < range[ 1 ] )
       {
-        // test.is( arr[ range[ 0 ] ] >= interval[ 0 ] );
-        // test.is( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
+        // test.true( arr[ range[ 0 ] ] >= interval[ 0 ] );
+        // test.true( arr[ range[ 1 ]-1 ] <= interval[ 1 ] );
 
         if( range[ 0 ] > 0 )
-        test.is( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
+        test.true( arr[ range[ 0 ]-1 ] <= interval[ 0 ] );
 
         if( range[ 1 ] < arr.length )
-        test.is( arr[ range[ 1 ] ] >= interval[ 1 ] );
+        test.true( arr[ range[ 1 ] ] >= interval[ 1 ] );
       }
 
     }
