@@ -8,7 +8,7 @@ Collection of cross-platform routines to operate effectively sorted arrays. For 
 git clone https://github.com/Wandalen/wArraySorted
 cd wArraySorted
 npm install
-node sample/Sample.s
+node sample/trivial/Sample.s
 ```
 
 ## To add to your project
