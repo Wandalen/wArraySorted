@@ -43,7 +43,7 @@ function _lookUpAct( test )
 {
 
   test.case = 'first argument is empty, so it returns the index from which it ended search at';
-  var got = _.sorted._lookUpAct( [  ], 55, function( a, b ){ return a - b }, 0, 5 );
+  var got = _.sorted._lookUpAct( [], 55, function( a, b ){ return a - b }, 0, 5 );
   var expected = 2;
   test.identical( got, expected );
 
@@ -2499,7 +2499,7 @@ function addOnce( test )
   test.identical( arr, [ 1, 3, 4 ] );
 
   var arr = [ 1 ];
-  function comparator( a, b ){ return ( a - b ) + 1  }
+  function comparator( a, b ){ return ( a - b ) + 1 }
   _.sorted.addOnce( arr, 2, comparator );
   test.identical( arr, [ 2, 1 ] );
 
@@ -2552,11 +2552,11 @@ function addArray( test )
   test.identical( arr, [ 0, 1, 1, 3 ] );
 
   var arr = [ 1, 3 ];
-  _.sorted.addArray( arr, [ 1, 4 ]  );
+  _.sorted.addArray( arr, [ 1, 4 ] );
   test.identical( arr, [ 1, 1, 3, 4 ] );
 
   var arr = [ 1 ];
-  function comparator( a, b ){ return ( a - b ) + 1  }
+  function comparator( a, b ){ return ( a - b ) + 1 }
   _.sorted.addArray( arr, [ 1, 2 ], comparator );
   test.identical( arr, [ 1, 2, 1 ] );
 
@@ -2602,7 +2602,7 @@ function remove( test )
   test.identical( arr, [ 1, 1 ] );
 
   var arr = [ 1, 3 ];
-  _.sorted.remove( arr, -1  );
+  _.sorted.remove( arr, -1 );
   test.identical( arr, [ 1, 3 ] );
 
   test.case = 'nothing to remove';
@@ -2777,7 +2777,7 @@ function leftMostAtLeast( test )
   {
     return ( a + 1 ) - b;
   }
-  var got = _.sorted.leftMostAtLeast( arr, 2, comparator  );
+  var got = _.sorted.leftMostAtLeast( arr, 2, comparator );
   var expected = { value : 1, index : 4 }
   test.identical( got, expected );
 
@@ -2926,7 +2926,7 @@ function leftMostAtMost( test )
   {
     return ( a + 1 ) - b;
   }
-  var got = _.sorted.leftMostAtMost( arr, 2, comparator  );
+  var got = _.sorted.leftMostAtMost( arr, 2, comparator );
   var expected = { value : 1, index : 4 }
   test.identical( got, expected );
 
@@ -2956,7 +2956,7 @@ function rightMostAtLeast( test )
 
   test.case = '-1';
   var got = _.sorted.rightMostAtLeast( arr, -1 );
-  var expected = { value : 0, index : 0 }
+  var expected = { value : 0, index : 0 };
   test.identical( got, expected );
 
   test.case = '0';
