@@ -946,49 +946,49 @@ function lookUpIntervalHaving( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ -1, -1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, -1 ];
   test.identical( got, expected );
 
   var range = [ -1, 0 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, -1 ];
   test.identical( got, expected );
 
   var range = [ -1, 1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, 2 ];
   test.identical( got, expected );
 
   var range = [ -1, 2 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, 2 ];
   test.identical( got, expected );
 
   var range = [ -1, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, 3 ];
   test.identical( got, expected );
 
   var range = [ -1, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, 3 ];
   test.identical( got, expected );
 
   var range = [ -1, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, 5 ];
   test.identical( got, expected );
 
   var range = [ -1, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ -1, 5 ];
   test.identical( got, expected );
@@ -996,49 +996,49 @@ function lookUpIntervalHaving( test )
   /* */
 
   var range = [ 0, -1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 0 ];
   test.identical( got, expected );
 
   var range = [ 0, 0 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 0 ];
   test.identical( got, expected );
 
   var range = [ 0, 1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 2 ];
   test.identical( got, expected );
 
   var range = [ 0, 2 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 2 ];
   test.identical( got, expected );
 
   var range = [ 0, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 3 ];
   test.identical( got, expected );
 
   var range = [ 0, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 3 ];
   test.identical( got, expected );
 
   var range = [ 0, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 5 ];
   test.identical( got, expected );
 
   var range = [ 0, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 0, 5 ];
   test.identical( got, expected );
@@ -1048,49 +1048,49 @@ function lookUpIntervalHaving( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ 1, -1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 1 ];
   test.identical( got, expected );
 
   var range = [ 1, 0 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 1 ];
   test.identical( got, expected );
 
   var range = [ 1, 1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 2 ];
   test.identical( got, expected );
 
   var range = [ 1, 2 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 2 ];
   test.identical( got, expected );
 
   var range = [ 1, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 3 ];
   test.identical( got, expected );
 
   var range = [ 1, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 3 ];
   test.identical( got, expected );
 
   var range = [ 1, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
   var range = [ 1, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
@@ -1098,49 +1098,49 @@ function lookUpIntervalHaving( test )
   /* */
 
   var range = [ 2, -1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 0 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 2 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 3 ];
   test.identical( got, expected );
 
   var range = [ 2, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 3 ];
   test.identical( got, expected );
 
   var range = [ 2, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
   var range = [ 2, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
@@ -1150,25 +1150,25 @@ function lookUpIntervalHaving( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ 3, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 3 ];
   test.identical( got, expected );
 
   var range = [ 3, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 3 ];
   test.identical( got, expected );
 
   var range = [ 3, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
   var range = [ 3, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
@@ -1176,19 +1176,19 @@ function lookUpIntervalHaving( test )
   /* */
 
   var range = [ 4, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 3, 3 ];
   test.identical( got, expected );
 
   var range = [ 4, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 3, 5 ];
   test.identical( got, expected );
 
   var range = [ 4, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 3, 5 ];
   test.identical( got, expected );
@@ -1198,13 +1198,13 @@ function lookUpIntervalHaving( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ 5, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
   var range = [ 5, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
@@ -1212,7 +1212,7 @@ function lookUpIntervalHaving( test )
   /* */
 
   var range = [ 6, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalHaving( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
@@ -1286,49 +1286,49 @@ function lookUpIntervalEmbracingAtLeast( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ -1, -1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 1 ]; /* 0, 0 */
   test.identical( got, expected );
 
   var range = [ -1, 0 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 1 ];
   test.identical( got, expected );
 
   var range = [ -1, 1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 2 ]; /* 0, 3 */
   test.identical( got, expected );
 
   var range = [ -1, 2 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 2 ]; /* 0, 3 */
   test.identical( got, expected );
 
   var range = [ -1, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 4 ];
   test.identical( got, expected );
 
   var range = [ -1, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 4 ];
   test.identical( got, expected );
 
   var range = [ -1, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 5 ];
   test.identical( got, expected );
 
   var range = [ -1, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 0, 5 ];
   test.identical( got, expected );
@@ -1336,49 +1336,49 @@ function lookUpIntervalEmbracingAtLeast( test )
   /* */
 
   var range = [ 0, -1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ]; /* 1, 1 */
   test.identical( got, expected );
 
   var range = [ 0, 0 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ];
   test.identical( got, expected );
 
   var range = [ 0, 1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ]; /* 1, 3 */
   test.identical( got, expected );
 
   var range = [ 0, 2 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ]; /* 1, 3 */
   test.identical( got, expected );
 
   var range = [ 0, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 0, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 0, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
   var range = [ 0, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
@@ -1388,49 +1388,49 @@ function lookUpIntervalEmbracingAtLeast( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ 1, -1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ]; /* 1, 2 */
   test.identical( got, expected );
 
   var range = [ 1, 0 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ];
   test.identical( got, expected );
 
   var range = [ 1, 1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ]; /* 1, 3 */
   test.identical( got, expected );
 
   var range = [ 1, 2 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 2 ]; /* 1, 3 */
   test.identical( got, expected );
 
   var range = [ 1, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 1, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 1, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
   var range = [ 1, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
@@ -1440,49 +1440,49 @@ function lookUpIntervalEmbracingAtLeast( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ 2, -1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ]; /* 2, 2 */
   test.identical( got, expected );
 
   var range = [ 2, 0 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ]; /* 2, 2 */
   test.identical( got, expected );
 
   var range = [ 2, 1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ]; /* 2, 2 */
   test.identical( got, expected );
 
   var range = [ 2, 2 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ]; /* 2, 2 */
   test.identical( got, expected );
 
   var range = [ 2, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 2, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 2, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
   var range = [ 2, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
@@ -1492,25 +1492,25 @@ function lookUpIntervalEmbracingAtLeast( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ 3, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 3, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 3, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
   var range = [ 3, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
@@ -1518,19 +1518,19 @@ function lookUpIntervalEmbracingAtLeast( test )
   /* */
 
   var range = [ 4, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
   var range = [ 4, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
   var range = [ 4, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
@@ -1540,13 +1540,13 @@ function lookUpIntervalEmbracingAtLeast( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ 5, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 4, 5 ]; /* 5, 5 */
   test.identical( got, expected );
 
   var range = [ 5, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 4, 5 ]; /* 5, 5 */
   test.identical( got, expected );
@@ -1554,7 +1554,7 @@ function lookUpIntervalEmbracingAtLeast( test )
   /* */
 
   var range = [ 6, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeast( arr, range );
   var expected = [ 4, 5 ]; /* 5, 5 */
   test.identical( got, expected );
@@ -1765,49 +1765,49 @@ function lookUpIntervalEmbracingAtLeastOld( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ -1, -1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 0 ];
   test.identical( got, expected );
 
   var range = [ -1, 0 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 1 ];
   test.identical( got, expected );
 
   var range = [ -1, 1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 3 ]; /* xxx */
   test.identical( got, expected );
 
   var range = [ -1, 2 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 3 ];
   test.identical( got, expected );
 
   var range = [ -1, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 4 ];
   test.identical( got, expected );
 
   var range = [ -1, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 4 ];
   test.identical( got, expected );
 
   var range = [ -1, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 5 ];
   test.identical( got, expected );
 
   var range = [ -1, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 0, 5 ];
   test.identical( got, expected );
@@ -1815,49 +1815,49 @@ function lookUpIntervalEmbracingAtLeastOld( test )
   /* */
 
   var range = [ 0, -1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 1 ];
   test.identical( got, expected );
 
   var range = [ 0, 0 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 2 ];
   test.identical( got, expected );
 
   var range = [ 0, 1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 3 ];
   test.identical( got, expected );
 
   var range = [ 0, 2 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 3 ];
   test.identical( got, expected );
 
   var range = [ 0, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 0, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 0, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
   var range = [ 0, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
@@ -1867,49 +1867,49 @@ function lookUpIntervalEmbracingAtLeastOld( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ 1, -1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 1 ];
   test.identical( got, expected );
 
   var range = [ 1, 0 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 2 ];
   test.identical( got, expected );
 
   var range = [ 1, 1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 3 ]; /* xxx */
   test.identical( got, expected );
 
   var range = [ 1, 2 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 3 ];
   test.identical( got, expected );
 
   var range = [ 1, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 1, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 4 ];
   test.identical( got, expected );
 
   var range = [ 1, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
 
   var range = [ 1, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 1, 5 ];
   test.identical( got, expected );
@@ -1919,49 +1919,49 @@ function lookUpIntervalEmbracingAtLeastOld( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ 2, -1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 0 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 1 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 2 ];
   test.identical( got, expected );
 
   var range = [ 2, 2 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 3 ];
   test.identical( got, expected );
 
   var range = [ 2, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 2, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 2, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
   var range = [ 2, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
@@ -1971,25 +1971,25 @@ function lookUpIntervalEmbracingAtLeastOld( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ 3, 3 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 3, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 4 ];
   test.identical( got, expected );
 
   var range = [ 3, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
 
   var range = [ 3, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 2, 5 ];
   test.identical( got, expected );
@@ -1997,19 +1997,19 @@ function lookUpIntervalEmbracingAtLeastOld( test )
   /* */
 
   var range = [ 4, 4 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
   var range = [ 4, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
 
   var range = [ 4, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 4, 5 ];
   test.identical( got, expected );
@@ -2019,13 +2019,13 @@ function lookUpIntervalEmbracingAtLeastOld( test )
   var arr = [ 0, 0, 2, 4, 4 ];
 
   var range = [ 5, 5 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 5, 5 ];
   test.identical( got, expected );
 
   var range = [ 5, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 5, 5 ];
   test.identical( got, expected );
@@ -2033,7 +2033,7 @@ function lookUpIntervalEmbracingAtLeastOld( test )
   /* */
 
   var range = [ 6, 6 ];
-  test.case = _.toStr( range );
+  test.case = _.entity.exportToString( range );
   var got = _.sorted.lookUpIntervalEmbracingAtLeastOld( arr, range );
   var expected = [ 5, 5 ];
   test.identical( got, expected );
