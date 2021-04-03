@@ -2,10 +2,13 @@ format: outwillfile-2.0
 root:
   - wArraySorted.out
 consistency:
-  ../.ex.will.yml: &ref_0
+  wArraySorted.out.will.yml: &ref_0
+    hash: 78f2cb64581ace0febf81296ff982a2d
+    size: 39374
+  ../.ex.will.yml: &ref_1
     hash: 8ac061e3ece0ba4278810b826013eae6
     size: 2192
-  ../.im.will.yml: &ref_1
+  ../.im.will.yml: &ref_2
     hash: 4eab09c584acac20930427d9f0b70dbb
     size: 5027
 module:
@@ -21,11 +24,11 @@ module:
         sorted array. Use it to increase the performance of your algorithms.
       enabled: 1
       version: 0.4.0
-      interpreters: &ref_2
+      interpreters:
         - njs >= 10.0.0
         - chrome >= 60.0.0
         - firefox >= 60.0.0
-      keywords: &ref_3
+      keywords:
         - sorted array
         - wTools
         - binnary search
@@ -35,13 +38,13 @@ module:
         - sort
       license: MIT
       author: Kostiantyn Wandalen <wanalen@01.school>
-      contributors: &ref_4
+      contributors:
         - Kostiantyn Wandalen <wanalen@01.school>
       npm.name: warraysorted
-      npm.scripts: &ref_5
+      npm.scripts:
         test: wtest .run proto/**
         docgen: wdocgen .build proto
-      npm.directories: &ref_6
+      npm.directories:
         doc: doc
         main: proto/wtools/abase/l4/ArraySorted.s
     path:
@@ -712,6 +715,24 @@ module:
           content: prime
         inherit:
           - files.transpile
+      exported.proto.export:
+        opts:
+          filePath: 'reflector::exported.proto.export'
+        criterion:
+          generated: 1
+          content: proto
+          export: 1
+        inherit:
+          - files.reflect
+      exported.files.proto.export:
+        opts:
+          filePath: 'reflector::exported.files.proto.export'
+        criterion:
+          generated: 1
+          content: proto
+          export: 1
+        inherit:
+          - files.reflect
     build:
       proto.export:
         steps:
@@ -800,8 +821,9 @@ module:
           content: proto
           export: 1
     consistency:
-      ../.ex.will.yml: *ref_0
-      ../.im.will.yml: *ref_1
+      wArraySorted.out.will.yml: *ref_0
+      ../.ex.will.yml: *ref_1
+      ../.im.will.yml: *ref_2
   ../:
     about:
       name: wArraySorted
@@ -814,14 +836,29 @@ module:
         sorted array. Use it to increase the performance of your algorithms.
       enabled: 1
       version: 0.4.0
-      interpreters: *ref_2
-      keywords: *ref_3
+      interpreters:
+        - njs >= 10.0.0
+        - chrome >= 60.0.0
+        - firefox >= 60.0.0
+      keywords:
+        - sorted array
+        - wTools
+        - binnary search
+        - range
+        - interval
+        - search in sorted array
+        - sort
       license: MIT
       author: Kostiantyn Wandalen <wanalen@01.school>
-      contributors: *ref_4
+      contributors:
+        - Kostiantyn Wandalen <wanalen@01.school>
       npm.name: warraysorted
-      npm.scripts: *ref_5
-      npm.directories: *ref_6
+      npm.scripts:
+        test: wtest .run proto/**
+        docgen: wdocgen .build proto
+      npm.directories:
+        doc: doc
+        main: proto/wtools/abase/l4/ArraySorted.s
     path:
       module.willfiles:
         criterion:
@@ -1495,3 +1532,6 @@ module:
       ../.im.will.yml:
         hash: 4eab09c584acac20930427d9f0b70dbb
         size: 5027
+      wArraySorted.out.will.yml:
+        hash: 78f2cb64581ace0febf81296ff982a2d
+        size: 39374
