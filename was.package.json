@@ -9,7 +9,7 @@
     { "name" : "Kostiantyn Wandalen", "email" : "wanalen@01.school" }
   ],
   "license" : "MIT",
-  "main" : "/pro/module/wArraySorted/proto/node_modules/warraysorted",
+  "main" : "proto/node_modules/warraysorted",
   "files" : [ "proto/wtools/abase/l4", "proto/wtools/Tools.s", "out", "proto/node_modules" ],
   "directories" : { "doc" : "doc", "main" : "proto/wtools/abase/l4/ArraySorted.s" },
   "scripts" : { "test" : "wtest .run 'proto/**' rapidity:-3", "docgen" : "wdocgen proto" },
