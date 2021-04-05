@@ -77,8 +77,8 @@ path:
       raw: compiled
       content: prime
   npm.proto.entry:
-    - /pro/module/wArraySorted/proto/wtools/abase/l4/ArraySorted.s
-    - /pro/module/wArraySorted/proto/node_modules/warraysorted
+    - proto/wtools/abase/l4/ArraySorted.s
+    - proto/node_modules/warraysorted
 reflector:
   reflect.proto:
     inherit: predefined.*
