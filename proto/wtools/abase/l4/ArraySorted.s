@@ -29,7 +29,7 @@ if( typeof module !== 'undefined' )
 
 const _global = _global_;
 const _ = _global_.wTools;
-const Self = _.sorted = _.sorted || Object.create( null );
+_.sorted = _.sorted || Object.create( null );
 
 // --
 // array sorted
@@ -1224,13 +1224,13 @@ let Proto =
 
 }
 
-_.props.extend( Self, Proto );
+/* _.props.extend */Object.assign( _.sorted, Proto );
 
 // --
 // export
 // --
 
 if( typeof module !== 'undefined' )
-module[ 'exports' ] = Self;
+module[ 'exports' ] = _.sorted;
 
 })();
