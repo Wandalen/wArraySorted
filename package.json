@@ -1,6 +1,6 @@
 {
   "name" : "warraysorted",
-  "version" : "0.3.314",
+  "version" : "0.3.315",
   "engine" : "node >= 10.0.0",
   "description" : "Collection of cross-platform routines to operate effectively sorted arrays. For that ArraySorted provides customizable quicksort algorithm and a dozen functions to optimally find/add/remove single/multiple elements into a sorted array, add/remove sorted array to/from another sorted array. Use it to increase the performance of your algorithms.",
   "author" : "Kostiantyn Wandalen <wanalen@01.school>",
@@ -10,7 +10,7 @@
   ],
   "license" : "MIT",
   "main" : "proto/node_modules/warraysorted",
-  "files" : [ "proto/wtools/abase/l4", "out", "proto/node_modules" ],
+  "files" : [ "proto/wtools/abase/l4", "out", "proto/node_modules", "proto/node_modules/Tools", "proto/node_modules/warraysorted" ],
   "directories" : { "doc" : "doc", "main" : "proto/wtools/abase/l4/ArraySorted.s" },
   "scripts" : { "test" : "wtest .run 'proto/**' rapidity:-3", "docgen" : "wdocgen proto" },
   "repository" :
