@@ -3,8 +3,8 @@ root:
   - wArraySorted.out
 consistency:
   ../will.yml: &ref_0
-    hash: b309e9b6a4079e3dffcf449a4538fd38
-    size: 6958
+    hash: 9572aed0c226399a82a7f9d0f608450e
+    size: 6817
 module:
   wArraySorted.out:
     about:
@@ -379,9 +379,6 @@ module:
           content: npm
         inherit:
           - module.export
-      npm.publish:
-        opts:
-          shell: npm publish
       npm.generate.debug.raw:
         opts:
           entryPath: 'path::entry.out.*=1'
@@ -717,12 +714,6 @@ module:
           - 'step::doc.export'
         criterion:
           content: doc
-          export: 1
-      npm.export:
-        steps:
-          - 'step::npm.publish'
-        criterion:
-          content: npm
           export: 1
       export:
         steps:
@@ -1076,9 +1067,6 @@ module:
           content: npm
         inherit:
           - module.export
-      npm.publish:
-        opts:
-          shell: npm publish
       npm.generate.debug.raw:
         opts:
           entryPath: 'path::entry.out.*=1'
@@ -1415,12 +1403,6 @@ module:
         criterion:
           content: doc
           export: 1
-      npm.export:
-        steps:
-          - 'step::npm.publish'
-        criterion:
-          content: npm
-          export: 1
       export:
         steps:
           - 'build::proto.export'
@@ -1478,5 +1460,5 @@ module:
           - 'build::npm'
     consistency:
       ../will.yml:
-        hash: b309e9b6a4079e3dffcf449a4538fd38
-        size: 6958
+        hash: 9572aed0c226399a82a7f9d0f608450e
+        size: 6817
