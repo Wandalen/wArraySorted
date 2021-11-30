@@ -13,7 +13,7 @@ about:
   npm.directories:
     doc: doc
     main: proto/wtools/abase/l4/ArraySorted.s
-  author: Kostiantyn Wandalen <wanalen@01.school>
+  author: Kostiantyn Wandalen <wandalen@obox.systems>
   keywords:
     - sorted array
     - wTools
@@ -23,7 +23,7 @@ about:
     - search in sorted array
     - sort
   contributors:
-    - Kostiantyn Wandalen <wanalen@01.school>
+    - Kostiantyn Wandalen <wandalen@obox.systems>
   interpreters:
     - njs >= 10.0.0
     - chrome >= 60.0.0

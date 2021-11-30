@@ -23,7 +23,7 @@ module:
       npm.directories: &ref_1
         doc: doc
         main: proto/wtools/abase/l4/ArraySorted.s
-      author: Kostiantyn Wandalen <wanalen@01.school>
+      author: Kostiantyn Wandalen <wandalen@obox.systems>
       keywords: &ref_2
         - sorted array
         - wTools
@@ -33,7 +33,7 @@ module:
         - search in sorted array
         - sort
       contributors: &ref_3
-        - Kostiantyn Wandalen <wanalen@01.school>
+        - Kostiantyn Wandalen <wandalen@obox.systems>
       interpreters: &ref_4
         - njs >= 10.0.0
         - chrome >= 60.0.0
@@ -800,7 +800,7 @@ module:
       license: MIT
       npm.name: warraysorted
       npm.directories: *ref_1
-      author: Kostiantyn Wandalen <wanalen@01.school>
+      author: Kostiantyn Wandalen <wandalen@obox.systems>
       keywords: *ref_2
       contributors: *ref_3
       interpreters: *ref_4
