@@ -3,8 +3,8 @@ root:
   - wArraySorted.out
 consistency:
   ../will.yml: &ref_0
-    hash: 9572aed0c226399a82a7f9d0f608450e
-    size: 6817
+    hash: b80751b9b91261721f621d9ecf76536b
+    size: 6825
 module:
   wArraySorted.out:
     about:
@@ -1460,5 +1460,5 @@ module:
           - 'build::npm'
     consistency:
       ../will.yml:
-        hash: 9572aed0c226399a82a7f9d0f608450e
-        size: 6817
+        hash: b80751b9b91261721f621d9ecf76536b
+        size: 6825
